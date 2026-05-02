@@ -12,8 +12,8 @@ export default function Header() {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -34,81 +34,108 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[var(--background)]/90 backdrop-blur-md border-b border-[var(--border)]"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
+      style={{
+        background: scrolled
+          ? "color-mix(in srgb, var(--background) 85%, transparent)"
+          : "transparent",
+        backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
+        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+      }}
     >
-      <div className="container-lg mx-auto px-4">
+      <div className="container-lg px-4 mx-auto">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: "var(--accent-blue)" }}>
-              <span className="text-[var(--navy-900)] font-bold text-sm">K</span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 group-hover:scale-105"
+              style={{
+                background: "linear-gradient(135deg, var(--accent-blue), #60b8ff)",
+                color: "#fff",
+                boxShadow: "0 2px 8px var(--accent-blue-glow)",
+              }}
+            >
+              K
             </div>
-            <span className="font-bold text-lg tracking-tight text-[var(--foreground)]">
+            <span className="font-semibold text-base tracking-tight" style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}>
               Kryptondo
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  pathname === link.href
-                    ? "text-[var(--accent-blue)]"
-                    : "text-[var(--muted-foreground)] hover:text-[var(--foreground)]"
-                }`}
+                className="relative px-4 py-2 text-sm font-medium transition-colors duration-200 group"
+                style={{
+                  color: pathname === link.href ? "var(--accent-blue)" : "var(--muted-foreground)",
+                }}
               >
-                {link.label}
+                <span className="relative z-10 group-hover:text-[var(--foreground)] transition-colors duration-200">
+                  {link.label}
+                </span>
+                {pathname === link.href && (
+                  <motion.div
+                    layoutId="nav-indicator"
+                    className="absolute inset-0 rounded-lg"
+                    style={{ background: "var(--accent-blue-glow)" }}
+                    transition={{ type: "spring", stiffness: 400, damping: 35 }}
+                  />
+                )}
               </Link>
             ))}
           </nav>
 
           {/* Right actions */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             {/* Theme toggle */}
             <button
               onClick={() => setDark(!dark)}
-              className="w-8 h-8 rounded-lg border border-[var(--border)] flex items-center justify-center text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition-colors"
+              className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-200 hover:scale-105"
+              style={{
+                border: "1px solid var(--border)",
+                background: "var(--surface)",
+                color: "var(--muted-foreground)",
+              }}
               aria-label="Toggle theme"
             >
               {dark ? (
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.22 1.78a1 1 0 011.42 1.42l-.7.7a1 1 0 01-1.42-1.42l.7-.7zM18 9a1 1 0 110 2h-1a1 1 0 110-2h1zM5.48 4.2a1 1 0 010 1.42l-.7.7A1 1 0 013.36 4.9l.7-.7a1 1 0 011.42 0zM10 15a5 5 0 110-10 5 5 0 010 10zm-7 0h1a1 1 0 110 2H3a1 1 0 110-2zm14 0h1a1 1 0 110 2h-1a1 1 0 110-2zM4.78 14.52a1 1 0 011.42 1.42l-.7.7a1 1 0 01-1.42-1.42l.7-.7zm10.44 0l.7.7a1 1 0 01-1.42 1.42l-.7-.7a1 1 0 011.42-1.42zM10 17a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z" />
+                <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                 </svg>
               ) : (
-                <svg width="14" height="14" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+                <svg width="13" height="13" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
               )}
             </button>
-            <Link href="/invest" className="btn-secondary text-sm py-2 px-4">
+
+            <Link href="/invest" className="btn-secondary text-sm !py-2 !px-4">
               Log In
             </Link>
-            <Link href="/invest" className="btn-primary text-sm py-2 px-4">
-              Get Started
+            <Link href="/invest" className="btn-primary text-sm !py-2 !px-4">
+              <span>Get Started</span>
             </Link>
           </div>
 
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden w-8 h-8 flex items-center justify-center text-[var(--foreground)]"
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-lg transition-colors"
+            style={{ border: "1px solid var(--border)", color: "var(--foreground)" }}
           >
-            {mobileOpen ? (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path d="M6 6l8 8M6 14l8-8" />
-              </svg>
-            ) : (
-              <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth={2}>
-                <path d="M3 6h14M3 10h14M3 14h14" />
-              </svg>
-            )}
+            <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth={1.75}>
+              {mobileOpen ? (
+                <path d="M5 5l14 14M5 19L19 5" />
+              ) : (
+                <path d="M3 6h18M3 12h18M3 18h18" />
+              )}
+            </svg>
           </button>
         </div>
       </div>
@@ -117,29 +144,31 @@ export default function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden border-t border-[var(--border)] bg-[var(--background)]"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+            className="md:hidden overflow-hidden"
+            style={{ borderTop: "1px solid var(--border)", background: "var(--background)" }}
           >
-            <div className="container-lg mx-auto px-4 py-4 flex flex-col gap-2">
+            <div className="container-lg mx-auto px-4 py-3 flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="px-4 py-3 rounded-lg text-sm font-medium text-[var(--foreground)] hover:bg-[var(--surface)] transition-colors"
+                  className="px-4 py-3 rounded-lg text-sm font-medium transition-colors"
+                  style={{ color: "var(--foreground)" }}
                 >
                   {link.label}
                 </Link>
               ))}
-              <div className="flex gap-2 pt-2">
-                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center py-2.5">
+              <div className="flex gap-2 pt-3 pb-1">
+                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center !py-2.5 text-sm">
                   Log In
                 </Link>
-                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center py-2.5">
-                  Get Started
+                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center !py-2.5 text-sm">
+                  <span>Get Started</span>
                 </Link>
               </div>
             </div>

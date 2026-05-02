@@ -17,86 +17,100 @@ interface Opportunity {
   highlight: string;
 }
 
-const SECTOR_COLORS: Record<string, string> = {
-  Hospitality: "#00D4FF",
-  "Creative/Media": "#C9A84C",
-  Retail: "#7C8CF8",
-  "Local Services": "#4CAF50",
+const SECTOR_COLORS: Record<string, { bg: string; text: string }> = {
+  Hospitality: { bg: "rgba(61, 139, 255, 0.1)", text: "#3d8bff" },
+  "Creative/Media": { bg: "rgba(201, 168, 76, 0.1)", text: "#c9a84c" },
+  Retail: { bg: "rgba(124, 140, 248, 0.1)", text: "#7c8cf8" },
+  "Local Services": { bg: "rgba(52, 199, 89, 0.1)", text: "#34c759" },
 };
 
 export default function OpportunityCard({ opp }: { opp: Opportunity }) {
   const pct = Math.round((opp.raisedAmount / opp.raisingTarget) * 100);
+  const sector = SECTOR_COLORS[opp.sector] || SECTOR_COLORS["Hospitality"];
 
   return (
-    <div className="card group hover:border-[var(--accent-blue)] transition-all duration-300 hover:-translate-y-0.5 flex flex-col">
-      {/* Placeholder image */}
+    <div
+      className="card card-hover flex flex-col h-full group"
+      style={{ padding: "1.25rem" }}
+    >
+      {/* Header image area */}
       <div
-        className="h-36 rounded-xl mb-4 flex items-end p-3 relative overflow-hidden"
+        className="h-32 rounded-xl mb-4 flex flex-col justify-between p-3 relative overflow-hidden"
         style={{
-          background: `linear-gradient(135deg, ${SECTOR_COLORS[opp.sector] || "#00D4FF"}22, ${SECTOR_COLORS[opp.sector] || "#00D4FF"}44)`,
+          background: `linear-gradient(135deg, ${sector.bg.replace("0.1)", "0.15)")}, ${sector.bg.replace("0.1)", "0.06)")})`,
         }}
       >
+        {/* Subtle pattern */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: "repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255,255,255,0.05) 10px, rgba(255,255,255,0.05) 11px)",
+            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px)",
+            backgroundSize: "16px 16px",
           }}
         />
-        <div className="flex items-center justify-between w-full relative z-10">
+        <div className="flex justify-between relative z-10">
           <span
-            className="px-2.5 py-1 rounded-full text-xs font-semibold"
-            style={{
-              background: `${SECTOR_COLORS[opp.sector] || "#00D4FF"}33`,
-              color: SECTOR_COLORS[opp.sector] || "#00D4FF",
-            }}
+            className="text-xs font-semibold px-2.5 py-1 rounded-full"
+            style={{ background: sector.bg, color: sector.text }}
           >
             {opp.sector}
           </span>
           <span
-            className="px-2.5 py-1 rounded-full text-xs font-semibold"
-            style={{ background: "rgba(255,100,100,0.15)", color: "#ff6464" }}
+            className="text-xs font-semibold px-2.5 py-1 rounded-full"
+            style={{ background: "rgba(255,80,80,0.12)", color: "#ff6060" }}
           >
             {opp.daysLeft}d left
           </span>
         </div>
+        <div className="relative z-10">
+          <p className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.6)" }}>{opp.city}</p>
+        </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 flex flex-col">
-        <div className="flex items-start justify-between gap-2 mb-1">
-          <h3 className="font-bold text-base text-[var(--foreground)]">{opp.name}</h3>
-          <span className="text-xs text-[var(--muted-foreground)] shrink-0">{opp.city}</span>
+      <div className="flex-1 flex flex-col gap-3">
+        <div>
+          <h3
+            className="font-semibold mb-1 tracking-tight-sub"
+            style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}
+          >
+            {opp.name}
+          </h3>
+          <p className="text-xs leading-relaxed" style={{ color: "var(--muted-foreground)" }}>
+            {opp.description}
+          </p>
         </div>
-        <p className="text-xs text-[var(--muted-foreground)] mb-3 leading-relaxed">{opp.description}</p>
 
-        {/* Highlight */}
+        {/* Highlight pill */}
         <div
-          className="text-xs px-3 py-2 rounded-lg mb-4"
-          style={{ background: "rgba(0,212,255,0.08)", color: "var(--accent-blue)" }}
+          className="text-xs px-3 py-2 rounded-lg"
+          style={{ background: "var(--accent-blue-glow)", color: "var(--accent-blue)" }}
         >
           ✦ {opp.highlight}
         </div>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-3 gap-2 mb-4 text-center">
-          <div>
-            <p className="font-bold text-sm text-[var(--foreground)]">{opp.equityAvailable}%</p>
-            <p className="text-[10px] text-[var(--muted-foreground)]">Equity</p>
-          </div>
-          <div>
-            <p className="font-bold text-sm text-[var(--foreground)]">€{(opp.raisingTarget / 1000).toFixed(0)}K</p>
-            <p className="text-[10px] text-[var(--muted-foreground)]">Target</p>
-          </div>
-          <div>
-            <p className="font-bold text-sm text-[var(--foreground)]">{opp.investorCount}</p>
-            <p className="text-[10px] text-[var(--muted-foreground)]">Investors</p>
-          </div>
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-1 text-center">
+          {[
+            { val: `${opp.equityAvailable}%`, lbl: "Equity" },
+            { val: `€${(opp.raisingTarget / 1000).toFixed(0)}K`, lbl: "Target" },
+            { val: `${opp.investorCount}`, lbl: "Investors" },
+          ].map((s) => (
+            <div
+              key={s.lbl}
+              className="rounded-lg py-2"
+              style={{ background: "var(--surface-2)" }}
+            >
+              <p className="font-bold text-sm" style={{ color: "var(--foreground)" }}>{s.val}</p>
+              <p className="text-[10px] font-medium" style={{ color: "var(--muted-foreground)" }}>{s.lbl}</p>
+            </div>
+          ))}
         </div>
 
         {/* Progress */}
-        <div className="mb-4">
-          <div className="flex justify-between text-xs mb-1.5">
-            <span className="text-[var(--muted-foreground)]">
+        <div>
+          <div className="flex justify-between mb-1.5" style={{ fontSize: "0.6875rem" }}>
+            <span style={{ color: "var(--muted-foreground)" }}>
               €{opp.raisedAmount.toLocaleString()} raised
             </span>
             <span className="font-semibold" style={{ color: "var(--accent-blue)" }}>{pct}%</span>
@@ -108,9 +122,10 @@ export default function OpportunityCard({ opp }: { opp: Opportunity }) {
 
         <Link
           href="/invest"
-          className="btn-primary w-full text-center text-sm py-2.5 mt-auto"
+          className="btn-primary w-full text-center mt-auto"
+          style={{ fontSize: "0.8125rem", padding: "0.625rem 1rem" }}
         >
-          Invest from €{opp.minInvestment}
+          <span>Invest from €{opp.minInvestment}</span>
         </Link>
       </div>
     </div>

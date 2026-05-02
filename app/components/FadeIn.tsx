@@ -7,34 +7,39 @@ interface FadeInProps {
   children: React.ReactNode;
   className?: string;
   delay?: number;
-  direction?: "up" | "left" | "right" | "none";
+  direction?: "up" | "down" | "left" | "right" | "none";
+  distance?: number;
+  duration?: number;
 }
 
-export default function FadeIn({ children, className = "", delay = 0, direction = "up" }: FadeInProps) {
+export default function FadeIn({
+  children,
+  className = "",
+  delay = 0,
+  direction = "up",
+  distance = 18,
+  duration = 0.55,
+}: FadeInProps) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-50px" });
+  const inView = useInView(ref, { once: true, margin: "-40px" });
 
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === "up" ? 20 : 0,
-      x: direction === "left" ? -20 : direction === "right" ? 20 : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-    },
+  const initial = {
+    opacity: 0,
+    y: direction === "up" ? distance : direction === "down" ? -distance : 0,
+    x: direction === "left" ? distance : direction === "right" ? -distance : 0,
   };
 
   return (
     <motion.div
       ref={ref}
       className={className}
-      initial="hidden"
-      animate={inView ? "visible" : "hidden"}
-      variants={variants}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      initial={initial}
+      animate={inView ? { opacity: 1, y: 0, x: 0 } : initial}
+      transition={{
+        duration,
+        delay,
+        ease: [0.16, 1, 0.3, 1], // ease-out-quint — fast start, gentle settle
+      }}
     >
       {children}
     </motion.div>

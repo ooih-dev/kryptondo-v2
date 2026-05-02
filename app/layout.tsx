@@ -4,7 +4,12 @@ import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-const inter = Inter({ subsets: ["latin"], display: "swap" });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -13,7 +18,7 @@ export const metadata: Metadata = {
   },
   description:
     "Kryptondo tokenizes business equity on Arbitrum. Invest in local businesses, earn real dividends, and get exclusive loyalty perks — starting from €100.",
-  keywords: ["crowdinvesting", "tokenization", "equity", "dividends", "Arbitrum", "Malta SPV", "DeFi"],
+  keywords: ["crowdinvesting", "tokenization", "equity", "dividends", "Arbitrum", "Malta SPV"],
   openGraph: {
     title: "Kryptondo — Invest in Businesses You Love",
     description: "Own real equity. Earn dividends. Get exclusive perks — starting from €100.",
@@ -37,11 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} font-sans`}>
         <Header />
         <main>{children}</main>
         <Footer />

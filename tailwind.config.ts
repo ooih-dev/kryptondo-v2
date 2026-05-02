@@ -10,37 +10,65 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: "#060919",
-          900: "#0A0E27",
-          800: "#0F1535",
-          700: "#161C45",
-          600: "#1E2558",
-        },
-        accent: {
-          blue: "#00D4FF",
-          "blue-dim": "#00AACC",
-          gold: "#C9A84C",
-          "gold-dim": "#A8863C",
-        },
         background: "var(--background)",
         foreground: "var(--foreground)",
         surface: "var(--surface)",
+        "surface-2": "var(--surface-2)",
         border: "var(--border)",
-        muted: "var(--muted)",
-        "muted-foreground": "var(--muted-foreground)",
+        muted: "var(--muted-foreground)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+      },
+      fontSize: {
+        "display-xl": ["clamp(2.75rem, 6vw, 5.5rem)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
+        "display-lg": ["clamp(2.25rem, 5vw, 4rem)", { lineHeight: "1.0", letterSpacing: "-0.035em" }],
+        "display-md": ["clamp(1.75rem, 3.5vw, 2.75rem)", { lineHeight: "1.1", letterSpacing: "-0.025em" }],
+        "display-sm": ["clamp(1.375rem, 2.5vw, 1.875rem)", { lineHeight: "1.2", letterSpacing: "-0.015em" }],
+      },
+      spacing: {
+        "18": "4.5rem",
+        "22": "5.5rem",
+        "28": "7rem",
+        "36": "9rem",
+      },
+      borderRadius: {
+        "sm": "var(--radius-sm)",
+        "md": "var(--radius-md)",
+        "lg": "var(--radius-lg)",
+        "xl": "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+      },
+      boxShadow: {
+        "xs": "var(--shadow-xs)",
+        "sm": "var(--shadow-sm)",
+        "md": "var(--shadow-md)",
+        "lg": "var(--shadow-lg)",
+        "xl": "var(--shadow-xl)",
+      },
+      transitionTimingFunction: {
+        "out": "cubic-bezier(.16, 1, .3, 1)",
+        "in-out": "cubic-bezier(.65, 0, .35, 1)",
+        "spring": "cubic-bezier(.34, 1.56, .64, 1)",
       },
       keyframes: {
         fadeUp: {
-          from: { opacity: "0", transform: "translateY(20px)" },
+          from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
+        },
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        shimmer: {
+          from: { backgroundPosition: "200% 0" },
+          to: { backgroundPosition: "-200% 0" },
         },
       },
       animation: {
-        "fade-up": "fadeUp 0.6s ease forwards",
+        "fade-up": "fadeUp 0.5s cubic-bezier(.16, 1, .3, 1) forwards",
+        "fade-in": "fadeIn 0.4s cubic-bezier(.16, 1, .3, 1) forwards",
+        "shimmer": "shimmer 3s linear infinite",
       },
     },
   },
