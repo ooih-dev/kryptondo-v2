@@ -17,7 +17,7 @@ export default function AboutPage() {
             <p className="section-label">About Us</p>
             <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--foreground)] mb-6">
               We tokenize business equity so{" "}
-              <span className="gradient-text">communities can invest</span>
+              <span className="accent-text">communities can invest</span>
             </h1>
             <p className="text-lg text-[var(--muted-foreground)] max-w-2xl mx-auto leading-relaxed mb-10">
               Kryptondo is a EU-regulated crowdinvesting platform that tokenizes equity in local businesses

@@ -79,7 +79,7 @@ export default function ForBusinessPage() {
                 style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: "0.96", color: "var(--foreground)" }}
               >
                 Raise Capital.{" "}
-                <span className="gradient-text-gold">Build Community.</span>{" "}
+                <span className="accent-text">Build Community.</span>{" "}
                 Keep Control.
               </h1>
             </FadeIn>
@@ -392,7 +392,7 @@ export default function ForBusinessPage() {
                 style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.03em", lineHeight: "1.05", color: "var(--foreground)" }}
               >
                 Turn your customers into{" "}
-                <span className="gradient-text-gold">shareholders</span>
+                <span className="accent-text">shareholders</span>
               </h2>
               <p className="text-base mb-10 max-w-md mx-auto leading-body" style={{ color: "var(--muted-foreground)" }}>
                 Join 12 businesses that have raised €2.4M+ from their communities.

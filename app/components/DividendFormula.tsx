@@ -32,7 +32,7 @@ export default function DividendFormula({ audience = "b2c" }: DividendFormulaPro
           >
             <p
               className="font-extrabold mb-1"
-              style={{ fontSize: "2rem", color: "var(--accent-blue)", letterSpacing: "-0.03em" }}
+              style={{ fontSize: "2rem", color: "var(--accent)", letterSpacing: "-0.03em" }}
             >
               €10,000
             </p>
@@ -48,13 +48,13 @@ export default function DividendFormula({ audience = "b2c" }: DividendFormulaPro
           <div
             className="flex-1 rounded-xl p-5 text-center"
             style={{
-              background: "var(--accent-gold-glow)",
-              border: "1px solid rgba(201, 168, 76, 0.2)",
+              background: "var(--accent-glow)",
+              border: "1px solid var(--border)",
             }}
           >
             <p
               className="font-extrabold mb-1"
-              style={{ fontSize: "2rem", color: "var(--accent-gold)", letterSpacing: "-0.03em" }}
+              style={{ fontSize: "2rem", color: "var(--accent)", letterSpacing: "-0.03em" }}
             >
               €10
             </p>

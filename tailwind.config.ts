@@ -18,7 +18,7 @@ const config: Config = {
         muted: "var(--muted-foreground)",
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
+        sans: ["var(--font-geist)", "Geist", "system-ui", "-apple-system", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(2.75rem, 6vw, 5.5rem)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
@@ -45,6 +45,10 @@ const config: Config = {
         "md": "var(--shadow-md)",
         "lg": "var(--shadow-lg)",
         "xl": "var(--shadow-xl)",
+      },
+      letterSpacing: {
+        "tight-display": "-0.04em",
+        "tight-sub": "-0.02em",
       },
       transitionTimingFunction: {
         "out": "cubic-bezier(.16, 1, .3, 1)",

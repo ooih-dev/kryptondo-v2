@@ -18,10 +18,10 @@ interface Opportunity {
 }
 
 const SECTOR_COLORS: Record<string, { bg: string; text: string }> = {
-  Hospitality: { bg: "rgba(61, 139, 255, 0.1)", text: "#3d8bff" },
-  "Creative/Media": { bg: "rgba(201, 168, 76, 0.1)", text: "#c9a84c" },
-  Retail: { bg: "rgba(124, 140, 248, 0.1)", text: "#7c8cf8" },
-  "Local Services": { bg: "rgba(52, 199, 89, 0.1)", text: "#34c759" },
+  Hospitality: { bg: "rgba(201, 106, 30, 0.1)", text: "#c96a1e" },
+  "Creative/Media": { bg: "rgba(124, 140, 248, 0.1)", text: "#7c8cf8" },
+  Retail: { bg: "rgba(52, 199, 89, 0.1)", text: "#2ea868" },
+  "Local Services": { bg: "rgba(201, 106, 30, 0.08)", text: "#c96a1e" },
 };
 
 export default function OpportunityCard({ opp }: { opp: Opportunity }) {
@@ -84,7 +84,7 @@ export default function OpportunityCard({ opp }: { opp: Opportunity }) {
         {/* Highlight pill */}
         <div
           className="text-xs px-3 py-2 rounded-lg"
-          style={{ background: "var(--accent-blue-glow)", color: "var(--accent-blue)" }}
+          style={{ background: "var(--accent-glow)", color: "var(--accent)" }}
         >
           ✦ {opp.highlight}
         </div>
@@ -113,7 +113,7 @@ export default function OpportunityCard({ opp }: { opp: Opportunity }) {
             <span style={{ color: "var(--muted-foreground)" }}>
               €{opp.raisedAmount.toLocaleString()} raised
             </span>
-            <span className="font-semibold" style={{ color: "var(--accent-blue)" }}>{pct}%</span>
+            <span className="font-semibold" style={{ color: "var(--accent)" }}>{pct}%</span>
           </div>
           <div className="progress-bar">
             <div className="progress-fill" style={{ width: `${pct}%` }} />

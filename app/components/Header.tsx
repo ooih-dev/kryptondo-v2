@@ -52,9 +52,9 @@ export default function Header() {
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 group-hover:scale-105"
               style={{
-                background: "linear-gradient(135deg, var(--accent-blue), #60b8ff)",
+                background: "var(--accent)",
                 color: "#fff",
-                boxShadow: "0 2px 8px var(--accent-blue-glow)",
+                boxShadow: "0 2px 8px var(--accent-glow)",
               }}
             >
               K
@@ -72,7 +72,7 @@ export default function Header() {
                 href={link.href}
                 className="relative px-4 py-2 text-sm font-medium transition-colors duration-200 group"
                 style={{
-                  color: pathname === link.href ? "var(--accent-blue)" : "var(--muted-foreground)",
+                  color: pathname === link.href ? "var(--accent)" : "var(--muted-foreground)",
                 }}
               >
                 <span className="relative z-10 group-hover:text-[var(--foreground)] transition-colors duration-200">
@@ -82,7 +82,7 @@ export default function Header() {
                   <motion.div
                     layoutId="nav-indicator"
                     className="absolute inset-0 rounded-lg"
-                    style={{ background: "var(--accent-blue-glow)" }}
+                    style={{ background: "var(--accent-glow)" }}
                     transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
                 )}

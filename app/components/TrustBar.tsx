@@ -7,30 +7,33 @@ interface Stat {
 
 export default function TrustBar({ stats }: { stats: Stat[] }) {
   return (
-    <div
-      className="py-10"
-      style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}
-    >
+    <div className="py-7" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
       <div className="container-lg mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x"
-          style={{ "--tw-divide-opacity": 1, divideColor: "var(--border)" } as React.CSSProperties}
-        >
-          {stats.map((stat, i) => (
-            <FadeIn key={stat.label} delay={i * 0.07} className="text-center px-4">
-              <p
-                className="font-extrabold mb-1 tracking-tight-display"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "var(--foreground)" }}
+        <FadeIn>
+          <div className="flex flex-wrap items-center gap-y-4">
+            {stats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className="flex items-baseline gap-2 px-5"
+                style={{
+                  borderLeft: i === 0 ? "none" : "1px solid var(--border)",
+                }}
               >
-                {stat.value}
-              </p>
-              <p
-                style={{ fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.06em", color: "var(--muted-foreground)", textTransform: "uppercase" }}
-              >
-                {stat.label}
-              </p>
-            </FadeIn>
-          ))}
-        </div>
+                <span
+                  className="font-bold tracking-tight"
+                  style={{ fontSize: "1.125rem", color: "var(--foreground)", letterSpacing: "-0.03em" }}
+                >
+                  {stat.value}
+                </span>
+                <span
+                  style={{ fontSize: "0.6875rem", fontWeight: 500, color: "var(--muted-foreground)", letterSpacing: "0.04em", textTransform: "uppercase" }}
+                >
+                  {stat.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </FadeIn>
       </div>
     </div>
   );

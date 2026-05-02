@@ -11,7 +11,7 @@ export default function Footer() {
               <div
                 className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
                 style={{
-                  background: "linear-gradient(135deg, var(--accent-blue), #60b8ff)",
+                  background: "var(--accent)",
                   color: "#fff",
                 }}
               >
@@ -29,7 +29,7 @@ export default function Footer() {
                 <a
                   key={s}
                   href="#"
-                  className="text-xs font-medium transition-colors duration-200 hover:text-[var(--accent-blue)]"
+                  className="text-xs font-medium transition-colors duration-200 hover:text-[var(--accent)]"
                   style={{ color: "var(--muted-foreground)" }}
                 >
                   {s}
@@ -140,7 +140,7 @@ export default function Footer() {
               <a
                 href="mailto:info@kryptondo.de"
                 className="transition-colors duration-150"
-                style={{ color: "var(--accent-blue)" }}
+                style={{ color: "var(--accent)" }}
               >
                 info@kryptondo.de
               </a>

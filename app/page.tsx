@@ -69,10 +69,10 @@ export default function HomePage() {
         />
 
         <div className="container-lg mx-auto relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-3xl">
 
             <FadeIn delay={0}>
-              <div className="badge mb-8 mx-auto w-fit">
+              <div className="badge mb-8 w-fit">
                 EU-Regulated · Malta SPV · CertiK Audited
               </div>
             </FadeIn>
@@ -80,14 +80,14 @@ export default function HomePage() {
             <FadeIn delay={0.08}>
               <h1 className="text-display-xl font-extrabold text-balance mb-6" style={{ color: "var(--foreground)" }}>
                 Invest in businesses.{" "}
-                <span className="gradient-text">Own a piece.</span>{" "}
+                <span className="accent-text">Own a piece.</span>{" "}
                 Earn dividends.
               </h1>
             </FadeIn>
 
             <FadeIn delay={0.16}>
               <p
-                className="text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-body text-balance"
+                className="text-lg md:text-xl mb-10 max-w-xl leading-body"
                 style={{ color: "var(--muted-foreground)" }}
               >
                 Kryptondo connects investors and local businesses through tokenized equity.
@@ -96,11 +96,11 @@ export default function HomePage() {
             </FadeIn>
 
             <FadeIn delay={0.22}>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/invest" className="btn-primary text-base !py-3.5 !px-8">
                   <span>I Want to Invest →</span>
                 </Link>
-                <Link href="/for-business" className="btn-gold text-base !py-3.5 !px-8">
+                <Link href="/for-business" className="btn-secondary text-base !py-3.5 !px-8">
                   <span>I Want to Raise Capital →</span>
                 </Link>
               </div>
@@ -108,15 +108,15 @@ export default function HomePage() {
 
             {/* Trust line */}
             <FadeIn delay={0.3}>
-              <div className="flex items-center justify-center gap-6 mt-10 flex-wrap">
+              <div className="flex items-center gap-6 mt-10 flex-wrap">
                 {[
-                  { icon: "🏛️", text: "Malta SPV" },
-                  { icon: "🔒", text: "CertiK Audited" },
-                  { icon: "🫰", text: "Non-custodial" },
-                  { icon: "🇪🇺", text: "EU Regulated" },
-                ].map((item) => (
-                  <div key={item.text} className="flex items-center gap-1.5">
-                    <span className="text-sm">{item.icon}</span>
+                  { text: "Malta SPV" },
+                  { text: "CertiK Audited" },
+                  { text: "Non-custodial" },
+                  { text: "EU Regulated" },
+                ].map((item, i) => (
+                  <div key={item.text} className="flex items-center gap-2">
+                    {i > 0 && <span style={{ color: "var(--border)", fontSize: "0.75rem" }}>·</span>}
                     <span className="text-xs font-medium" style={{ color: "var(--muted-foreground)" }}>{item.text}</span>
                   </div>
                 ))}
@@ -357,7 +357,7 @@ export default function HomePage() {
           <FadeIn>
             <h2 className="text-display-lg font-extrabold text-balance mb-6" style={{ color: "var(--foreground)" }}>
               Ready to invest in the businesses{" "}
-              <span className="gradient-text">you believe in?</span>
+              <span className="accent-text">you believe in?</span>
             </h2>
             <p className="text-lg mb-10 max-w-md mx-auto" style={{ color: "var(--muted-foreground)" }}>
               Join 1,800+ investors backing real businesses across Europe.

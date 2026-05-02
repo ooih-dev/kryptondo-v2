@@ -84,7 +84,7 @@ export default function InvestPage() {
                 style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: "0.96", color: "var(--foreground)" }}
               >
                 Invest in the Businesses{" "}
-                <span className="gradient-text">You Love</span>
+                <span className="accent-text">You Love</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
@@ -568,7 +568,7 @@ export default function InvestPage() {
                 style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.03em", lineHeight: "1.05", color: "var(--foreground)" }}
               >
                 Be more than a customer.{" "}
-                <span className="gradient-text">Be an owner.</span>
+                <span className="accent-text">Be an owner.</span>
               </h2>
               <p className="text-base mb-10 max-w-md mx-auto leading-body" style={{ color: "var(--muted-foreground)" }}>
                 The restaurant where you have your morning coffee? You could own a piece of it.

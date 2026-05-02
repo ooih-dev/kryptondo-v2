@@ -18,8 +18,8 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
           key={i}
           className="rounded-xl overflow-hidden transition-all duration-200"
           style={{
-            border: `1px solid ${open === i ? "var(--accent-blue)" : "var(--border)"}`,
-            background: open === i ? "var(--accent-blue-glow)" : "var(--surface)",
+            border: `1px solid ${open === i ? "var(--accent)" : "var(--border)"}`,
+            background: open === i ? "var(--accent-glow)" : "var(--surface)",
           }}
         >
           <button
@@ -30,7 +30,7 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
               className="font-semibold tracking-tight-sub"
               style={{
                 fontSize: "0.9375rem",
-                color: open === i ? "var(--accent-blue)" : "var(--foreground)",
+                color: open === i ? "var(--accent)" : "var(--foreground)",
                 transition: "color 0.2s ease",
               }}
             >
@@ -39,8 +39,8 @@ export default function FAQ({ items }: { items: FAQItem[] }) {
             <div
               className="w-6 h-6 rounded-full flex items-center justify-center shrink-0 transition-all duration-200"
               style={{
-                background: open === i ? "var(--accent-blue)" : "var(--surface-2)",
-                border: `1px solid ${open === i ? "var(--accent-blue)" : "var(--border)"}`,
+                background: open === i ? "var(--accent)" : "var(--surface-2)",
+                border: `1px solid ${open === i ? "var(--accent)" : "var(--border)"}`,
               }}
             >
               <svg
