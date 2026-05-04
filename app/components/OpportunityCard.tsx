@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import RiskScale from "./RiskScale";
 
 interface Opportunity {
   id: string;
@@ -15,6 +16,7 @@ interface Opportunity {
   daysLeft: number;
   minInvestment: number;
   highlight: string;
+  riskScore?: number;
 }
 
 const SECTOR_COLORS: Record<string, { bg: string; text: string; headerBg: string }> = {
@@ -52,6 +54,11 @@ export default function OpportunityCard({ opp }: { opp: Opportunity }) {
             {opp.daysLeft}d left
           </span>
         </div>
+        {opp.riskScore != null && (
+          <div className="mb-2">
+            <RiskScale score={opp.riskScore} compact />
+          </div>
+        )}
         <h3
           className="font-semibold mb-1"
           style={{ fontSize: "1rem", color: "var(--foreground)", letterSpacing: "-0.01em", lineHeight: "1.3", fontFamily: "var(--font-serif), Georgia, serif" }}
@@ -107,7 +114,7 @@ export default function OpportunityCard({ opp }: { opp: Opportunity }) {
         </div>
 
         <Link
-          href="/invest"
+          href={`/invest/${opp.id}`}
           className="btn-primary w-full text-center mt-auto"
           style={{ fontSize: "0.8125rem", padding: "0.6875rem 1rem" }}
         >
