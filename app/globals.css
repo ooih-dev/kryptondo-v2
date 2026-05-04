@@ -262,10 +262,10 @@
   }
 
   /* ── Layout ── */
-  .section     { padding: 7rem 1rem; }
-  .section-sm  { padding: 4rem 1rem; }
+  .section     { padding: 5rem 1.5rem; }
+  .section-sm  { padding: 3rem 1.5rem; }
   .container-md { max-width: 56rem; margin: 0 auto; }
-  .container-lg { max-width: 75rem; margin: 0 auto; }
+  .container-lg { max-width: 80rem; margin: 0 auto; }
 
   /* ── Section backgrounds — alternate cream / white ── */
   .section-cream { background: var(--background); }
@@ -372,6 +372,21 @@
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
+}
+
+/* ─────────────────────────────────────────────
+   Desktop responsive overrides
+   ───────────────────────────────────────────── */
+@media (min-width: 768px) {
+  .section     { padding: 6rem 2.5rem; }
+  .section-sm  { padding: 3.5rem 2.5rem; }
+  .card        { padding: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .section     { padding: 8rem 4rem; }
+  .section-sm  { padding: 5rem 4rem; }
+  .card        { padding: 2.5rem; }
 }
 
 /* ─────────────────────────────────────────────

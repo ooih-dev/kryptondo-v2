@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Landmark, ShieldCheck, Wallet, Shield, TrendingUp, Eye, Scale } from "lucide-react";
 import FadeIn from "./components/FadeIn";
 import TrustBar from "./components/TrustBar";
-import OpportunityCard from "./components/OpportunityCard";
-import { TRUST_STATS_B2C, LIVE_OPPORTUNITIES } from "./data/mock";
+import AllOpportunitiesSection from "./components/AllOpportunitiesSection";
+import { TRUST_STATS_B2C } from "./data/mock";
 
 export const metadata: Metadata = {
   title: "Kryptondo — Invest in Businesses You Love",
@@ -16,7 +16,7 @@ const HOW_IT_WORKS = [
     title: "Browse & Invest",
     desc: "Discover local businesses raising capital. Pick the ones you love. Start from €100.",
     icon: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.35-4.35" />
       </svg>
@@ -27,7 +27,7 @@ const HOW_IT_WORKS = [
     title: "Receive Tokens",
     desc: "Ownership is recorded as tokens on Arbitrum — held in your wallet, not ours.",
     icon: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     ),
@@ -37,7 +37,7 @@ const HOW_IT_WORKS = [
     title: "Earn Dividends",
     desc: "Automatic profit distribution to your wallet when businesses perform. No action needed.",
     icon: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
       </svg>
     ),
@@ -47,7 +47,7 @@ const HOW_IT_WORKS = [
     title: "Get Perks",
     desc: "Token holders unlock exclusive discounts, early access, and VIP experiences.",
     icon: (
-      <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
         <path d="M20 12V22H4V12" /><path d="M22 7H2v5h20V7z" /><path d="M12 22V7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
       </svg>
     ),
@@ -198,28 +198,28 @@ export default function HomePage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               {
-                icon: <Shield size={22} />,
+                icon: <Shield className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
                 label: "Risk",
                 title: "AI-Powered Risk",
                 desc: "Every investment comes with a personalised risk score. Match opportunities to your risk appetite — not the other way around.",
                 accent: "var(--accent)",
               },
               {
-                icon: <TrendingUp size={22} />,
+                icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
                 label: "Interest",
                 title: "Real Returns",
                 desc: "Dividends from real revenue — memberships, placements, rental income. Your money works in sectors you understand.",
                 accent: "var(--gold)",
               },
               {
-                icon: <Eye size={22} />,
+                icon: <Eye className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
                 label: "Transparency",
                 title: "On-Chain Clarity",
                 desc: "Ownership records on Arbitrum/Base. Public SPV structures. Real-time performance tracking. Nothing is hidden.",
                 accent: "#7c8cf8",
               },
               {
-                icon: <Scale size={22} />,
+                icon: <Scale className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
                 label: "Law",
                 title: "EU-Regulated",
                 desc: "Malta-licensed SPVs. MiCA compliant. CertiK audited. Regulated like traditional finance — flexible like crypto.",
@@ -228,12 +228,12 @@ export default function HomePage() {
             ].map((pillar, i) => (
               <FadeIn key={pillar.label} delay={i * 0.09}>
                 <div className="card h-full" style={{ borderColor: `${pillar.accent}25` }}>
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${pillar.accent}14`, color: pillar.accent }}>
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mb-4" style={{ background: `${pillar.accent}14`, color: pillar.accent }}>
                     {pillar.icon}
                   </div>
                   <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: pillar.accent, letterSpacing: "0.1em" }}>{pillar.label}</p>
-                  <h3 className="font-semibold mb-2" style={{ fontSize: "1rem", color: "var(--foreground)" }}>{pillar.title}</h3>
-                  <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>{pillar.desc}</p>
+                  <h3 className="font-semibold mb-2" style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)", color: "var(--foreground)" }}>{pillar.title}</h3>
+                  <p className="text-sm leading-body md:text-base" style={{ color: "var(--muted-foreground)" }}>{pillar.desc}</p>
                 </div>
               </FadeIn>
             ))}
@@ -241,38 +241,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Featured Opportunities ── */}
-      <section className="section">
-        <div className="container-lg mx-auto">
-          <FadeIn className="mb-14">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-              <div className="max-w-lg">
-                <span className="section-label">Live Opportunities</span>
-                <h2 className="text-display-md font-bold text-balance" style={{ color: "var(--foreground)" }}>
-                  Businesses raising right now
-                </h2>
-              </div>
-              <p className="text-sm max-w-xs" style={{ color: "var(--muted-foreground)" }}>
-                All offerings EU-regulated through Malta-licensed SPVs. Invest from €100.
-              </p>
-            </div>
-          </FadeIn>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {LIVE_OPPORTUNITIES.map((opp, i) => (
-              <FadeIn key={opp.id} delay={i * 0.07}>
-                <OpportunityCard opp={opp} />
-              </FadeIn>
-            ))}
-          </div>
-
-          <FadeIn className="mt-10 flex justify-center">
-            <Link href="/invest" className="btn-secondary !py-3 !px-8">
-              View All Opportunities →
-            </Link>
-          </FadeIn>
-        </div>
-      </section>
+      {/* ── All Opportunities (filterable, all verticals) ── */}
+      <AllOpportunitiesSection />
 
       {/* ── How It Works ── */}
       <section id="how-it-works" className="section relative overflow-hidden bg-dot" style={{ background: "var(--surface)" }}>
@@ -289,7 +259,7 @@ export default function HomePage() {
               <FadeIn key={step.step} delay={i * 0.1}>
                 <div className="flex flex-col items-center text-center md:items-start md:text-left">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0"
+                    className="w-14 h-14 md:w-16 md:h-16 rounded-xl flex items-center justify-center mb-4 shrink-0"
                     style={{
                       background: "var(--accent-subtle)",
                       color: "var(--accent)",
@@ -342,19 +312,19 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {
-                icon: <Landmark size={24} />,
+                icon: <Landmark className="w-6 h-6 md:w-8 md:h-8" />,
                 title: "Malta SPV Structure",
                 desc: "Every offering uses a Malta-registered Special Purpose Vehicle. EU-regulated, fully compliant with MiCA framework.",
                 accent: "var(--accent)",
               },
               {
-                icon: <ShieldCheck size={24} />,
+                icon: <ShieldCheck className="w-6 h-6 md:w-8 md:h-8" />,
                 title: "CertiK Audited",
                 desc: "All smart contracts audited by CertiK — the industry standard for blockchain security verification.",
                 accent: "var(--gold)",
               },
               {
-                icon: <Wallet size={24} />,
+                icon: <Wallet className="w-6 h-6 md:w-8 md:h-8" />,
                 title: "Non-Custodial",
                 desc: "Your tokens are held in your own wallet. Kryptondo never takes custody of your assets.",
                 accent: "var(--accent)",
@@ -362,10 +332,10 @@ export default function HomePage() {
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div className="card h-full" style={{ borderColor: "var(--border-subtle)" }}>
-                  <div className="mb-4" style={{ color: item.accent }}>{item.icon}</div>
+                  <div className="mb-4 w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center" style={{ color: item.accent, background: `${item.accent}10` }}>{item.icon}</div>
                   <h3
                     className="font-semibold mb-2 tracking-tight-sub"
-                    style={{ fontSize: "1.0625rem", color: "var(--foreground)" }}
+                    style={{ fontSize: "clamp(1rem, 1.5vw, 1.125rem)", color: "var(--foreground)" }}
                   >
                     {item.title}
                   </h3>
