@@ -125,7 +125,7 @@ export default function HomePage() {
           </div>
 
           {/* Dual audience cards */}
-          <div className="grid md:grid-cols-2 gap-5 mt-20 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-5 mt-16 max-w-3xl">
             {[
               {
                 tag: "For Investors",
@@ -133,8 +133,8 @@ export default function HomePage() {
                 body: "Own real equity. Earn dividends automatically. Get exclusive loyalty perks — starting from €100.",
                 cta: "Explore Investments",
                 href: "/invest",
-                accent: "var(--accent-blue)",
-                glow: "var(--accent-blue-glow)",
+                accent: "var(--accent)",
+                glow: "var(--accent-glow)",
               },
               {
                 tag: "For Business Owners",
@@ -142,15 +142,14 @@ export default function HomePage() {
                 body: "Tokenize 10–20% of your business. Your customers invest, get dividends, and become your biggest advocates.",
                 cta: "Apply to List Your Business",
                 href: "/for-business",
-                accent: "var(--accent-gold)",
-                glow: "var(--accent-gold-glow)",
+                accent: "var(--gold)",
+                glow: "var(--gold-glow)",
               },
             ].map((card, i) => (
               <FadeIn key={card.tag} delay={0.1 + i * 0.08}>
                 <Link
                   href={card.href}
                   className="card card-hover group block h-full"
-                  style={{ borderColor: `rgba(255,255,255,0.06)` }}
                 >
                   <span
                     className="text-xs font-semibold uppercase tracking-widest mb-3 block"
@@ -233,16 +232,16 @@ export default function HomePage() {
                   <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 shrink-0"
                     style={{
-                      background: "var(--surface-2)",
-                      color: "var(--accent-blue)",
-                      border: "1px solid var(--border)",
+                      background: "var(--accent-subtle)",
+                      color: "var(--accent)",
+                      border: "1px solid var(--accent-glow)",
                     }}
                   >
                     {step.icon}
                   </div>
                   <p
                     className="text-xs font-bold mb-1.5 tracking-widest"
-                    style={{ color: "var(--accent-blue)", letterSpacing: "0.12em" }}
+                    style={{ color: "var(--accent)", letterSpacing: "0.12em" }}
                   >
                     {step.step}
                   </p>
@@ -272,7 +271,7 @@ export default function HomePage() {
       </section>
 
       {/* ── Trust Pillars ── */}
-      <section className="section">
+      <section className="section trust-section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
             <span className="section-label">Built for Trust</span>
@@ -287,19 +286,19 @@ export default function HomePage() {
                 icon: "🏛️",
                 title: "Malta SPV Structure",
                 desc: "Every offering uses a Malta-registered Special Purpose Vehicle. EU-regulated, fully compliant with MiCA framework.",
-                accent: "var(--accent-blue)",
+                accent: "var(--accent)",
               },
               {
                 icon: "🔒",
                 title: "CertiK Audited",
                 desc: "All smart contracts audited by CertiK — the industry standard for blockchain security verification.",
-                accent: "var(--accent-gold)",
+                accent: "var(--gold)",
               },
               {
                 icon: "🫰",
                 title: "Non-Custodial",
                 desc: "Your tokens are held in your own wallet. Kryptondo never takes custody of your assets.",
-                accent: "var(--accent-blue)",
+                accent: "var(--accent)",
               },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>

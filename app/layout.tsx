@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 const geist = GeistSans;
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  weight: ["400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   title: {
@@ -36,8 +45,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${geist.className} font-sans`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geist.className} ${playfair.variable} font-sans`}>
         <Header />
         <main>{children}</main>
         <Footer />

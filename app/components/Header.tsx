@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -50,16 +50,26 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 group-hover:scale-105"
+              className="w-8 h-8 rounded-lg flex items-center justify-center font-bold transition-all duration-200 group-hover:scale-105"
               style={{
                 background: "var(--accent)",
                 color: "#fff",
+                fontSize: "0.9375rem",
+                fontFamily: "var(--font-serif), Georgia, serif",
+                fontStyle: "italic",
                 boxShadow: "0 2px 8px var(--accent-glow)",
               }}
             >
               K
             </div>
-            <span className="font-semibold text-base tracking-tight" style={{ color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+            <span
+              className="font-semibold text-base"
+              style={{
+                color: "var(--foreground)",
+                letterSpacing: "-0.01em",
+                fontFamily: "var(--font-serif), Georgia, serif",
+              }}
+            >
               Kryptondo
             </span>
           </Link>

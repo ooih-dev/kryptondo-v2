@@ -66,17 +66,14 @@ export default function ForBusinessPage() {
         <div className="container-lg mx-auto relative z-10">
           <div className="max-w-3xl">
             <FadeIn>
-              <div
-                className="badge mb-8 w-fit"
-                style={{ background: "var(--accent-gold-glow)", color: "var(--accent-gold)", borderColor: "rgba(201,168,76,0.25)" }}
-              >
+              <div className="badge mb-8 w-fit" style={{ background: "var(--gold-subtle)", color: "var(--gold)", borderColor: "var(--gold-glow)" }}>
                 For Business Owners
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
               <h1
                 className="font-extrabold text-balance mb-6"
-                style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: "0.96", color: "var(--foreground)" }}
+                style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}
               >
                 Raise Capital.{" "}
                 <span className="accent-text">Build Community.</span>{" "}
@@ -175,7 +172,7 @@ export default function ForBusinessPage() {
       </section>
 
       {/* ── Regulatory & Legal ── */}
-      <section id="regulatory" className="section">
+      <section id="regulatory" className="section trust-section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
             <span className="section-label">Regulatory & Legal</span>
@@ -185,10 +182,10 @@ export default function ForBusinessPage() {
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { title: "Malta-Licensed SPV", desc: "Every offering is structured through a Malta-registered Special Purpose Vehicle — compliant with EU securities law.", badge: "MFSA Licensed", color: "var(--accent-blue)" },
-              { title: "MiCA Framework", desc: "Our tokenization infrastructure fully complies with the EU&apos;s Markets in Crypto-Assets regulation.", badge: "EU Regulated", color: "var(--accent-gold)" },
-              { title: "Compliant Securities", desc: "Tokens are structured as compliant securities, not speculative crypto. Legal ownership, real rights.", badge: "Securities Law", color: "#7c8cf8" },
-              { title: "On-Chain KYC/AML", desc: "Every investor is verified. KYC/AML checks are enforced on-chain via whitelisted wallet addresses.", badge: "CertiK Audited", color: "#34c759" },
+              { title: "Malta-Licensed SPV", desc: "Every offering is structured through a Malta-registered Special Purpose Vehicle — compliant with EU securities law.", badge: "MFSA Licensed", color: "var(--accent)" },
+              { title: "MiCA Framework", desc: "Our tokenization infrastructure fully complies with the EU&apos;s Markets in Crypto-Assets regulation.", badge: "EU Regulated", color: "var(--gold)" },
+              { title: "Compliant Securities", desc: "Tokens are structured as compliant securities, not speculative crypto. Legal ownership, real rights.", badge: "Securities Law", color: "var(--gold)" },
+              { title: "On-Chain KYC/AML", desc: "Every investor is verified. KYC/AML checks are enforced on-chain via whitelisted wallet addresses.", badge: "CertiK Audited", color: "var(--green)" },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
                 <div className="card flex gap-4 h-full" style={{ borderColor: "var(--border-subtle)" }}>
@@ -257,7 +254,7 @@ export default function ForBusinessPage() {
                 <div className="card text-center">
                   <p
                     className="font-extrabold mb-1"
-                    style={{ fontSize: "2.25rem", color: "var(--accent-blue)", letterSpacing: "-0.03em" }}
+                    style={{ fontSize: "2.25rem", color: "var(--accent)", letterSpacing: "-0.02em", fontFamily: "var(--font-serif), Georgia, serif" }}
                   >
                     {item.value}
                   </p>
@@ -272,7 +269,7 @@ export default function ForBusinessPage() {
           <FadeIn>
             <div
               className="rounded-xl p-4 text-center text-sm"
-              style={{ background: "var(--accent-gold-glow)", border: "1px solid rgba(201,168,76,0.2)" }}
+              style={{ background: "var(--gold-subtle)", border: "1px solid var(--gold-glow)" }}
             >
               <strong style={{ color: "var(--foreground)" }}>All-or-nothing model:</strong>{" "}
               <span style={{ color: "var(--muted-foreground)" }}>
@@ -382,14 +379,14 @@ export default function ForBusinessPage() {
             <div
               className="rounded-3xl p-10 md:p-16 text-center"
               style={{
-                background: "linear-gradient(135deg, var(--accent-gold-glow), var(--accent-blue-glow))",
-                border: "1px solid rgba(201,168,76,0.2)",
+                background: "var(--background-2, var(--surface-2))",
+                border: "1px solid var(--border)",
               }}
             >
               <span className="section-label-gold text-center block">Ready to start?</span>
               <h2
                 className="font-extrabold text-balance mb-4 mx-auto max-w-lg"
-                style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.03em", lineHeight: "1.05", color: "var(--foreground)" }}
+                style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.01em", lineHeight: "1.15", color: "var(--foreground)" }}
               >
                 Turn your customers into{" "}
                 <span className="accent-text">shareholders</span>
@@ -407,7 +404,7 @@ export default function ForBusinessPage() {
               </div>
               <p className="text-xs mt-6" style={{ color: "var(--muted-foreground)" }}>
                 No upfront fees · Response within 5 business days ·{" "}
-                <a href="mailto:info@kryptondo.de" style={{ color: "var(--accent-blue)" }}>info@kryptondo.de</a>
+                <a href="mailto:info@kryptondo.de" style={{ color: "var(--accent)" }}>info@kryptondo.de</a>
               </p>
             </div>
           </FadeIn>

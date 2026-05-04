@@ -2,26 +2,37 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer style={{ borderTop: "1px solid var(--border)", background: "var(--surface)", marginTop: "0" }}>
+    <footer style={{ background: "#2D2A26", marginTop: "0" }}>
       <div className="container-lg mx-auto px-4 py-14">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 md:gap-8 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <div
-                className="w-7 h-7 rounded-lg flex items-center justify-center text-xs font-bold"
+                className="w-7 h-7 rounded-lg flex items-center justify-center font-bold"
                 style={{
                   background: "var(--accent)",
                   color: "#fff",
+                  fontSize: "0.875rem",
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                  fontStyle: "italic",
                 }}
               >
                 K
               </div>
-              <span className="font-semibold tracking-tight" style={{ fontSize: "0.9375rem", color: "var(--foreground)", letterSpacing: "-0.02em" }}>
+              <span
+                className="font-semibold"
+                style={{
+                  fontSize: "0.9375rem",
+                  color: "#EDE8E0",
+                  letterSpacing: "-0.01em",
+                  fontFamily: "var(--font-serif), Georgia, serif",
+                }}
+              >
                 Kryptondo
               </span>
             </div>
-            <p className="text-xs leading-relaxed mb-5" style={{ color: "var(--muted-foreground)", lineHeight: "1.7" }}>
+            <p className="text-xs leading-relaxed mb-5" style={{ color: "#8A7D70", lineHeight: "1.7" }}>
               Tokenizing business equity. Connecting investors with businesses they love.
             </p>
             <div className="flex gap-4">
@@ -30,7 +41,7 @@ export default function Footer() {
                   key={s}
                   href="#"
                   className="text-xs font-medium transition-colors duration-200 hover:text-[var(--accent)]"
-                  style={{ color: "var(--muted-foreground)" }}
+                  style={{ color: "#8A7D70" }}
                 >
                   {s}
                 </a>
@@ -42,7 +53,7 @@ export default function Footer() {
           <div>
             <p
               className="mb-4"
-              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--foreground)" }}
+              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
               Invest
             </p>
@@ -58,7 +69,7 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="text-sm transition-colors duration-150"
-                    style={{ color: "var(--muted-foreground)" }}
+                    style={{ color: "#8A7D70" }}
                   >
                     {label}
                   </Link>
@@ -71,7 +82,7 @@ export default function Footer() {
           <div>
             <p
               className="mb-4"
-              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--foreground)" }}
+              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
               For Business
             </p>
@@ -87,7 +98,7 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="text-sm transition-colors duration-150"
-                    style={{ color: "var(--muted-foreground)" }}
+                    style={{ color: "#8A7D70" }}
                   >
                     {label}
                   </Link>
@@ -100,7 +111,7 @@ export default function Footer() {
           <div>
             <p
               className="mb-4"
-              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--foreground)" }}
+              style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
               Legal
             </p>
@@ -116,7 +127,7 @@ export default function Footer() {
                   <Link
                     href={href}
                     className="text-sm transition-colors duration-150"
-                    style={{ color: "var(--muted-foreground)" }}
+                    style={{ color: "#8A7D70" }}
                   >
                     {label}
                   </Link>
@@ -129,13 +140,13 @@ export default function Footer() {
         {/* Bottom bar */}
         <div
           className="pt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
-          style={{ borderTop: "1px solid var(--border)" }}
+          style={{ borderTop: "1px solid rgba(237, 232, 224, 0.1)" }}
         >
           <div className="space-y-1">
-            <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>
+            <p className="text-xs" style={{ color: "#8A7D70" }}>
               © 2026 Kryptondo GmbH. All rights reserved.
             </p>
-            <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>
+            <p className="text-xs" style={{ color: "#8A7D70" }}>
               Regulated under Malta Financial Services Authority · SPV Reg. No. MT-SPV-2025-0042 ·{" "}
               <a
                 href="mailto:info@kryptondo.de"
@@ -146,7 +157,7 @@ export default function Footer() {
               </a>
             </p>
           </div>
-          <p className="text-xs text-right max-w-sm leading-relaxed" style={{ color: "var(--muted-foreground)", opacity: 0.6 }}>
+          <p className="text-xs text-right max-w-sm leading-relaxed" style={{ color: "#8A7D70", opacity: 0.7 }}>
             Investing involves risk. Token values may fluctuate. Past performance does not guarantee future results.
           </p>
         </div>

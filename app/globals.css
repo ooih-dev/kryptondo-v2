@@ -3,87 +3,98 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────
-   Design tokens
-   Committed color strategy: warm amber on near-black.
-   Breaks finance/navy reflex. Single accent, no gradient text.
+   Design tokens — Warm Premium
+   Strategy: warm cream base, terracotta accent,
+   soft gold secondary. Light = PRIMARY mode.
+   Dark = deep warm brown (not cold navy).
    ───────────────────────────────────────────── */
 :root {
-  /* Light mode */
-  --background: #faf8f5;
-  --background-2: #f3f0eb;
-  --surface: #f0ece5;
-  --surface-2: #e6e0d6;
+  /* Light mode — warm cream */
+  --background: #FAF7F2;
+  --background-2: #F5F1EA;
+  --surface: #FFFFFF;
+  --surface-2: #F0EDE8;
 
-  --foreground: #0d0f0e;
-  --foreground-2: #2d3330;
-  --muted-foreground: #6b6f6c;
+  --foreground: #2D2A26;
+  --foreground-2: #4A4540;
+  --muted-foreground: #7A7168;
 
-  --border: rgba(13, 15, 14, 0.1);
-  --border-subtle: rgba(13, 15, 14, 0.06);
+  --border: rgba(45, 42, 38, 0.12);
+  --border-subtle: rgba(45, 42, 38, 0.07);
 
-  /* Accent: warm amber — breaks navy/blue reflex for fintech */
-  --accent: #c96a1e;
-  --accent-dim: #a85518;
-  --accent-glow: rgba(201, 106, 30, 0.14);
-  --accent-subtle: rgba(201, 106, 30, 0.08);
+  /* Primary accent: terracotta/burnt orange */
+  --accent: #C4663A;
+  --accent-dim: #A8552F;
+  --accent-glow: rgba(196, 102, 58, 0.15);
+  --accent-subtle: rgba(196, 102, 58, 0.08);
 
-  /* Semantic green for "invest / returns" contexts */
-  --green: #1a6641;
-  --green-glow: rgba(26, 102, 65, 0.12);
+  /* Secondary accent: soft gold */
+  --gold: #B8954F;
+  --gold-dim: #9E7E40;
+  --gold-glow: rgba(184, 149, 79, 0.14);
+  --gold-subtle: rgba(184, 149, 79, 0.08);
 
-  /* Shadows */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
-  --shadow-sm: 0 2px 6px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05);
-  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  /* Semantic green */
+  --green: #4A7C59;
+  --green-glow: rgba(74, 124, 89, 0.12);
+
+  /* Shadows — warm-tinted, not cold gray */
+  --shadow-xs: 0 1px 3px rgba(45, 42, 38, 0.07);
+  --shadow-sm: 0 2px 8px rgba(45, 42, 38, 0.08), 0 1px 2px rgba(45, 42, 38, 0.05);
+  --shadow-md: 0 4px 16px rgba(45, 42, 38, 0.10), 0 1px 4px rgba(45, 42, 38, 0.06);
+  --shadow-lg: 0 8px 32px rgba(45, 42, 38, 0.12), 0 2px 8px rgba(45, 42, 38, 0.06);
+  --shadow-xl: 0 16px 48px rgba(45, 42, 38, 0.14), 0 4px 16px rgba(45, 42, 38, 0.08);
 
   /* Radii */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
-  --radius-xl: 18px;
+  --radius-xl: 16px;
   --radius-2xl: 24px;
 
   /* Easing */
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --ease-in-out: cubic-bezier(.65, 0, .35, 1);
 
-  /* Shadows (extended) */
-  --shadow-xl: 0 12px 48px rgba(0,0,0,0.15), 0 4px 16px rgba(0,0,0,0.08);
-
-  /* Legacy token aliases — maps old two-accent system to single amber accent */
+  /* Legacy aliases — components referencing old two-accent system */
   --accent-blue: var(--accent);
   --accent-blue-glow: var(--accent-glow);
-  --accent-gold: var(--accent);
-  --accent-gold-glow: var(--accent-glow);
+  --accent-gold: var(--gold);
+  --accent-gold-glow: var(--gold-glow);
 }
 
 .dark {
-  --background: #07090d;
-  --background-2: #0b0f14;
-  --surface: #0f1318;
-  --surface-2: #14191f;
+  /* Dark mode — deep warm brown, not cold navy */
+  --background: #1C1814;
+  --background-2: #221D18;
+  --surface: #2A2318;
+  --surface-2: #332B1E;
 
-  --foreground: #edeae4;
-  --foreground-2: #9ea4ab;
-  --muted-foreground: #5e6470;
+  --foreground: #EDE8E0;
+  --foreground-2: #C8BCB0;
+  --muted-foreground: #8A7D70;
 
-  --border: rgba(255, 255, 255, 0.07);
-  --border-subtle: rgba(255, 255, 255, 0.04);
+  --border: rgba(237, 232, 224, 0.09);
+  --border-subtle: rgba(237, 232, 224, 0.05);
 
-  --accent: #e07a30;
-  --accent-dim: #c9682a;
-  --accent-glow: rgba(224, 122, 48, 0.18);
-  --accent-subtle: rgba(224, 122, 48, 0.08);
+  --accent: #D97B4F;
+  --accent-dim: #C4663A;
+  --accent-glow: rgba(217, 123, 79, 0.18);
+  --accent-subtle: rgba(217, 123, 79, 0.10);
 
-  --green: #2ea868;
-  --green-glow: rgba(46, 168, 104, 0.15);
+  --gold: #C9A865;
+  --gold-dim: #B0923C;
+  --gold-glow: rgba(201, 168, 101, 0.16);
+  --gold-subtle: rgba(201, 168, 101, 0.09);
 
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg: 0 8px 32px rgba(0,0,0,0.6);
-  --shadow-xl: 0 12px 48px rgba(0,0,0,0.7);
+  --green: #5E9E72;
+  --green-glow: rgba(94, 158, 114, 0.15);
+
+  --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 12px 48px rgba(0, 0, 0, 0.7);
 }
 
 /* ─────────────────────────────────────────────
@@ -100,15 +111,20 @@
     font-family: Geist, 'Geist Variable', system-ui, -apple-system, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  /* Tight tracking for headings — premium feel */
-  h1 { letter-spacing: -0.04em; line-height: 0.95; }
-  h2 { letter-spacing: -0.03em; line-height: 1.05; }
-  h3 { letter-spacing: -0.02em; line-height: 1.15; }
+  /* Serif headings — editorial warmth and premium feel */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif), 'Playfair Display', Georgia, 'Times New Roman', serif;
+  }
 
-  /* Warm body text, capped line length */
+  /* Heading tracking — serif needs looser than grotesque */
+  h1 { letter-spacing: -0.02em; line-height: 1.1; }
+  h2 { letter-spacing: -0.015em; line-height: 1.15; }
+  h3 { letter-spacing: -0.01em; line-height: 1.2; }
+
+  /* Body text, capped line length */
   p { max-width: 68ch; }
   .p-uncapped { max-width: none; }
 }
@@ -118,7 +134,7 @@
    ───────────────────────────────────────────── */
 @layer components {
 
-  /* ── Buttons: slide-up hover via ::before ── */
+  /* ── Buttons ── */
   .btn-primary {
     position: relative;
     display: inline-flex;
@@ -128,6 +144,7 @@
     padding: 0.8125rem 2rem;
     font-size: 0.9375rem;
     font-weight: 600;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
     letter-spacing: 0.01em;
     border-radius: var(--radius-md);
     background: var(--accent);
@@ -136,7 +153,7 @@
     cursor: pointer;
     overflow: hidden;
     text-decoration: none;
-    transition: box-shadow var(--ease-out) 0.2s, transform var(--ease-out) 0.2s;
+    transition: box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
     z-index: 0;
   }
   .btn-primary::before {
@@ -150,7 +167,7 @@
   }
   .btn-primary:hover::before { transform: translateY(0); }
   .btn-primary:hover {
-    box-shadow: 0 4px 18px var(--accent-glow), 0 1px 4px rgba(0,0,0,0.12);
+    box-shadow: 0 6px 20px var(--accent-glow), 0 2px 6px rgba(45,42,38,0.1);
     transform: translateY(-1px);
   }
   .btn-primary:active { transform: translateY(0); }
@@ -163,9 +180,10 @@
     padding: 0.8125rem 2rem;
     font-size: 0.9375rem;
     font-weight: 500;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
     letter-spacing: 0.005em;
     border-radius: var(--radius-md);
-    border: 1px solid var(--border);
+    border: 1.5px solid var(--border);
     background: transparent;
     color: var(--foreground);
     cursor: pointer;
@@ -173,14 +191,54 @@
     transition: border-color 0.2s var(--ease-out),
                 background 0.2s var(--ease-out),
                 color 0.2s var(--ease-out),
-                transform 0.2s var(--ease-out);
+                transform 0.2s var(--ease-out),
+                box-shadow 0.2s var(--ease-out);
   }
   .btn-secondary:hover {
     border-color: var(--accent);
     color: var(--accent);
     background: var(--accent-subtle);
     transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
   }
+
+  /* btn-gold — uses the gold accent */
+  .btn-gold {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8125rem 2rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
+    letter-spacing: 0.01em;
+    border-radius: var(--radius-md);
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    transition: box-shadow 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+    z-index: 0;
+  }
+  .btn-gold::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold-dim);
+    transform: translateY(100%);
+    transition: transform 0.22s var(--ease-out);
+    z-index: -1;
+  }
+  .btn-gold:hover::before { transform: translateY(0); }
+  .btn-gold:hover {
+    box-shadow: 0 6px 20px var(--gold-glow), 0 2px 6px rgba(45,42,38,0.1);
+    transform: translateY(-1px);
+  }
+  .btn-gold:active { transform: translateY(0); }
 
   /* ── Card ── */
   .card {
@@ -188,33 +246,51 @@
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
     padding: 1.5rem;
-    box-shadow: var(--shadow-xs);
+    box-shadow: var(--shadow-sm);
   }
-  .card-lift {
+  .card-lift,
+  .card-hover {
     transition: border-color 0.2s var(--ease-out),
                 box-shadow 0.2s var(--ease-out),
                 transform 0.2s var(--ease-out);
   }
-  .card-lift:hover {
-    border-color: var(--accent);
+  .card-lift:hover,
+  .card-hover:hover {
+    border-color: rgba(196, 102, 58, 0.3);
     box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
   }
 
   /* ── Layout ── */
-  .section  { padding: 7rem 1rem; }
-  .section-sm { padding: 4rem 1rem; }
+  .section     { padding: 7rem 1rem; }
+  .section-sm  { padding: 4rem 1rem; }
   .container-md { max-width: 56rem; margin: 0 auto; }
-  .container-lg { max-width: 74rem; margin: 0 auto; }
+  .container-lg { max-width: 75rem; margin: 0 auto; }
 
-  /* ── Labels — use sparingly, not on every section ── */
-  .eyebrow {
+  /* ── Section backgrounds — alternate cream / white ── */
+  .section-cream { background: var(--background); }
+  .section-white { background: var(--surface); }
+
+  /* ── Eyebrow / Labels ── */
+  .eyebrow,
+  .section-label {
     display: block;
     font-size: 0.6875rem;
     font-weight: 600;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .section-label-gold {
+    display: block;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
     margin-bottom: 0.75rem;
   }
 
@@ -227,77 +303,19 @@
     border-radius: 999px;
     font-size: 0.6875rem;
     font-weight: 600;
+    font-family: Geist, 'Geist Variable', system-ui, sans-serif;
     letter-spacing: 0.05em;
     background: var(--accent-subtle);
     color: var(--accent);
-    border: 1px solid rgba(224, 122, 48, 0.2);
+    border: 1px solid var(--accent-glow);
   }
 
-  /* ── btn-gold — legacy alias, same treatment as btn-primary ── */
-  .btn-gold {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.8125rem 2rem;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    border-radius: var(--radius-md);
-    background: var(--accent);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-    text-decoration: none;
-    transition: box-shadow var(--ease-out) 0.2s, transform var(--ease-out) 0.2s;
-    z-index: 0;
-  }
-  .btn-gold::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--accent-dim);
-    transform: translateY(100%);
-    transition: transform 0.22s var(--ease-out);
-    z-index: -1;
-  }
-  .btn-gold:hover::before { transform: translateY(0); }
-  .btn-gold:hover {
-    box-shadow: 0 4px 18px var(--accent-glow), 0 1px 4px rgba(0,0,0,0.12);
-    transform: translateY(-1px);
-  }
-  .btn-gold:active { transform: translateY(0); }
-
-  /* ── section-label — eyebrow alias used in page components ── */
-  .section-label {
-    display: block;
-    font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.75rem;
-  }
-
-  /* ── card-hover — lift alias used in page components ── */
-  .card-hover {
-    transition: border-color 0.2s var(--ease-out),
-                box-shadow 0.2s var(--ease-out),
-                transform 0.2s var(--ease-out);
-  }
-  .card-hover:hover {
-    border-color: var(--accent);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-2px);
-  }
-
-  /* ── Accent text — solid color, no gradient (Impeccable ban) ── */
+  /* ── Accent text ── */
   .accent-text { color: var(--accent); }
+  .gold-text   { color: var(--gold); }
   .green-text  { color: var(--green); }
 
-  /* ── Backgrounds ── */
+  /* ── Background patterns ── */
   .bg-grid::before {
     content: '';
     position: absolute;
@@ -305,7 +323,18 @@
     background-image:
       linear-gradient(var(--border-subtle) 1px, transparent 1px),
       linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
-    background-size: 44px 44px;
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Warm dot texture — light-mode friendly */
+  .bg-dots::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--border-subtle) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
     pointer-events: none;
     z-index: 0;
   }
@@ -313,13 +342,13 @@
   .glow-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(90px);
+    filter: blur(100px);
     pointer-events: none;
   }
 
   /* ── Progress bar ── */
   .progress-bar {
-    height: 3px;
+    height: 4px;
     border-radius: 999px;
     background: var(--border);
     overflow: hidden;
@@ -327,7 +356,7 @@
   .progress-fill {
     height: 100%;
     border-radius: 999px;
-    background: var(--green);
+    background: var(--accent);
     transition: width 1s var(--ease-out);
   }
 
@@ -335,6 +364,13 @@
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--border), transparent);
+  }
+
+  /* ── Trust section — classic fintech white within warm context ── */
+  .trust-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
 }
 
@@ -344,23 +380,23 @@
 @layer utilities {
   .text-balance { text-wrap: balance; }
 
-  /* Fluid display sizes — modular scale ≥1.25 */
-  .text-display-xl { font-size: clamp(3rem, 6vw, 5.5rem); }
-  .text-display-lg { font-size: clamp(2.25rem, 4.5vw, 4rem); }
-  .text-display-md { font-size: clamp(1.75rem, 3vw, 2.625rem); }
+  /* Fluid display sizes — serif needs more headroom */
+  .text-display-xl { font-size: clamp(2.75rem, 6vw, 5rem); }
+  .text-display-lg { font-size: clamp(2.25rem, 4.5vw, 3.75rem); }
+  .text-display-md { font-size: clamp(1.75rem, 3vw, 2.5rem); }
   .text-display-sm { font-size: clamp(1.375rem, 2vw, 1.875rem); }
 
-  /* Letter spacing helpers */
-  .track-tight    { letter-spacing: -0.04em; }
-  .track-heading  { letter-spacing: -0.03em; }
-  .track-sub      { letter-spacing: -0.02em; }
-  .track-wide     { letter-spacing: 0.08em; }
-  .track-wider    { letter-spacing: 0.14em; }
+  /* Letter spacing */
+  .track-tight   { letter-spacing: -0.02em; }
+  .track-heading { letter-spacing: -0.015em; }
+  .track-sub     { letter-spacing: -0.01em; }
+  .track-wide    { letter-spacing: 0.08em; }
+  .track-wider   { letter-spacing: 0.14em; }
 
   /* Line heights */
-  .leading-display { line-height: 0.95; }
-  .leading-heading { line-height: 1.05; }
-  .leading-body    { line-height: 1.65; }
+  .leading-display { line-height: 1.1; }
+  .leading-heading { line-height: 1.2; }
+  .leading-body    { line-height: 1.7; }
 
   /* Surfaces */
   .bg-surface   { background: var(--surface); }

@@ -81,7 +81,7 @@ export default function InvestPage() {
             <FadeIn delay={0.08}>
               <h1
                 className="font-extrabold text-balance mb-6"
-                style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.04em", lineHeight: "0.96", color: "var(--foreground)" }}
+                style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}
               >
                 Invest in the Businesses{" "}
                 <span className="accent-text">You Love</span>
@@ -122,9 +122,9 @@ export default function InvestPage() {
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon: "🏠", title: "Own Real Equity", desc: "Tokens backed by a Malta SPV holding real business equity. Legally compliant ownership — not points or vouchers.", color: "var(--accent-blue)" },
-              { icon: "💸", title: "Earn Dividends", desc: "Automatic distribution when the business distributes profits. Dividends arrive in your wallet — no action needed.", color: "var(--accent-gold)" },
-              { icon: "🎫", title: "Get Exclusive Perks", desc: "Token holders unlock discounts, early access, VIP experiences. Ownership with lifestyle benefits.", color: "#7c8cf8" },
+              { icon: "🏠", title: "Own Real Equity", desc: "Tokens backed by a Malta SPV holding real business equity. Legally compliant ownership — not points or vouchers.", color: "var(--accent)" },
+              { icon: "💸", title: "Earn Dividends", desc: "Automatic distribution when the business distributes profits. Dividends arrive in your wallet — no action needed.", color: "var(--gold)" },
+              { icon: "🎫", title: "Get Exclusive Perks", desc: "Token holders unlock discounts, early access, VIP experiences. Ownership with lifestyle benefits.", color: "var(--green)" },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div
@@ -168,7 +168,7 @@ export default function InvestPage() {
                     key={f}
                     className="px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200"
                     style={i === 0
-                      ? { background: "var(--accent-blue)", color: "#fff", border: "1px solid transparent" }
+                      ? { background: "var(--accent)", color: "#fff", border: "1px solid transparent" }
                       : { background: "var(--surface-2)", color: "var(--muted-foreground)", border: "1px solid var(--border)" }
                     }
                   >
@@ -295,7 +295,7 @@ export default function InvestPage() {
                   <div className="text-center text-xs" style={{ color: "var(--muted-foreground)" }}>vs.</div>
                   <div
                     className="rounded-xl p-4"
-                    style={{ background: "var(--accent-blue-glow)", border: "1px solid rgba(61,139,255,0.2)" }}
+                    style={{ background: "var(--accent-subtle)", border: "1px solid var(--accent-glow)" }}
                   >
                     <p
                       className="text-xs mb-2"
@@ -335,8 +335,8 @@ export default function InvestPage() {
             <div
               className="rounded-3xl p-8 md:p-12"
               style={{
-                background: "linear-gradient(135deg, rgba(124,140,248,0.08), var(--accent-blue-glow))",
-                border: "1px solid rgba(124,140,248,0.2)",
+                background: "var(--surface-2)",
+                border: "1px solid var(--border)",
               }}
             >
               <div className="flex flex-col md:flex-row gap-10 items-start">
@@ -558,14 +558,14 @@ export default function InvestPage() {
             <div
               className="rounded-3xl p-10 md:p-16"
               style={{
-                background: "linear-gradient(135deg, var(--accent-blue-glow), var(--accent-gold-glow))",
-                border: "1px solid rgba(61,139,255,0.15)",
+                background: "var(--background-2, var(--surface-2))",
+                border: "1px solid var(--border)",
               }}
             >
               <span className="section-label">Start Today</span>
               <h2
                 className="font-extrabold text-balance mb-4 mx-auto max-w-lg"
-                style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.03em", lineHeight: "1.05", color: "var(--foreground)" }}
+                style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.01em", lineHeight: "1.15", color: "var(--foreground)" }}
               >
                 Be more than a customer.{" "}
                 <span className="accent-text">Be an owner.</span>
