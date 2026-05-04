@@ -38,6 +38,7 @@ export default function Header() {
 
   const navLinks = [
     { href: "/invest", label: "Invest" },
+    { href: "/cars", label: "Cars" },
     { href: "/for-business", label: "For Business" },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },

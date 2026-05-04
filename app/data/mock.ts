@@ -695,3 +695,209 @@ export const B2C_FAQS = [
     a: "€100 minimum per business. You can invest in multiple businesses across different sectors and cities.",
   },
 ];
+
+// ─── Car Subscription Types ───────────────────────────────────────────────────
+
+export interface CarListing {
+  id: string;
+  make: string;
+  model: string;
+  year: number;
+  color: string;
+  price: number;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  daysLeft: number;
+  monthlyRevenue: number;
+  rentalRatePerDay: number;
+  occupancyPct: number;
+  riskScore: number;
+  riskBreakdown: RiskBreakdown[];
+  features: string[];
+  location: string;
+  pickupPoints: string[];
+  chain: string;
+  contractAddress: string;
+  spvName: string;
+  ownershipYield: string;
+  rentalYield: string;
+  description: string;
+  faqs: { q: string; a: string }[];
+}
+
+// ─── Cars Data ────────────────────────────────────────────────────────────────
+
+export const CARS: CarListing[] = [
+  {
+    id: "car1",
+    make: "Tesla",
+    model: "Model 3",
+    year: 2025,
+    color: "Pearl White",
+    price: 35000,
+    tokenPrice: 50,
+    totalTokens: 700,
+    soldTokens: 480,
+    investors: 34,
+    daysLeft: 18,
+    monthlyRevenue: 1800,
+    rentalRatePerDay: 89,
+    occupancyPct: 78,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Asset Depreciation", score: 2, label: "EV holds value well" },
+      { criterion: "Rental Demand", score: 1, label: "Tesla — consistently high demand" },
+      { criterion: "Maintenance Risk", score: 2, label: "Fleet-managed, minimal exposure" },
+      { criterion: "Market Liquidity", score: 2, label: "Strong resale market" },
+      { criterion: "Revenue Consistency", score: 2, label: "High occupancy track record" },
+    ],
+    features: ["Autopilot", "Long Range AWD", "360° cameras", "Heat pump", "15\" touchscreen", "Premium audio"],
+    location: "Berlin, Germany",
+    pickupPoints: ["Berlin Mitte", "Berlin Schönefeld Airport", "Berlin Hauptbahnhof"],
+    chain: "Arbitrum",
+    contractAddress: "0x0000...car1",
+    spvName: "Kryptondo Fleet SPV I (Malta)",
+    ownershipYield: "4–5%",
+    rentalYield: "5–6%",
+    description: "A 2025 Tesla Model 3 Long Range AWD joining our Berlin premium fleet. The Model 3 is our best-performing vehicle with consistent 78%+ occupancy and strong demand from both business and leisure travellers.",
+    faqs: [
+      { q: "How is rental revenue distributed?", a: "Smart contracts split monthly revenue proportionally to token holdings. Rental investors receive 100% of their share. Co-owners receive their share only for days they don't use the car." },
+      { q: "Can I switch between co-ownership and rental model?", a: "Model switching will be available from Q4 2026. At launch, you choose your model at investment time." },
+      { q: "What if the car is damaged?", a: "All fleet vehicles carry comprehensive commercial insurance. Investors are fully protected from damage costs — Kryptondo Fleet handles all claims." },
+      { q: "How do I book the car as a co-owner?", a: "Via the Kryptondo app — a calendar-based booking system allocates time proportionally to your token holding. Minimum booking: 1 day, maximum: your annual allocation." },
+      { q: "Can I sell my car tokens?", a: "Yes, via the P2P marketplace launching Q3 2026, or via direct wallet transfer to a KYC-verified buyer." },
+    ],
+  },
+  {
+    id: "car2",
+    make: "BMW",
+    model: "330i",
+    year: 2025,
+    color: "Alpine White",
+    price: 48000,
+    tokenPrice: 60,
+    totalTokens: 800,
+    soldTokens: 320,
+    investors: 22,
+    daysLeft: 28,
+    monthlyRevenue: 2200,
+    rentalRatePerDay: 110,
+    occupancyPct: 72,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Asset Depreciation", score: 2, label: "BMW premium resale value" },
+      { criterion: "Rental Demand", score: 2, label: "Strong business traveller appeal" },
+      { criterion: "Maintenance Risk", score: 2, label: "BMW service contract included" },
+      { criterion: "Market Liquidity", score: 1, label: "Premium segment — high liquidity" },
+      { criterion: "Revenue Consistency", score: 2, label: "72% avg occupancy" },
+    ],
+    features: ["M Sport package", "Navigation Pro", "Heated seats", "Parking assistant", "19\" M alloys", "Harman Kardon audio"],
+    location: "Munich, Germany",
+    pickupPoints: ["Munich Airport", "Munich Hauptbahnhof", "Munich City Centre"],
+    chain: "Base",
+    contractAddress: "0x0000...car2",
+    spvName: "Kryptondo Fleet SPV II (Malta)",
+    ownershipYield: "4–5%",
+    rentalYield: "5–7%",
+    description: "A 2025 BMW 330i M Sport joining our Munich business fleet. Preferred by corporate travellers, the 330i commands premium daily rates and achieves 72% occupancy driven by business travel demand.",
+    faqs: [
+      { q: "How is rental revenue distributed?", a: "Smart contracts distribute monthly revenue proportionally to token holdings on the 1st of each month." },
+      { q: "Can I switch models?", a: "Model switching available from Q4 2026. Choose at investment time." },
+      { q: "What about BMW service costs?", a: "A BMW service contract is included in the fleet management fee. No extra costs for investors." },
+      { q: "How many days can I use the car annually?", a: "Co-owners receive driving days proportional to their token holding. 1% ownership = ~2.6 non-occupied days per year, booked via app." },
+      { q: "Is there a security deposit for co-use?", a: "A refundable deposit is held during co-use periods, released within 48h after return with no damage reported." },
+    ],
+  },
+  {
+    id: "car3",
+    make: "Mercedes",
+    model: "A 250",
+    year: 2025,
+    color: "Cosmos Black",
+    price: 42000,
+    tokenPrice: 55,
+    totalTokens: 764,
+    soldTokens: 600,
+    investors: 45,
+    daysLeft: 9,
+    monthlyRevenue: 2000,
+    rentalRatePerDay: 99,
+    occupancyPct: 75,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Asset Depreciation", score: 2, label: "Mercedes retains premium value" },
+      { criterion: "Rental Demand", score: 2, label: "High demand across all segments" },
+      { criterion: "Maintenance Risk", score: 1, label: "Mercedes service plan included" },
+      { criterion: "Market Liquidity", score: 2, label: "Strong used market" },
+      { criterion: "Revenue Consistency", score: 1, label: "75% occupancy, stable trend" },
+    ],
+    features: ["AMG Line exterior", "MBUX infotainment", "Widescreen cockpit", "Burmester audio", "Ambient lighting", "Wireless CarPlay"],
+    location: "Hamburg, Germany",
+    pickupPoints: ["Hamburg Airport", "Hamburg HBF", "Hamburg Altona"],
+    chain: "Arbitrum",
+    contractAddress: "0x0000...car3",
+    spvName: "Kryptondo Fleet SPV I (Malta)",
+    ownershipYield: "4–6%",
+    rentalYield: "5–7%",
+    description: "A 2025 Mercedes A 250 AMG Line entering our Hamburg fleet. One of our most popular models — nearly 80% funded. At 75% occupancy and €99/day, this is a strong performer for both co-owners and rental investors.",
+    faqs: [
+      { q: "How is rental revenue distributed?", a: "Monthly smart contract distribution. Co-owners receive their share minus usage days; rental investors receive 100% of their proportional share every month." },
+      { q: "Can I switch from co-ownership to rental?", a: "Not at launch. Model switching is planned for Q4 2026." },
+      { q: "Why is this nearly fully funded?", a: "The Mercedes A 250 is popular due to its combination of premium feel, fuel efficiency, and broad appeal. High demand means faster funding." },
+      { q: "What happens when it's 100% funded?", a: "The car is purchased within 5 business days, enters the fleet within 14 days of purchase, and your first dividend arrives at the next monthly cycle." },
+      { q: "Can I sell my tokens?", a: "Yes — P2P marketplace Q3 2026, or direct wallet transfer." },
+    ],
+  },
+  {
+    id: "car4",
+    make: "VW",
+    model: "ID.4",
+    year: 2025,
+    color: "Dusk Blue",
+    price: 40000,
+    tokenPrice: 50,
+    totalTokens: 800,
+    soldTokens: 150,
+    investors: 12,
+    daysLeft: 42,
+    monthlyRevenue: 1600,
+    rentalRatePerDay: 79,
+    occupancyPct: 68,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Asset Depreciation", score: 3, label: "EV market evolving rapidly" },
+      { criterion: "Rental Demand", score: 3, label: "Growing but still maturing" },
+      { criterion: "Maintenance Risk", score: 2, label: "Fleet-managed, EV-specialist team" },
+      { criterion: "Market Liquidity", score: 3, label: "EV resale market developing" },
+      { criterion: "Revenue Consistency", score: 3, label: "68% occupancy — improving" },
+    ],
+    features: ["Pro AWD", "77kWh battery", "500km range", "Panoramic roof", "IQ.Drive assist", "Fast charging support"],
+    location: "Frankfurt, Germany",
+    pickupPoints: ["Frankfurt Airport", "Frankfurt HBF", "Frankfurt Messe"],
+    chain: "Base",
+    contractAddress: "0x0000...car4",
+    spvName: "Kryptondo Fleet SPV III (Malta)",
+    ownershipYield: "3–5%",
+    rentalYield: "4–6%",
+    description: "A 2025 VW ID.4 Pro AWD entering our Frankfurt EV fleet. As EV infrastructure matures across Germany, occupancy is growing. Early investors benefit from lower token prices as the category grows — higher risk, higher upside.",
+    faqs: [
+      { q: "Why is the risk higher for this car?", a: "The EV rental market is growing but less established than ICE vehicles. Occupancy is improving steadily at 68%+, but carries more uncertainty than our premium segment." },
+      { q: "How is rental revenue distributed?", a: "Same as all fleet cars — monthly smart contract distribution proportional to token holdings." },
+      { q: "What about EV charging costs?", a: "Charging costs are covered by Kryptondo Fleet as part of the management fee. Renters pay a fuel-equivalent charge included in the daily rate." },
+      { q: "Is this a good entry point?", a: "At €50/token with lower initial demand, this represents the best entry price. As the EV category matures, occupancy and revenue are projected to grow." },
+      { q: "Can I sell my tokens?", a: "Yes — P2P marketplace Q3 2026." },
+    ],
+  },
+];
+
+export const CAR_FAQS = [
+  { q: "How is rental revenue distributed?", a: "Smart contracts automatically split monthly rental revenue proportional to token holdings. Rental investors receive 100% of their share; co-owners receive their share only for days they don't use the car." },
+  { q: "Can I switch between co-ownership and rental investment?", a: "At launch, you choose your model at investment time. Model switching will be available from Q4 2026." },
+  { q: "What happens if the car is damaged?", a: "All fleet vehicles carry comprehensive commercial insurance paid for by Kryptondo Fleet. Investors are fully protected from any damage liability — we handle all claims and repairs." },
+  { q: "Is the car insured?", a: "Yes. Full commercial insurance including third-party liability, comprehensive damage, and roadside assistance. Insurance costs are factored into the fleet management fee, not charged separately to investors." },
+  { q: "Can I sell my car tokens?", a: "Yes. Our P2P token marketplace launches Q3 2026 for 24/7 trading. Until then, tokens can be transferred directly between KYC-verified wallets." },
+  { q: "What if the car needs major maintenance?", a: "A maintenance reserve is set aside from each car's monthly revenue. All scheduled and unscheduled maintenance is handled by Kryptondo Fleet — investors bear no direct cost." },
+  { q: "How are driving days allocated (co-ownership)?", a: "Driving days are proportional to your token holding. 1% ownership in a fleet car = approximately your share of the car's non-rented days per year, booked via the Kryptondo app." },
+];
