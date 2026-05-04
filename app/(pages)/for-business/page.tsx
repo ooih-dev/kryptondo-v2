@@ -1,4 +1,9 @@
 import type { Metadata } from "next";
+import {
+  ClipboardList, Landmark, Coins, TrendingUp,
+  Briefcase, Users, Zap, Gift, BarChart3, ShieldCheck,
+  Utensils, ShoppingBag, Film, Scissors,
+} from "lucide-react";
 import FadeIn from "../../components/FadeIn";
 import TrustBar from "../../components/TrustBar";
 import FAQ from "../../components/FAQ";
@@ -8,7 +13,7 @@ import { TRUST_STATS_B2B, TEAM_MEMBERS, B2B_FAQS } from "../../data/mock";
 export const metadata: Metadata = {
   title: "For Business Owners — Raise Capital from Your Community",
   description:
-    "Tokenize 10–20% of your business on Arbitrum. Raise capital from your customers, automate dividends, and build the most loyal community you&apos;ve ever had. Malta-licensed SPV.",
+    "Tokenize 10–20% of your business on Arbitrum. Raise capital from your customers, automate dividends, and build the most loyal community you've ever had. Malta-licensed SPV.",
 };
 
 const HOW_IT_WORKS = [
@@ -16,42 +21,42 @@ const HOW_IT_WORKS = [
     step: "01",
     title: "Apply",
     desc: "Submit your business profile. Our team reviews within 5 business days. No upfront cost.",
-    icon: "📋",
+    icon: <ClipboardList size={24} />,
   },
   {
     step: "02",
     title: "SPV Setup",
     desc: "We establish a Malta-registered SPV that holds your equity stake. All legal compliance handled for you.",
-    icon: "🏛️",
+    icon: <Landmark size={24} />,
   },
   {
     step: "03",
     title: "Tokenize",
     desc: "10–20% equity converted to digital tokens on Arbitrum/Base. Smart contracts audited by CertiK.",
-    icon: "⛓️",
+    icon: <Coins size={24} />,
   },
   {
     step: "04",
     title: "Raise & Engage",
     desc: "Launch your campaign. Investors get tokens, dividends, and perks. You get capital and advocates.",
-    icon: "🚀",
+    icon: <TrendingUp size={24} />,
   },
 ];
 
 const WHAT_YOU_GET = [
-  { icon: "💼", title: "Capital without losing control", desc: "You offer 10–20% maximum. Retain full operational control. Your business, your decisions." },
-  { icon: "👥", title: "Investors who are customers", desc: "Token holders are naturally motivated to promote your business. Every investor becomes your advocate." },
-  { icon: "⚡", title: "Automated dividend distribution", desc: "Smart contracts handle profit distribution automatically. No manual wire transfers, no delays." },
-  { icon: "🎁", title: "Loyalty layer included", desc: "Reward token holders with exclusive perks, discounts, early access. Build your most engaged customer segment." },
-  { icon: "📊", title: "On-chain cap table", desc: "100% of your equity tracking handled on Arbitrum. No spreadsheets, no legal confusion." },
-  { icon: "🔐", title: "KYC/AML handled for you", desc: "Every investor goes through verified identity checks. Compliance is our problem, not yours." },
+  { icon: <Briefcase size={24} />, title: "Capital without losing control", desc: "You offer 10–20% maximum. Retain full operational control. Your business, your decisions." },
+  { icon: <Users size={24} />, title: "Investors who are customers", desc: "Token holders are naturally motivated to promote your business. Every investor becomes your advocate." },
+  { icon: <Zap size={24} />, title: "Automated dividend distribution", desc: "Smart contracts handle profit distribution automatically. No manual wire transfers, no delays." },
+  { icon: <Gift size={24} />, title: "Loyalty layer included", desc: "Reward token holders with exclusive perks, discounts, early access. Build your most engaged customer segment." },
+  { icon: <BarChart3 size={24} />, title: "On-chain cap table", desc: "100% of your equity tracking handled on Arbitrum. No spreadsheets, no legal confusion." },
+  { icon: <ShieldCheck size={24} />, title: "KYC/AML handled for you", desc: "Every investor goes through verified identity checks. Compliance is our problem, not yours." },
 ];
 
 const BUSINESS_TYPES = [
-  { name: "Hospitality", desc: "Restaurants, bars, cafés, hotels — customers who regularly return", icon: "🍽️" },
-  { name: "Retail", desc: "Boutiques, brands, local stores with loyal buyer communities", icon: "🛍️" },
-  { name: "Creative / Media", desc: "Studios, agencies, creators with engaged fan audiences", icon: "🎬" },
-  { name: "Local Services", desc: "Fitness, wellness, beauty — strong community-based businesses", icon: "💆" },
+  { name: "Hospitality", desc: "Restaurants, bars, cafés, hotels — customers who regularly return", icon: <Utensils size={36} /> },
+  { name: "Retail", desc: "Boutiques, brands, local stores with loyal buyer communities", icon: <ShoppingBag size={36} /> },
+  { name: "Creative / Media", desc: "Studios, agencies, creators with engaged fan audiences", icon: <Film size={36} /> },
+  { name: "Local Services", desc: "Fitness, wellness, beauty — strong community-based businesses", icon: <Scissors size={36} /> },
 ];
 
 export default function ForBusinessPage() {
@@ -125,7 +130,7 @@ export default function ForBusinessPage() {
                   className="rounded-2xl p-6 h-full"
                   style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
                 >
-                  <div className="text-2xl mb-4">{s.icon}</div>
+                  <div className="mb-4" style={{ color: "var(--gold)" }}>{s.icon}</div>
                   <p
                     className="text-xs font-bold mb-1.5"
                     style={{ color: "var(--accent-gold)", letterSpacing: "0.12em" }}
@@ -159,7 +164,7 @@ export default function ForBusinessPage() {
             {WHAT_YOU_GET.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.07}>
                 <div className="card h-full" style={{ borderColor: "var(--border-subtle)" }}>
-                  <div className="text-2xl mb-3">{item.icon}</div>
+                  <div className="mb-3" style={{ color: "var(--accent)" }}>{item.icon}</div>
                   <h3 className="font-semibold mb-2 tracking-tight-sub" style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}>
                     {item.title}
                   </h3>
@@ -223,7 +228,7 @@ export default function ForBusinessPage() {
             {BUSINESS_TYPES.map((bt, i) => (
               <FadeIn key={bt.name} delay={i * 0.1}>
                 <div className="card card-hover text-center h-full">
-                  <div className="text-4xl mb-3">{bt.icon}</div>
+                  <div className="mb-3 flex justify-center" style={{ color: "var(--accent)" }}>{bt.icon}</div>
                   <h3 className="font-semibold mb-2 tracking-tight-sub" style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}>
                     {bt.name}
                   </h3>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Landmark, ShieldCheck, Wallet } from "lucide-react";
 import FadeIn from "./components/FadeIn";
 import TrustBar from "./components/TrustBar";
 import OpportunityCard from "./components/OpportunityCard";
@@ -283,19 +284,19 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {
-                icon: "🏛️",
+                icon: <Landmark size={24} />,
                 title: "Malta SPV Structure",
                 desc: "Every offering uses a Malta-registered Special Purpose Vehicle. EU-regulated, fully compliant with MiCA framework.",
                 accent: "var(--accent)",
               },
               {
-                icon: "🔒",
+                icon: <ShieldCheck size={24} />,
                 title: "CertiK Audited",
                 desc: "All smart contracts audited by CertiK — the industry standard for blockchain security verification.",
                 accent: "var(--gold)",
               },
               {
-                icon: "🫰",
+                icon: <Wallet size={24} />,
                 title: "Non-Custodial",
                 desc: "Your tokens are held in your own wallet. Kryptondo never takes custody of your assets.",
                 accent: "var(--accent)",
@@ -303,7 +304,7 @@ export default function HomePage() {
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div className="card h-full" style={{ borderColor: "var(--border-subtle)" }}>
-                  <div className="text-2xl mb-4">{item.icon}</div>
+                  <div className="mb-4" style={{ color: item.accent }}>{item.icon}</div>
                   <h3
                     className="font-semibold mb-2 tracking-tight-sub"
                     style={{ fontSize: "1.0625rem", color: "var(--foreground)" }}

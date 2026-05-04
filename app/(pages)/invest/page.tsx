@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import {
+  Mail, Shield, Search, CreditCard, Wallet,
+  TrendingUp, Landmark, Gift, Zap,
+  Building2, Banknote, Star,
+  FileText, Key, CalendarDays,
+  Tag, Vote, ShieldCheck,
+} from "lucide-react";
 import FadeIn from "../../components/FadeIn";
 import TrustBar from "../../components/TrustBar";
 import OpportunityCard from "../../components/OpportunityCard";
@@ -14,19 +21,19 @@ export const metadata: Metadata = {
 };
 
 const HOW_IT_WORKS = [
-  { step: "01", title: "Create Account", desc: "Sign up with email. Takes under 2 minutes.", icon: "✉️" },
-  { step: "02", title: "Verify Identity", desc: "KYC in under 5 minutes. Required by EU regulation.", icon: "🪪" },
-  { step: "03", title: "Browse Businesses", desc: "Explore live opportunities by sector and city.", icon: "🔍" },
-  { step: "04", title: "Invest from €100", desc: "Choose your amount. Pay by card or crypto.", icon: "💳" },
-  { step: "05", title: "Hold in Your Wallet", desc: "Tokens arrive in your non-custodial wallet. Earn dividends.", icon: "🪙" },
+  { step: "01", title: "Create Account", desc: "Sign up with email. Takes under 2 minutes.", icon: <Mail size={20} /> },
+  { step: "02", title: "Verify Identity", desc: "KYC in under 5 minutes. Required by EU regulation.", icon: <Shield size={20} /> },
+  { step: "03", title: "Browse Businesses", desc: "Explore live opportunities by sector and city.", icon: <Search size={20} /> },
+  { step: "04", title: "Invest from €100", desc: "Choose your amount. Pay by card or crypto.", icon: <CreditCard size={20} /> },
+  { step: "05", title: "Hold in Your Wallet", desc: "Tokens arrive in your non-custodial wallet. Earn dividends.", icon: <Wallet size={20} /> },
 ];
 
 const DIFFERENTIATORS = [
-  { icon: "🫰", title: "Your tokens, your wallet", desc: "Non-custodial by design. Kryptondo never holds your assets. Your keys — your equity.", accent: "var(--accent-blue)" },
-  { icon: "💰", title: "Real dividends, not speculation", desc: "Dividends are tied to real business performance, not token price.", accent: "var(--accent-gold)" },
-  { icon: "🏛️", title: "EU-regulated structure", desc: "Malta SPV under MiCA framework. Legally compliant securities.", accent: "#7c8cf8" },
-  { icon: "🎁", title: "Loyalty bonuses", desc: "Token holders unlock discounts, early access, VIP experiences.", accent: "#34c759" },
-  { icon: "⚡", title: "Arbitrum/Base — low fees", desc: "Near-zero transaction fees, fast settlement, proven infrastructure.", accent: "#ff6b6b" },
+  { icon: <Wallet size={20} />, title: "Your tokens, your wallet", desc: "Non-custodial by design. Kryptondo never holds your assets. Your keys — your equity.", accent: "var(--accent-blue)" },
+  { icon: <TrendingUp size={20} />, title: "Real dividends, not speculation", desc: "Dividends are tied to real business performance, not token price.", accent: "var(--accent-gold)" },
+  { icon: <Landmark size={20} />, title: "EU-regulated structure", desc: "Malta SPV under MiCA framework. Legally compliant securities.", accent: "#7c8cf8" },
+  { icon: <Gift size={20} />, title: "Loyalty bonuses", desc: "Token holders unlock discounts, early access, VIP experiences.", accent: "#34c759" },
+  { icon: <Zap size={20} />, title: "Arbitrum/Base — low fees", desc: "Near-zero transaction fees, fast settlement, proven infrastructure.", accent: "#ff6b6b" },
 ];
 
 const LOYALTY_EXAMPLES = [
@@ -122,9 +129,9 @@ export default function InvestPage() {
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon: "🏠", title: "Own Real Equity", desc: "Tokens backed by a Malta SPV holding real business equity. Legally compliant ownership — not points or vouchers.", color: "var(--accent)" },
-              { icon: "💸", title: "Earn Dividends", desc: "Automatic distribution when the business distributes profits. Dividends arrive in your wallet — no action needed.", color: "var(--gold)" },
-              { icon: "🎫", title: "Get Exclusive Perks", desc: "Token holders unlock discounts, early access, VIP experiences. Ownership with lifestyle benefits.", color: "var(--green)" },
+              { icon: <Building2 size={24} />, title: "Own Real Equity", desc: "Tokens backed by a Malta SPV holding real business equity. Legally compliant ownership — not points or vouchers.", color: "var(--accent)" },
+              { icon: <Banknote size={24} />, title: "Earn Dividends", desc: "Automatic distribution when the business distributes profits. Dividends arrive in your wallet — no action needed.", color: "var(--gold)" },
+              { icon: <Star size={24} />, title: "Get Exclusive Perks", desc: "Token holders unlock discounts, early access, VIP experiences. Ownership with lifestyle benefits.", color: "var(--green)" },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div
@@ -132,8 +139,8 @@ export default function InvestPage() {
                   style={{ borderColor: `${item.color}20` }}
                 >
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-2xl mx-auto mb-4"
-                    style={{ background: `${item.color}12` }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4"
+                    style={{ background: `${item.color}12`, color: item.color }}
                   >
                     {item.icon}
                   </div>
@@ -202,8 +209,8 @@ export default function InvestPage() {
               <FadeIn key={s.step} delay={i * 0.08}>
                 <div className="text-center">
                   <div
-                    className="w-12 h-12 rounded-xl flex items-center justify-center text-xl mx-auto mb-3"
-                    style={{ background: "var(--surface)", border: "1px solid var(--border)" }}
+                    className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-3"
+                    style={{ background: "var(--surface)", border: "1px solid var(--border)", color: "var(--accent)" }}
                   >
                     {s.icon}
                   </div>
@@ -230,7 +237,7 @@ export default function InvestPage() {
             {DIFFERENTIATORS.map((d, i) => (
               <FadeIn key={d.title} delay={i * 0.07}>
                 <div className="card h-full" style={{ borderColor: "var(--border-subtle)", padding: "1.25rem" }}>
-                  <div className="text-xl mb-2">{d.icon}</div>
+                  <div className="mb-2" style={{ color: d.accent }}>{d.icon}</div>
                   <h3 className="font-semibold text-xs mb-1.5 tracking-tight-sub" style={{ color: "var(--foreground)", fontSize: "0.8125rem" }}>
                     {d.title}
                   </h3>
@@ -268,13 +275,13 @@ export default function InvestPage() {
                   </h3>
                   <div className="space-y-4">
                     {[
-                      { icon: "📜", text: "A token is an ownership record — like a digital share certificate stored securely on Arbitrum." },
-                      { icon: "🏛️", text: "It represents your fractional stake in a Malta-registered company (SPV) that holds equity in the business." },
-                      { icon: "💰", text: "When the business distributes profits, you automatically receive your share — automatic profit sharing." },
-                      { icon: "🔑", text: "Your tokens live in your own wallet — no intermediary holds them. Full ownership, no counterparty risk." },
+                      { icon: <FileText size={20} />, text: "A token is an ownership record — like a digital share certificate stored securely on Arbitrum." },
+                      { icon: <Landmark size={20} />, text: "It represents your fractional stake in a Malta-registered company (SPV) that holds equity in the business." },
+                      { icon: <TrendingUp size={20} />, text: "When the business distributes profits, you automatically receive your share — automatic profit sharing." },
+                      { icon: <Key size={20} />, text: "Your tokens live in your own wallet — no intermediary holds them. Full ownership, no counterparty risk." },
                     ].map((item, i) => (
                       <div key={i} className="flex gap-3">
-                        <span className="text-xl shrink-0 mt-0.5">{item.icon}</span>
+                        <span className="shrink-0 mt-0.5" style={{ color: "var(--accent)" }}>{item.icon}</span>
                         <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>{item.text}</p>
                       </div>
                     ))}
@@ -376,7 +383,9 @@ export default function InvestPage() {
                     className="rounded-2xl p-6 text-center"
                     style={{ background: "rgba(124,140,248,0.1)", border: "1px solid rgba(124,140,248,0.25)" }}
                   >
-                    <div className="text-3xl mb-3">🗓️</div>
+                    <div className="mb-3 flex justify-center" style={{ color: "#7c8cf8" }}>
+                      <CalendarDays size={36} />
+                    </div>
                     <p className="font-bold mb-1" style={{ fontSize: "1.0625rem", color: "var(--foreground)" }}>
                       Coming Q3 2026
                     </p>
@@ -429,14 +438,14 @@ export default function InvestPage() {
           </div>
           <div className="grid md:grid-cols-4 gap-4">
             {[
-              { icon: "🏷️", text: "Discounts at invested businesses" },
-              { icon: "🚀", text: "Early access to new products" },
-              { icon: "🎟️", text: "VIP events and experiences" },
-              { icon: "🗳️", text: "Voting rights on decisions" },
+              { icon: <Tag size={24} />, text: "Discounts at invested businesses" },
+              { icon: <Zap size={24} />, text: "Early access to new products" },
+              { icon: <Star size={24} />, text: "VIP events and experiences" },
+              { icon: <Vote size={24} />, text: "Voting rights on decisions" },
             ].map((item, i) => (
               <FadeIn key={item.text} delay={i * 0.08}>
                 <div className="card text-center" style={{ padding: "1.25rem" }}>
-                  <div className="text-2xl mb-2">{item.icon}</div>
+                  <div className="mb-2 flex justify-center" style={{ color: "var(--accent-gold)" }}>{item.icon}</div>
                   <p className="text-sm" style={{ color: "var(--muted-foreground)" }}>{item.text}</p>
                 </div>
               </FadeIn>
@@ -456,14 +465,14 @@ export default function InvestPage() {
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-4">
             {[
-              { icon: "🏛️", title: "Malta SPV · MiCA Framework", desc: "Every offering issued through a Malta-registered SPV under EU financial regulation." },
-              { icon: "🔒", title: "CertiK Audited Smart Contracts", desc: "All smart contracts undergo rigorous security audits by CertiK — the industry standard." },
-              { icon: "🪪", title: "KYC/AML Verification", desc: "All investors verified. Compliance baked into the token structure." },
-              { icon: "🫰", title: "Non-Custodial", desc: "We never hold your tokens. Your assets are always in your own wallet." },
+              { icon: <Landmark size={24} />, title: "Malta SPV · MiCA Framework", desc: "Every offering issued through a Malta-registered SPV under EU financial regulation." },
+              { icon: <ShieldCheck size={24} />, title: "CertiK Audited Smart Contracts", desc: "All smart contracts undergo rigorous security audits by CertiK — the industry standard." },
+              { icon: <Shield size={24} />, title: "KYC/AML Verification", desc: "All investors verified. Compliance baked into the token structure." },
+              { icon: <Wallet size={24} />, title: "Non-Custodial", desc: "We never hold your tokens. Your assets are always in your own wallet." },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
                 <div className="card flex gap-4 h-full" style={{ borderColor: "var(--border-subtle)" }}>
-                  <div className="text-2xl shrink-0">{item.icon}</div>
+                  <div className="shrink-0" style={{ color: "var(--accent)" }}>{item.icon}</div>
                   <div>
                     <h3 className="font-semibold mb-1 tracking-tight-sub" style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}>
                       {item.title}
