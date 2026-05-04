@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Landmark, ShieldCheck, Wallet } from "lucide-react";
+import { Landmark, ShieldCheck, Wallet, Shield, TrendingUp, Eye, Scale } from "lucide-react";
 import FadeIn from "./components/FadeIn";
 import TrustBar from "./components/TrustBar";
 import OpportunityCard from "./components/OpportunityCard";
@@ -91,7 +91,7 @@ export default function HomePage() {
                 className="text-lg md:text-xl mb-10 max-w-xl leading-body"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                Kryptondo connects investors and local businesses through tokenized equity.
+                The 360° investment platform. Risk-driven, interest-aligned, radically transparent, and legally secured.
                 Real ownership. Real returns. Non-custodial — starting from <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>€100</strong>.
               </p>
             </FadeIn>
@@ -182,6 +182,64 @@ export default function HomePage() {
 
       {/* ── Trust bar ── */}
       <TrustBar stats={TRUST_STATS_B2C} />
+
+      {/* ── 360° Philosophy ── */}
+      <section className="section" style={{ background: "var(--surface)" }}>
+        <div className="container-md mx-auto">
+          <FadeIn className="text-center mb-12 max-w-lg mx-auto">
+            <span className="section-label">360° Investment Platform</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
+              Risk · Interest · Transparency · Law
+            </h2>
+            <p className="text-base leading-body mt-3" style={{ color: "var(--muted-foreground)" }}>
+              Four pillars. One platform. Every investment on Kryptondo is structured around all four.
+            </p>
+          </FadeIn>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[
+              {
+                icon: <Shield size={22} />,
+                label: "Risk",
+                title: "AI-Powered Risk",
+                desc: "Every investment comes with a personalised risk score. Match opportunities to your risk appetite — not the other way around.",
+                accent: "var(--accent)",
+              },
+              {
+                icon: <TrendingUp size={22} />,
+                label: "Interest",
+                title: "Real Returns",
+                desc: "Dividends from real revenue — memberships, placements, rental income. Your money works in sectors you understand.",
+                accent: "var(--gold)",
+              },
+              {
+                icon: <Eye size={22} />,
+                label: "Transparency",
+                title: "On-Chain Clarity",
+                desc: "Ownership records on Arbitrum/Base. Public SPV structures. Real-time performance tracking. Nothing is hidden.",
+                accent: "#7c8cf8",
+              },
+              {
+                icon: <Scale size={22} />,
+                label: "Law",
+                title: "EU-Regulated",
+                desc: "Malta-licensed SPVs. MiCA compliant. CertiK audited. Regulated like traditional finance — flexible like crypto.",
+                accent: "#4A7C59",
+              },
+            ].map((pillar, i) => (
+              <FadeIn key={pillar.label} delay={i * 0.09}>
+                <div className="card h-full" style={{ borderColor: `${pillar.accent}25` }}>
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${pillar.accent}14`, color: pillar.accent }}>
+                    {pillar.icon}
+                  </div>
+                  <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: pillar.accent, letterSpacing: "0.1em" }}>{pillar.label}</p>
+                  <h3 className="font-semibold mb-2" style={{ fontSize: "1rem", color: "var(--foreground)" }}>{pillar.title}</h3>
+                  <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>{pillar.desc}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* ── Featured Opportunities ── */}
       <section className="section">

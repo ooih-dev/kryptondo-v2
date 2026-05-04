@@ -40,6 +40,7 @@ export default function Header() {
     { href: "/invest", label: "Invest" },
     { href: "/cars", label: "Cars" },
     { href: "/medical", label: "Medical" },
+    { href: "/fitness", label: "Fitness" },
     { href: "/for-business", label: "For Business" },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },

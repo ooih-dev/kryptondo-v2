@@ -1105,6 +1105,196 @@ export const MEDICAL_FAQS = [
   { q: "What is the difference between the Placement Fund and Staffing Contract models?", a: "Placement Fund: higher returns (12–24% yield) tied to one-time placement fees. Returns are lumpy — you earn when placements complete. Staffing Contract: lower but steady returns (9–17%) from ongoing hourly billing contracts. More predictable monthly income." },
 ];
 
+// ─── Fitness Studio Types ─────────────────────────────────────────────────────
+
+export interface FitnessStudio {
+  id: string;
+  name: string;
+  type: string;
+  location: string;
+  description: string;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  members: number;
+  daysLeft: number;
+  monthlyRevenue: number;
+  avgMemberFee: number;
+  riskScore: number;
+  estimatedYield: number;
+  occupancy: number;
+  riskBreakdown: RiskBreakdown[];
+  features: string[];
+  expansionPlan: string;
+  team: { name: string; role: string; bio: string; initials: string; color: string }[];
+  faqs: { q: string; a: string }[];
+}
+
+// ─── Fitness Studio Data ──────────────────────────────────────────────────────
+
+export const FITNESS_STUDIOS: FitnessStudio[] = [
+  {
+    id: "fit1",
+    name: "IronForge CrossFit",
+    type: "CrossFit",
+    location: "Berlin Mitte",
+    description: "Berlin's premier CrossFit box, known for elite coaching and a dedicated community of 340 athletes across all fitness levels.",
+    tokenPrice: 50,
+    totalTokens: 800,
+    soldTokens: 520,
+    investors: 41,
+    members: 340,
+    daysLeft: 22,
+    monthlyRevenue: 28000,
+    avgMemberFee: 89,
+    riskScore: 2,
+    estimatedYield: 13,
+    occupancy: 82,
+    riskBreakdown: [
+      { criterion: "Membership Retention", score: 1, label: "92% monthly retention — CrossFit community loyalty" },
+      { criterion: "Revenue Consistency", score: 2, label: "Stable memberships, slight seasonal variation" },
+      { criterion: "Location", score: 1, label: "Mitte — high density, premium catchment" },
+      { criterion: "Market Competition", score: 2, label: "Growing boutique fitness market, differentiated" },
+      { criterion: "Operator Experience", score: 2, label: "7 years operating, Level 3 certified coaches" },
+      { criterion: "Lease Security", score: 2, label: "5-year lease signed, 2 renewal options" },
+    ],
+    features: ["Olympic lifting platform", "Rogue Fitness equipment", "24/7 access", "Cold plunge & sauna", "Nutrition coaching", "On-site physio Fridays"],
+    expansionPlan: "Investment funds a second Berlin location (Prenzlauer Berg), additional equipment, and Level 4 coaching certifications. Target opening Q3 2027.",
+    team: [
+      { name: "Marco Bauer", role: "Head Coach & Founder", bio: "CrossFit Games athlete, Level 3 coach. Founded IronForge in 2017 after competing at Regionals. Built membership from 0 to 340 in 7 years.", initials: "MB", color: "#8B5CF6" },
+      { name: "Jana Richter", role: "Operations Manager", bio: "Former sports science PhD turned gym operator. Manages class scheduling, coaching staff, and member experience for all 340 members.", initials: "JR", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "How do I book classes as a token holder?", a: "Gold and Platinum holders get free access via the Kryptondo app. Bronze and Silver holders access discounts through the same app. Priority booking opens 72 hours before class for Silver+ holders." },
+      { q: "What if class capacity fills before I can book?", a: "Silver+ holders get 72-hour priority booking windows. Gold+ holders have reserved spots in peak-time classes. Platinum holders can request a dedicated 1-on-1 session at any time." },
+      { q: "How are dividends calculated?", a: "Monthly net profit after operating costs, lease, and coaching wages is distributed proportionally to all token holders. In 2025, IronForge generated €7.2K in average monthly profit." },
+    ],
+  },
+  {
+    id: "fit2",
+    name: "ZenFlow Yoga",
+    type: "Yoga & Pilates",
+    location: "Munich Schwabing",
+    description: "A premium yoga and pilates studio in Munich's most wellness-conscious neighbourhood, serving 280 members across 24 weekly classes.",
+    tokenPrice: 40,
+    totalTokens: 600,
+    soldTokens: 450,
+    investors: 38,
+    members: 280,
+    daysLeft: 31,
+    monthlyRevenue: 22000,
+    avgMemberFee: 79,
+    riskScore: 2,
+    estimatedYield: 11,
+    occupancy: 75,
+    riskBreakdown: [
+      { criterion: "Membership Retention", score: 1, label: "95% — highest in portfolio, yoga community bonds" },
+      { criterion: "Revenue Consistency", score: 1, label: "Highly predictable — memberships + workshop revenue" },
+      { criterion: "Location", score: 1, label: "Schwabing — affluent, wellness-oriented demographic" },
+      { criterion: "Market Competition", score: 2, label: "Multiple yoga studios nearby, strong differentiation" },
+      { criterion: "Operator Experience", score: 2, label: "5 years, certified RYT-500 instructors" },
+      { criterion: "Lease Security", score: 3, label: "3-year lease, renewal under negotiation" },
+    ],
+    features: ["Heated yoga rooms", "Pilates reformer suite (12 machines)", "Meditation room", "Infrared sauna", "Organic herbal bar", "Rooftop terrace sessions (summer)"],
+    expansionPlan: "Funds will expand the pilates reformer suite from 12 to 20 machines and add a dedicated meditation & breathwork room. Expected revenue uplift of 18%.",
+    team: [
+      { name: "Sophie Müller", role: "Founder & Lead Instructor", bio: "RYT-500 certified, trained in Mysore India and Bali. Founded ZenFlow after 12 years teaching across Europe. Specialises in Ashtanga and Yin.", initials: "SM", color: "#8B5CF6" },
+      { name: "Erik Hoffmann", role: "Studio Director", bio: "Former hospitality manager who handles all studio operations, booking systems, and member communications. Brought occupancy from 55% to 75% in 18 months.", initials: "EH", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "Can I attend any class or are some restricted?", a: "All regular classes are open to members. Advanced Mysore sessions require at least Silver tier status (Free Membership). Specialty workshops and teacher training events are open to Gold+ holders first." },
+      { q: "Are pilates reformer sessions included in the membership perks?", a: "Yes — reformer sessions are included in the Free Membership perk (Silver+). Bronze holders receive 30% discount on reformer bookings." },
+      { q: "How predictable is ZenFlow's revenue?", a: "ZenFlow runs on an 83% annual membership model with low churn. Monthly revenue variance is under 8% year-round — one of the most stable studios in the portfolio." },
+    ],
+  },
+  {
+    id: "fit3",
+    name: "PeakPerformance Gym",
+    type: "Premium Gym",
+    location: "Hamburg HafenCity",
+    description: "A 1,200 sqm premium gym in Hamburg's newest waterfront district, targeting professionals and corporate wellness with 520 members.",
+    tokenPrice: 75,
+    totalTokens: 1000,
+    soldTokens: 300,
+    investors: 24,
+    members: 520,
+    daysLeft: 48,
+    monthlyRevenue: 45000,
+    avgMemberFee: 99,
+    riskScore: 3,
+    estimatedYield: 15,
+    occupancy: 70,
+    riskBreakdown: [
+      { criterion: "Membership Retention", score: 2, label: "84% — strong but improving, newer facility" },
+      { criterion: "Revenue Consistency", score: 2, label: "Premium segment resilient but higher CAC" },
+      { criterion: "Location", score: 2, label: "HafenCity — growing district, lower foot traffic now" },
+      { criterion: "Market Competition", score: 3, label: "Competing with McFit, Holmes Place in Hamburg" },
+      { criterion: "Operator Experience", score: 3, label: "2-year-old gym, strong growth trajectory" },
+      { criterion: "Lease Security", score: 3, label: "Long lease at premium location — higher fixed cost" },
+    ],
+    features: ["1,200 sqm floor space", "Technogym equipment fleet", "Corporate wellness packages", "Recovery zone (cryotherapy, compression)", "Sports nutrition bar", "Premium changing suites", "Parking for members"],
+    expansionPlan: "Investment funds a dedicated functional training zone, expansion of the recovery suite, and a corporate wellness B2B sales team. Targeting 20 corporate clients by end 2026.",
+    team: [
+      { name: "Thomas Lehmann", role: "CEO & Founder", bio: "Ex-McKinsey consultant turned fitness entrepreneur. Identified the HafenCity gap after 15 years in corporate health consulting.", initials: "TL", color: "#8B5CF6" },
+      { name: "Dr. Lisa Braun", role: "Head of Performance", bio: "Exercise physiologist with a PhD from Hamburg Sport University. Leads the corporate wellness programme and personalised training plans.", initials: "LB", color: "#C4663A" },
+      { name: "Kai Werner", role: "Head of Sales", bio: "Former Holmes Place Regional Director. Built the corporate wellness pipeline from 0 to 8 clients in 18 months.", initials: "KW", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "Why is PeakPerformance's yield higher than other studios?", a: "Premium gyms carry higher revenue per member (€99 avg vs €79-89 elsewhere). The 70% current occupancy leaves significant upside — reaching 85% occupancy would increase monthly revenue by €6,750, directly boosting dividends." },
+      { q: "What is the corporate wellness opportunity?", a: "Currently 8 corporate clients representing 120 memberships. Each corporate contract guarantees 12-month minimum commitments, creating stable recurring revenue above and beyond individual memberships." },
+      { q: "Is there significant construction risk with the expansion zone?", a: "The functional training zone expansion uses existing floor space — no structural changes. Timeline risk is low. The main investment risk is new equipment delivery lead times (8–10 weeks)." },
+    ],
+  },
+  {
+    id: "fit4",
+    name: "SprintCycle Studio",
+    type: "Boutique Cycling",
+    location: "Frankfurt Westend",
+    description: "Frankfurt's highest-rated indoor cycling studio. 200 dedicated members, 88% room occupancy — the fastest-growing boutique fitness concept in the city.",
+    tokenPrice: 60,
+    totalTokens: 500,
+    soldTokens: 480,
+    investors: 52,
+    members: 200,
+    daysLeft: 6,
+    monthlyRevenue: 18000,
+    avgMemberFee: 109,
+    riskScore: 3,
+    estimatedYield: 14,
+    occupancy: 88,
+    riskBreakdown: [
+      { criterion: "Membership Retention", score: 2, label: "88% — strong, boutique cycling loyalty high" },
+      { criterion: "Revenue Consistency", score: 2, label: "High occupancy but smaller member base" },
+      { criterion: "Location", score: 1, label: "Westend — Frankfurt's most affluent district" },
+      { criterion: "Market Competition", score: 3, label: "Boutique cycling emerging, SoulCycle expansion risk" },
+      { criterion: "Operator Experience", score: 3, label: "3 years, scaling from 80 to 200 members rapidly" },
+      { criterion: "Lease Security", score: 3, label: "Up for renewal Q2 2027 — landlord negotiation risk" },
+    ],
+    features: ["45 Stages SC3 bikes", "Immersive light & sound system", "Cleats loan programme", "Post-ride protein bar", "Live performance metrics", "Heart rate tracking integration"],
+    expansionPlan: "Near-fully funded. Proceeds fund a second Frankfurt location (Sachsenhausen), 45 additional bikes, and a digital membership tier with live-streamed rides.",
+    team: [
+      { name: "Alina Novak", role: "Founder & Head Instructor", bio: "Former professional cyclist turned boutique fitness entrepreneur. Created the SprintCycle method, blending performance cycling with music and community.", initials: "AN", color: "#8B5CF6" },
+      { name: "Felix Roth", role: "Co-Founder & Operations", bio: "Operations expert from the hospitality sector. Manages all logistics, tech integration, and the second-location expansion project.", initials: "FR", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "Why is SprintCycle nearly fully funded?", a: "SprintCycle launched 6 weeks ago with 52 investors — the fastest-filling studio campaign on Kryptondo. High occupancy and strong community following drove demand. Only 6 days remain." },
+      { q: "What happens if I invest and the second location fails to open?", a: "The existing studio is already profitable and self-sustaining at current revenue. The second location is an expansion, not a lifeline — existing studio dividends continue regardless." },
+      { q: "Is the lease renewal risk manageable?", a: "Lease renewal is Q2 2027. The current landlord has verbally committed to renewal and SprintCycle is the anchor tenant. As a risk factor it is real but rated low-probability." },
+    ],
+  },
+];
+
+export const FITNESS_FAQS = [
+  { q: "How do I access my membership perks as a token holder?", a: "Connect your wallet to the Kryptondo app. Your token balance automatically unlocks your tier. Present a QR code at the studio reception or use the app's booking system to reserve classes and sessions." },
+  { q: "What are the perk tiers and what do I need to invest?", a: "Bronze (€100–499): 20% off membership + priority booking. Silver (€500–1,999): Free membership + 2 PT sessions/month. Gold (€2,000–4,999): Free membership + unlimited PT + VIP lounge. Platinum (€5,000+): All above + voting rights + exclusive events." },
+  { q: "How often are dividends paid?", a: "Monthly, directly to your wallet. Dividends are calculated from net profit after operating costs. The smart contract distributes automatically — no action needed." },
+  { q: "What if the studio closes or goes bankrupt?", a: "The Malta SPV holds equity in the studio business. In a closure, SPV assets (equipment, lease, goodwill) would be liquidated and proceeds distributed proportionally to token holders. Fitness assets typically recover 40–60 cents on the euro." },
+  { q: "Can I invest in multiple studios and combine perks?", a: "Yes. Each studio investment grants perks at that studio independently. Invest €200 in Studio A and €300 in Studio B — you get Bronze perks at both. Token balances are not combined across different studios." },
+  { q: "Do I need to use my perks, or can I just earn dividends?", a: "Perks are optional. If you never visit the studio, your dividends continue normally. The perks are a bonus — not a requirement for earning returns." },
+  { q: "Who manages the studio day-to-day?", a: "The studio operators (founders and management team) continue running all day-to-day operations. Token holders do not participate in daily management. Platinum holders vote on major strategic decisions only." },
+];
+
 export const CAR_FAQS = [
   { q: "How is rental revenue distributed?", a: "Smart contracts automatically split monthly rental revenue proportional to token holdings. Rental investors receive 100% of their share; co-owners receive their share only for days they don't use the car." },
   { q: "Can I switch between co-ownership and rental investment?", a: "At launch, you choose your model at investment time. Model switching will be available from Q4 2026." },

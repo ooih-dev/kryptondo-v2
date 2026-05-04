@@ -32,8 +32,11 @@ export default function Footer() {
                 Kryptondo
               </span>
             </div>
+            <p className="text-xs font-semibold mb-1.5" style={{ color: "#C4663A", letterSpacing: "0.04em" }}>
+              360° Investment Platform
+            </p>
             <p className="text-xs leading-relaxed mb-5" style={{ color: "#8A7D70", lineHeight: "1.7" }}>
-              Tokenizing business equity. Connecting investors with businesses they love.
+              Risk · Interest · Transparency · Law. Tokenizing equity across businesses, cars, healthcare, and fitness.
             </p>
             <div className="flex gap-4">
               {["Twitter", "LinkedIn", "Telegram"].map((s) => (
