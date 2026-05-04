@@ -724,6 +724,7 @@ export interface CarListing {
   ownershipYield: string;
   rentalYield: string;
   description: string;
+  image: string;
   faqs: { q: string; a: string }[];
 }
 
@@ -762,6 +763,7 @@ export const CARS: CarListing[] = [
     ownershipYield: "4–5%",
     rentalYield: "5–6%",
     description: "A 2025 Tesla Model 3 Long Range AWD joining our Berlin premium fleet. The Model 3 is our best-performing vehicle with consistent 78%+ occupancy and strong demand from both business and leisure travellers.",
+    image: "/cars/tesla-model-3.png",
     faqs: [
       { q: "How is rental revenue distributed?", a: "Smart contracts split monthly revenue proportionally to token holdings. Rental investors receive 100% of their share. Co-owners receive their share only for days they don't use the car." },
       { q: "Can I switch between co-ownership and rental model?", a: "Model switching will be available from Q4 2026. At launch, you choose your model at investment time." },
@@ -802,6 +804,7 @@ export const CARS: CarListing[] = [
     ownershipYield: "4–5%",
     rentalYield: "5–7%",
     description: "A 2025 BMW 330i M Sport joining our Munich business fleet. Preferred by corporate travellers, the 330i commands premium daily rates and achieves 72% occupancy driven by business travel demand.",
+    image: "/cars/bmw-330i.png",
     faqs: [
       { q: "How is rental revenue distributed?", a: "Smart contracts distribute monthly revenue proportionally to token holdings on the 1st of each month." },
       { q: "Can I switch models?", a: "Model switching available from Q4 2026. Choose at investment time." },
@@ -842,6 +845,7 @@ export const CARS: CarListing[] = [
     ownershipYield: "4–6%",
     rentalYield: "5–7%",
     description: "A 2025 Mercedes A 250 AMG Line entering our Hamburg fleet. One of our most popular models — nearly 80% funded. At 75% occupancy and €99/day, this is a strong performer for both co-owners and rental investors.",
+    image: "/cars/mercedes-a250.png",
     faqs: [
       { q: "How is rental revenue distributed?", a: "Monthly smart contract distribution. Co-owners receive their share minus usage days; rental investors receive 100% of their proportional share every month." },
       { q: "Can I switch from co-ownership to rental?", a: "Not at launch. Model switching is planned for Q4 2026." },
@@ -882,6 +886,7 @@ export const CARS: CarListing[] = [
     ownershipYield: "3–5%",
     rentalYield: "4–6%",
     description: "A 2025 VW ID.4 Pro AWD entering our Frankfurt EV fleet. As EV infrastructure matures across Germany, occupancy is growing. Early investors benefit from lower token prices as the category grows — higher risk, higher upside.",
+    image: "/cars/vw-id4.png",
     faqs: [
       { q: "Why is the risk higher for this car?", a: "The EV rental market is growing but less established than ICE vehicles. Occupancy is improving steadily at 68%+, but carries more uncertainty than our premium segment." },
       { q: "How is rental revenue distributed?", a: "Same as all fleet cars — monthly smart contract distribution proportional to token holdings." },

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -83,12 +84,9 @@ export default function CarDetailClient({ car }: { car: CarListing }) {
               <p className="text-base leading-body mb-6 max-w-xl" style={{ color: "var(--muted-foreground)" }}>
                 {car.description}
               </p>
-              {/* Car image placeholder */}
-              <div className="w-full rounded-2xl h-52 md:h-72 flex flex-col items-center justify-center" style={{ background: `linear-gradient(135deg, rgba(196,102,58,0.07) 0%, var(--surface-2) 100%)`, border: "1px solid var(--border)" }}>
-                <Car size={64} style={{ color: "var(--accent)", opacity: 0.25 }} />
-                <p className="text-sm font-medium mt-3" style={{ color: "var(--muted-foreground)", opacity: 0.7 }}>
-                  {car.year} {car.make} {car.model} · {car.color}
-                </p>
+              {/* Car image */}
+              <div className="w-full rounded-2xl h-52 md:h-72 relative overflow-hidden" style={{ border: "1px solid var(--border)" }}>
+                <Image src={car.image} alt={`${car.year} ${car.make} ${car.model}`} fill priority className="object-cover" sizes="(max-width: 1024px) 100vw, 60vw" />
               </div>
             </div>
 

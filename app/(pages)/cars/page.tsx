@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Car, TrendingUp, Shield, Wallet, CalendarDays, Zap, CheckCircle, Users } from "lucide-react";
 import FadeIn from "../../components/FadeIn";
 import { CARS, CAR_FAQS } from "../../data/mock";
@@ -216,14 +217,10 @@ export default function CarsPage() {
               return (
                 <FadeIn key={car.id} delay={i * 0.07}>
                   <div className="card card-hover flex flex-col h-full" style={{ padding: 0 }}>
-                    {/* Image placeholder */}
-                    <div
-                      className="rounded-t-xl h-36 flex flex-col items-center justify-center relative overflow-hidden"
-                      style={{ background: `linear-gradient(135deg, rgba(196,102,58,0.08) 0%, var(--surface-2) 100%)`, borderBottom: "1px solid var(--border)" }}
-                    >
-                      <Car size={40} style={{ color: "var(--accent)", opacity: 0.35 }} />
-                      <p className="text-xs font-medium mt-2" style={{ color: "var(--muted-foreground)" }}>{car.year} {car.color}</p>
-                      <span className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(196,102,58,0.12)", color: "var(--accent)" }}>
+                    {/* Car image */}
+                    <div className="rounded-t-xl h-36 relative overflow-hidden" style={{ borderBottom: "1px solid var(--border)" }}>
+                      <Image src={car.image} alt={`${car.year} ${car.make} ${car.model}`} fill className="object-cover" sizes="(max-width: 768px) 50vw, 25vw" />
+                      <span className="absolute top-3 right-3 text-xs font-semibold px-2 py-0.5 rounded-full z-10" style={{ background: "rgba(0,0,0,0.55)", color: "#fff" }}>
                         {car.daysLeft}d left
                       </span>
                     </div>
