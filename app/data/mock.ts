@@ -897,6 +897,214 @@ export const CARS: CarListing[] = [
   },
 ];
 
+// ─── Medical Recruiting Types ─────────────────────────────────────────────────
+
+export interface MedicalSPV {
+  id: string;
+  name: string;
+  focus: string;
+  description: string;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  daysLeft: number;
+  avgPlacementFee: number;
+  placementsPerYear: number;
+  contractRevenueMonthly: number;
+  riskScore: number;
+  riskBreakdown: RiskBreakdown[];
+  placementYield: string;
+  staffingYield: string;
+  targetHospitals: string[];
+  geographicFocus: string;
+  chain: string;
+  contractAddress: string;
+  spvName: string;
+  team: { name: string; role: string; bio: string; initials: string; color: string }[];
+  faqs: { q: string; a: string }[];
+}
+
+// ─── Medical SPV Data ─────────────────────────────────────────────────────────
+
+export const MEDICAL_SPVS: MedicalSPV[] = [
+  {
+    id: "med1",
+    name: "CareConnect ICU",
+    focus: "Intensive Care",
+    description: "Specialized ICU nurse recruitment for major hospital networks across Germany and Austria.",
+    tokenPrice: 75,
+    totalTokens: 1000,
+    soldTokens: 620,
+    investors: 48,
+    daysLeft: 21,
+    avgPlacementFee: 28000,
+    placementsPerYear: 120,
+    contractRevenueMonthly: 85000,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Market Demand", score: 1, label: "ICU nurse shortage is severe and structural" },
+      { criterion: "Regulatory Risk", score: 2, label: "EU cross-border placement rules — manageable" },
+      { criterion: "Placement Success Rate", score: 2, label: "92% placement success based on pilot" },
+      { criterion: "Geographic Concentration", score: 2, label: "DACH region — strong healthcare systems" },
+      { criterion: "Revenue Predictability", score: 1, label: "Long-term staffing contracts dominate" },
+      { criterion: "Team Experience", score: 1, label: "15+ years combined healthcare recruiting" },
+    ],
+    placementYield: "14–18%",
+    staffingYield: "10–13%",
+    targetHospitals: ["Charité Berlin", "AKH Vienna", "LMU Klinikum Munich", "Universitätsklinikum Frankfurt"],
+    geographicFocus: "Germany & Austria",
+    chain: "Arbitrum",
+    contractAddress: "0x3F4e2B1C8A97F4A123D6E5C789B0A2D1F3E8C4B7",
+    spvName: "CareConnect ICU Capital SPV (Malta) Ltd.",
+    team: [
+      { name: "Dr. Katrin Berger", role: "CEO & Medical Director", bio: "Former ICU director at Charité Berlin. 18 years in critical care medicine and healthcare management.", initials: "KB", color: "#C4663A" },
+      { name: "Stefan Hoffmann", role: "Head of Recruitment", bio: "12 years placing nurses and specialists across DACH. Built partnerships with 40+ nursing schools in Eastern Europe.", initials: "SH", color: "#B8954F" },
+      { name: "Maria Novak", role: "Compliance & Licensing", bio: "EU cross-border healthcare law specialist. Has licensed 300+ nurses for EU practice across 8 countries.", initials: "MN", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "How is placement success tracked?", a: "Each placement is logged on-chain: candidate ID, hospital, start date, fee received. Investors can view real-time pipeline data in the dashboard." },
+      { q: "What if a nurse placed by the SPV leaves within 3 months?", a: "Our contracts include a 90-day replacement guarantee — if the placed nurse leaves, we find a replacement at no additional fee to the hospital, protecting the SPV's reputation and contract value." },
+      { q: "How are dividends paid?", a: "Monthly for staffing contracts (based on hours billed). Per-placement for the placement model — paid within 7 days of fee receipt from hospital." },
+      { q: "What regulatory licenses are required?", a: "The SPV holds temporary employment agency licenses in Germany and Austria. All nurses are licensed via EU professional recognition directive (2005/36/EC)." },
+      { q: "What is the average contract duration?", a: "Hospital staffing contracts run 12–24 months with 3-month notice clauses. Long-term contract renewals run at 87% historically." },
+    ],
+  },
+  {
+    id: "med2",
+    name: "NurseLink Europe",
+    focus: "General Hospital",
+    description: "Cross-border nurse recruitment connecting Eastern European nurses with Western European hospitals.",
+    tokenPrice: 50,
+    totalTokens: 1200,
+    soldTokens: 400,
+    investors: 31,
+    daysLeft: 35,
+    avgPlacementFee: 22000,
+    placementsPerYear: 200,
+    contractRevenueMonthly: 120000,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Market Demand", score: 1, label: "Critical nurse shortage in Western EU" },
+      { criterion: "Regulatory Risk", score: 3, label: "Immigration and recognition timelines vary" },
+      { criterion: "Placement Success Rate", score: 3, label: "85% success — language and adaptation factors" },
+      { criterion: "Geographic Concentration", score: 3, label: "Multi-country operations increase complexity" },
+      { criterion: "Revenue Predictability", score: 2, label: "Strong but dependent on immigration pipeline" },
+      { criterion: "Team Experience", score: 2, label: "Solid team, 6 years operating" },
+    ],
+    placementYield: "16–20%",
+    staffingYield: "11–14%",
+    targetHospitals: ["NHS England (UK)", "AP-HP Paris", "Erasmus MC Rotterdam", "UZ Leuven Belgium"],
+    geographicFocus: "Western EU — Romania, Poland, Bulgaria supply",
+    chain: "Base",
+    contractAddress: "0xA1B2C3D4E5F6789012345678901234567890ABCD",
+    spvName: "NurseLink Europe SPV (Malta) Ltd.",
+    team: [
+      { name: "Andrei Popescu", role: "CEO", bio: "Romanian-born, Brussels-based. Founded the first nurse mobility program between Romania and Belgium in 2018.", initials: "AP", color: "#C4663A" },
+      { name: "Charlotte Dubois", role: "Head of Hospital Relations", bio: "10 years in healthcare HR at AP-HP Paris. Manages all French and Benelux hospital partnerships.", initials: "CD", color: "#B8954F" },
+      { name: "Ioana Munteanu", role: "Nurse Integration Manager", bio: "Registered nurse turned recruiter. Leads language training and cultural integration programs for placed nurses.", initials: "IM", color: "#7c8cf8" },
+    ],
+    faqs: [
+      { q: "How long does it take to place a nurse from Eastern Europe?", a: "Typically 3–6 months: credential recognition (8–12 weeks), language assessment, and placement matching. We have pre-approved pipelines that cut this to 10 weeks for some countries." },
+      { q: "What languages do the nurses speak?", a: "All placed nurses pass B2-level language proficiency in the destination country's language (German, French, Dutch, or English) before placement." },
+      { q: "Is there political risk around EU immigration policy?", a: "EU free movement of workers is a fundamental treaty right and does not depend on domestic immigration policy. All placed nurses are EU citizens." },
+      { q: "What is the average placement fee?", a: "€22,000 net per successful placement, paid by the hospital. This covers credential recognition costs, language training subsidy, and our agency fee." },
+    ],
+  },
+  {
+    id: "med3",
+    name: "ElderCare Staffing",
+    focus: "Elderly Care",
+    description: "Dedicated staffing for elderly care homes and home care agencies in the DACH region.",
+    tokenPrice: 40,
+    totalTokens: 800,
+    soldTokens: 700,
+    investors: 56,
+    daysLeft: 9,
+    avgPlacementFee: 18000,
+    placementsPerYear: 150,
+    contractRevenueMonthly: 95000,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Market Demand", score: 1, label: "Aging population creates structural demand" },
+      { criterion: "Regulatory Risk", score: 2, label: "Elderly care regulated but stable framework" },
+      { criterion: "Placement Success Rate", score: 1, label: "96% — excellent retention in care sector" },
+      { criterion: "Geographic Concentration", score: 2, label: "DACH — Germany, Austria, Switzerland" },
+      { criterion: "Revenue Predictability", score: 1, label: "Long-term care home contracts 24–36 months" },
+      { criterion: "Team Experience", score: 1, label: "Founders with 20+ years in elder care sector" },
+    ],
+    placementYield: "12–15%",
+    staffingYield: "9–11%",
+    targetHospitals: ["AWO Care Homes (Germany)", "Caritas Austria", "Spitex Switzerland", "Johanniter GmbH"],
+    geographicFocus: "Germany, Austria, Switzerland",
+    chain: "Arbitrum",
+    contractAddress: "0xDEADBEEF12345678901234567890ABCDEF123456",
+    spvName: "ElderCare Staffing SPV (Malta) Ltd.",
+    team: [
+      { name: "Brigitte Hartmann", role: "CEO", bio: "20 years managing care homes in Bavaria. Founded ElderCare after identifying a structural talent gap in the sector.", initials: "BH", color: "#C4663A" },
+      { name: "Thomas Keller", role: "CFO", bio: "Healthcare finance specialist. Previously CFO of a 12-facility care home group with €40M annual revenue.", initials: "TK", color: "#4A7C59" },
+      { name: "Ana Stojanović", role: "Recruitment Director", bio: "Built recruitment pipelines from Serbia and North Macedonia to Germany. Specialist in care assistant and geriatric nurse placement.", initials: "AS", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "Why is retention so much higher in elderly care vs hospitals?", a: "Care home workers form long-term bonds with residents. The work environment is stable, lower-stress than acute care, and care homes actively invest in retention through housing support and language assistance." },
+      { q: "How are staffing contract revenues distributed?", a: "Monthly distributions based on hours billed. Each care home contract specifies a fixed hourly rate. Revenue after management costs is distributed proportionally to staffing token holders." },
+      { q: "What if a care home client terminates a contract early?", a: "All contracts include 90-day termination notice requirements and early termination fees of 2 months' revenue. The SPV maintains a 3-month revenue reserve for all investors." },
+      { q: "Is this campaign nearly fully funded?", a: "Yes — we are at 87.5% funding with 9 days remaining. We expect to close at 100% before the deadline." },
+    ],
+  },
+  {
+    id: "med4",
+    name: "MedRecruits Specialist",
+    focus: "Doctors & Specialists",
+    description: "Senior doctor and specialist physician recruitment for private hospitals and clinics across the EU.",
+    tokenPrice: 100,
+    totalTokens: 600,
+    soldTokens: 180,
+    investors: 15,
+    daysLeft: 42,
+    avgPlacementFee: 45000,
+    placementsPerYear: 60,
+    contractRevenueMonthly: 70000,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Market Demand", score: 2, label: "Specialist shortage in EU growing rapidly" },
+      { criterion: "Regulatory Risk", score: 3, label: "Specialist license recognition is complex" },
+      { criterion: "Placement Success Rate", score: 3, label: "78% — specialist matching is harder" },
+      { criterion: "Geographic Concentration", score: 2, label: "Multi-country but private sector focused" },
+      { criterion: "Revenue Predictability", score: 3, label: "Higher fees but longer placement cycles" },
+      { criterion: "Team Experience", score: 2, label: "Strong network, early-stage operations" },
+    ],
+    placementYield: "18–24%",
+    staffingYield: "13–17%",
+    targetHospitals: ["Schön Klinik Group", "Asklepios Private Clinics", "HCA Healthcare UK", "Quirónsalud Spain"],
+    geographicFocus: "EU — Private hospital sector",
+    chain: "Base",
+    contractAddress: "0xF1E2D3C4B5A6978801234567ABCDEF0123456789",
+    spvName: "MedRecruits Specialist SPV (Malta) Ltd.",
+    team: [
+      { name: "Dr. Hans-Peter Vogel", role: "CEO", bio: "Cardiologist turned healthcare entrepreneur. Founded two specialist recruitment firms before MedRecruits.", initials: "HV", color: "#C4663A" },
+      { name: "Isabelle Renard", role: "Head of Physician Relations", bio: "Medical headhunter with 14 years placing surgeons, anaesthesiologists, and specialists across Europe.", initials: "IR", color: "#B8954F" },
+      { name: "Markus Braun", role: "Legal & Licensing", bio: "EU medical license specialist. Has navigated physician recognition procedures in 11 EU member states.", initials: "MB", color: "#9E3A2B" },
+    ],
+    faqs: [
+      { q: "Why is the placement fee so much higher for doctors?", a: "Specialist physician placements involve credential verification across multiple medical councils, language certification, and often relocation packages — the hospital values this highly and pays a premium fee of €35k–55k per placement." },
+      { q: "How long does a specialist physician placement take?", a: "Typically 4–8 months from initial match to first working day. We maintain a pre-screened pipeline of 200+ qualified physicians to reduce time-to-placement." },
+      { q: "What specialist types does the SPV focus on?", a: "Primary focus: surgeons (general, orthopaedic, cardiac), anaesthesiologists, radiologists, and emergency medicine physicians. These are the highest-demand and highest-fee categories." },
+      { q: "What is the risk if early-stage campaigns don't fill?", a: "We operate with a minimum-viable funding threshold of 40%. Below this, funds are returned to investors. Above 40%, we can begin operations at reduced scale and grow as additional investors join." },
+      { q: "Why invest early in this campaign?", a: "Early investors receive preferential token pricing at €100. Post-campaign token price adjusts to €120 if first-year placements exceed projections." },
+    ],
+  },
+];
+
+export const MEDICAL_FAQS = [
+  { q: "How are placement fees tracked and verified?", a: "Each placement generates a smart contract event when the hospital invoice is paid. The amount, hospital, and placement date are recorded on-chain. Investors can view placement activity in real-time from their dashboard." },
+  { q: "What is the average placement fee in medical recruiting?", a: "For nurses: €15,000–€30,000 per placement. For specialist physicians: €35,000–€55,000. Fees are paid by the hiring hospital upon the nurse or doctor starting their contract." },
+  { q: "How often are dividends paid?", a: "Staffing contract model: monthly (based on hours billed that month). Placement model: per-event, within 7 days of invoice collection from the hospital." },
+  { q: "What if a placed medical professional leaves within the guarantee period?", a: "All placements come with a 90-day guarantee. If the nurse or doctor leaves within 90 days for any reason, the SPV replaces them at no cost to the hospital, protecting the placement fee and the SPV's contract relationship." },
+  { q: "Is this regulated under EU law?", a: "Yes. Each SPV holds temporary employment agency licenses in its operating countries and complies with EU Directive 2008/104/EC on temporary agency work. All cross-border placements use the EU professional recognition directive (2005/36/EC)." },
+  { q: "What is the difference between the Placement Fund and Staffing Contract models?", a: "Placement Fund: higher returns (12–24% yield) tied to one-time placement fees. Returns are lumpy — you earn when placements complete. Staffing Contract: lower but steady returns (9–17%) from ongoing hourly billing contracts. More predictable monthly income." },
+];
+
 export const CAR_FAQS = [
   { q: "How is rental revenue distributed?", a: "Smart contracts automatically split monthly rental revenue proportional to token holdings. Rental investors receive 100% of their share; co-owners receive their share only for days they don't use the car." },
   { q: "Can I switch between co-ownership and rental investment?", a: "At launch, you choose your model at investment time. Model switching will be available from Q4 2026." },

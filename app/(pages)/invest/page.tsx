@@ -5,7 +5,7 @@ import {
   TrendingUp, Landmark, Gift, Zap,
   Building2, Banknote, Star,
   FileText, Key, CalendarDays,
-  Tag, Vote, ShieldCheck, Car,
+  Tag, Vote, ShieldCheck, Car, Stethoscope,
 } from "lucide-react";
 import FadeIn from "../../components/FadeIn";
 import TrustBar from "../../components/TrustBar";
@@ -179,6 +179,34 @@ export default function InvestPage() {
               </div>
               <Link href="/cars" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem" }}>
                 <span>Browse Cars →</span>
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Healthcare Recruiting Feature ── */}
+      <section className="section" style={{ background: "var(--surface)" }}>
+        <div className="container-lg mx-auto">
+          <FadeIn>
+            <div
+              className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center"
+              style={{ background: "linear-gradient(135deg, rgba(74,124,89,0.08) 0%, rgba(184,149,79,0.05) 100%)", border: "1px solid rgba(74,124,89,0.2)" }}
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(74,124,89,0.12)", color: "#4A7C59" }}>
+                <Stethoscope size={28} />
+              </div>
+              <div className="flex-1">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#4A7C59" }}>New Vertical</span>
+                <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
+                  Medical Recruiting — Fund Healthcare Staffing
+                </h3>
+                <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
+                  Invest in SPV-structured platforms placing nurses and doctors with hospitals across Europe. Earn from placement fees and long-term staffing contracts. From €40 per token.
+                </p>
+              </div>
+              <Link href="/medical" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#4A7C59", borderColor: "#4A7C59" }}>
+                <span>Browse SPVs →</span>
               </Link>
             </div>
           </FadeIn>
