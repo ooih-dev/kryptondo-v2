@@ -9,6 +9,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [dark, setDark] = useState(false);
+  const [hasProfile, setHasProfile] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -25,11 +26,22 @@ export default function Header() {
     }
   }, [dark]);
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("kryptondo_registration");
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        setHasProfile(!!parsed?.name);
+      }
+    } catch {}
+  }, []);
+
   const navLinks = [
     { href: "/invest", label: "Invest" },
     { href: "/for-business", label: "For Business" },
     { href: "/#how-it-works", label: "How It Works" },
     { href: "/about", label: "About" },
+    ...(hasProfile ? [{ href: "/dashboard", label: "Dashboard" }] : []),
   ];
 
   return (
@@ -125,10 +137,10 @@ export default function Header() {
               )}
             </button>
 
-            <Link href="/invest" className="btn-secondary text-sm !py-2 !px-4">
+            <Link href="/register" className="btn-secondary text-sm !py-2 !px-4">
               Log In
             </Link>
-            <Link href="/invest" className="btn-primary text-sm !py-2 !px-4">
+            <Link href="/register" className="btn-primary text-sm !py-2 !px-4">
               <span>Get Started</span>
             </Link>
           </div>
@@ -174,10 +186,10 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex gap-2 pt-3 pb-1">
-                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center !py-2.5 text-sm">
+                <Link href="/register" onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center !py-2.5 text-sm">
                   Log In
                 </Link>
-                <Link href="/invest" onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center !py-2.5 text-sm">
+                <Link href="/register" onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center !py-2.5 text-sm">
                   <span>Get Started</span>
                 </Link>
               </div>

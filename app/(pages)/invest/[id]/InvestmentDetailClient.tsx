@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import RiskScale from "../../../components/RiskScale";
 import FAQ from "../../../components/FAQ";
+import InvestmentCalculator from "../../../components/InvestmentCalculator";
 import type { InvestmentOpportunity } from "../../../data/mock";
 
 const TABS = [
@@ -131,13 +132,13 @@ export default function InvestmentDetailClient({ opp }: { opp: InvestmentOpportu
                 ))}
               </div>
 
-              <a
+              <Link
                 href="#invest"
                 className="btn-primary w-full text-center block mb-2"
                 style={{ padding: "0.875rem 1rem", fontSize: "0.9375rem" }}
               >
                 <span>Invest from €{opp.minInvestment} →</span>
-              </a>
+              </Link>
               <p className="text-center text-xs" style={{ color: "var(--muted-foreground)" }}>
                 EU-regulated · KYC required · Non-custodial
               </p>
@@ -145,6 +146,9 @@ export default function InvestmentDetailClient({ opp }: { opp: InvestmentOpportu
           </div>
         </div>
       </section>
+
+      {/* ── Calculator ── */}
+      <InvestmentCalculator opp={opp} />
 
       {/* ── Tabs ── */}
       <div
@@ -642,13 +646,13 @@ export default function InvestmentDetailClient({ opp }: { opp: InvestmentOpportu
         className="fixed bottom-0 left-0 right-0 lg:hidden z-30 p-4"
         style={{ background: "var(--surface)", borderTop: "1px solid var(--border)", boxShadow: "0 -4px 20px rgba(45,42,38,0.12)" }}
       >
-        <a
+        <Link
           href="#invest"
           className="btn-primary w-full text-center block"
           style={{ padding: "0.875rem 1rem", fontSize: "0.9375rem" }}
         >
           <span>Invest from €{opp.minInvestment} →</span>
-        </a>
+        </Link>
       </div>
     </div>
   );
