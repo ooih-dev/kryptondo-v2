@@ -14,6 +14,7 @@ import OpportunityCard from "../../components/OpportunityCard";
 import FAQ from "../../components/FAQ";
 import DividendFormula from "../../components/DividendFormula";
 import { TRUST_STATS_B2C, LIVE_OPPORTUNITIES, B2C_FAQS } from "../../data/mock";
+import { getTranslations } from "../../i18n/server";
 
 export const metadata: Metadata = {
   title: "Invest — Browse Live Opportunities",
@@ -65,7 +66,8 @@ const TESTIMONIALS = [
   },
 ];
 
-export default function InvestPage() {
+export default async function InvestPage() {
+  const t = await getTranslations("invest");
   return (
     <div>
       {/* ── Hero ── */}
@@ -83,7 +85,7 @@ export default function InvestPage() {
           <div className="max-w-3xl">
             <FadeIn>
               <div className="badge mb-8 w-fit">
-                For Investors · Min €100 · Non-Custodial
+                {t.badge}
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
@@ -91,24 +93,22 @@ export default function InvestPage() {
                 className="font-extrabold text-balance mb-6"
                 style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}
               >
-                Invest in the Businesses{" "}
-                <span className="accent-text">You Love</span>
+                {t.headline}{" "}
+                <span className="accent-text">{t.headlineAccent}</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
               <p className="text-lg md:text-xl mb-10 max-w-2xl leading-body" style={{ color: "var(--muted-foreground)" }}>
-                Own real equity. Earn dividends automatically. Get exclusive loyalty perks —
-                starting from <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>€100</strong>.
-                Your tokens, your wallet.
+                {t.subtitle}
               </p>
             </FadeIn>
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="#opportunities" className="btn-primary text-base !py-3.5 !px-8">
-                  <span>Explore Investments →</span>
+                  <span>{t.ctaPrimary}</span>
                 </a>
                 <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">
-                  How It Works
+                  {t.ctaSecondary}
                 </a>
               </div>
             </FadeIn>
@@ -123,16 +123,16 @@ export default function InvestPage() {
       <section className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">The Deal</span>
+            <span className="section-label">{t.dealLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Three reasons to invest on Kryptondo
+              {t.dealTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon: <Building2 size={24} />, title: "Own Real Equity", desc: "Tokens backed by a Malta SPV holding real business equity. Legally compliant ownership — not points or vouchers.", color: "var(--accent)" },
-              { icon: <Banknote size={24} />, title: "Earn Dividends", desc: "Automatic distribution when the business distributes profits. Dividends arrive in your wallet — no action needed.", color: "var(--gold)" },
-              { icon: <Star size={24} />, title: "Get Exclusive Perks", desc: "Token holders unlock discounts, early access, VIP experiences. Ownership with lifestyle benefits.", color: "var(--green)" },
+              { icon: <Building2 size={24} />, title: t.dealEquity, desc: t.dealEquityDesc, color: "var(--accent)" },
+              { icon: <Banknote size={24} />, title: t.dealDividends, desc: t.dealDividendsDesc, color: "var(--gold)" },
+              { icon: <Star size={24} />, title: t.dealPerks, desc: t.dealPerksDesc, color: "var(--green)" },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
                 <div
@@ -170,16 +170,16 @@ export default function InvestPage() {
                 <Car size={28} />
               </div>
               <div className="flex-1">
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>New Vertical</span>
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "var(--accent)" }}>{t.carBannerLabel}</span>
                 <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
-                  Car Subscription — Drive or Earn
+                  {t.carBannerTitle}
                 </h3>
                 <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
-                  Fund premium cars with tokens. Co-own and book driving time, or invest purely for passive rental income. From €50 per token.
+                  {t.carBannerDesc}
                 </p>
               </div>
               <Link href="/cars" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem" }}>
-                <span>Browse Cars →</span>
+                <span>{t.carBannerCTA}</span>
               </Link>
             </div>
           </FadeIn>
@@ -200,14 +200,14 @@ export default function InvestPage() {
               <div className="flex-1">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#4A7C59" }}>New Vertical</span>
                 <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
-                  Medical Recruiting — Fund Healthcare Staffing
+                  {t.medicalBannerTitle}
                 </h3>
                 <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
-                  Invest in SPV-structured platforms placing nurses and doctors with hospitals across Europe. Earn from placement fees and long-term staffing contracts. From €40 per token.
+                  {t.medicalBannerDesc}
                 </p>
               </div>
               <Link href="/medical" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#4A7C59", borderColor: "#4A7C59" }}>
-                <span>Browse SPVs →</span>
+                <span>{t.medicalBannerCTA}</span>
               </Link>
             </div>
           </FadeIn>
@@ -228,14 +228,14 @@ export default function InvestPage() {
               <div className="flex-1">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#8B5CF6" }}>New Vertical</span>
                 <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
-                  Fitness Studios — Own Your Gym, Work Out for Free
+                  {t.fitnessBannerTitle}
                 </h3>
                 <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
-                  Invest in CrossFit boxes, yoga studios, and premium gyms. Earn dividends from memberships. Unlock free access, personal training, and VIP classes. From €40 per token.
+                  {t.fitnessBannerDesc}
                 </p>
               </div>
               <Link href="/fitness" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#8B5CF6", borderColor: "#8B5CF6" }}>
-                <span>Browse Studios →</span>
+                <span>{t.fitnessBannerCTA}</span>
               </Link>
             </div>
           </FadeIn>
@@ -256,14 +256,14 @@ export default function InvestPage() {
               <div className="flex-1">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#0EA5E9" }}>New Vertical</span>
                 <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
-                  EV Charging Stations — Earn from Every Charge
+                  {t.evBannerTitle}
                 </h3>
                 <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
-                  Fund high-traffic EV charging infrastructure across Europe. Pure passive income from per-kWh fees. No loyalty perks — just strong, steady returns. From €75 per token.
+                  {t.evBannerDesc}
                 </p>
               </div>
               <Link href="/ev-charging" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#0EA5E9", borderColor: "#0EA5E9" }}>
-                <span>Browse Stations →</span>
+                <span>{t.evBannerCTA}</span>
               </Link>
             </div>
           </FadeIn>
@@ -284,14 +284,14 @@ export default function InvestPage() {
               <div className="flex-1">
                 <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#F59E0B" }}>New Vertical</span>
                 <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
-                  Solar Energy — Invest or Contribute Your Rooftop
+                  {t.solarBannerTitle}
                 </h3>
                 <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
-                  Fund rooftop solar installations and earn from feed-in tariffs. Rooftop owners can contribute their roof for 30-50% higher returns. From €25 per token.
+                  {t.solarBannerDesc}
                 </p>
               </div>
               <Link href="/solar" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#F59E0B", borderColor: "#F59E0B" }}>
-                <span>Browse Projects →</span>
+                <span>{t.solarBannerCTA}</span>
               </Link>
             </div>
           </FadeIn>
@@ -304,9 +304,9 @@ export default function InvestPage() {
           <FadeIn className="mb-10">
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
-                <span className="section-label">Live Opportunities</span>
+                <span className="section-label">{t.liveLabel}</span>
                 <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-                  Businesses raising right now
+                  {t.liveTitle}
                 </h2>
               </div>
               {/* Filter mock */}
@@ -340,9 +340,9 @@ export default function InvestPage() {
       <section id="how-it-works" className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
-            <span className="section-label">How It Works</span>
+            <span className="section-label">{t.howLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Invest in under 10 minutes
+              {t.howTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-5 gap-5">
@@ -369,9 +369,9 @@ export default function InvestPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Why Kryptondo</span>
+            <span className="section-label">{t.whyLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              What makes us different
+              {t.whyTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-5 gap-4">
@@ -396,9 +396,9 @@ export default function InvestPage() {
       <section id="tokens" className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Tokens Explained</span>
+            <span className="section-label">{t.tokensLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              No prior experience required
+              {t.tokensTitle}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -412,7 +412,7 @@ export default function InvestPage() {
                     className="font-bold mb-6 tracking-tight-sub"
                     style={{ fontSize: "1.25rem", color: "var(--foreground)" }}
                   >
-                    Think of it as a digital share certificate
+                    {t.tokensSubtitle}
                   </h3>
                   <div className="space-y-4">
                     {[
@@ -551,12 +551,12 @@ export default function InvestPage() {
       <section id="loyalty" className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-xl mx-auto">
-            <span className="section-label">Loyalty & Perks</span>
+            <span className="section-label">{t.loyaltyLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Ownership with lifestyle benefits
+              {t.loyaltyTitle}
             </h2>
             <p className="text-sm mt-3 leading-body" style={{ color: "var(--muted-foreground)" }}>
-              Token holders unlock exclusive rewards from the businesses they invest in. More tokens → better perks.
+              {t.loyaltySub}
             </p>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-4 mb-8">
@@ -599,9 +599,9 @@ export default function InvestPage() {
       <section className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-md mx-auto">
-            <span className="section-label">Security & Compliance</span>
+            <span className="section-label">{t.securityLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Built for security from day one
+              {t.securityTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-4">
@@ -612,7 +612,7 @@ export default function InvestPage() {
               { icon: <Wallet size={24} />, title: "Non-Custodial", desc: "We never hold your tokens. Your assets are always in your own wallet." },
             ].map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.08}>
-                <div className="card flex gap-4 h-full" style={{ borderColor: "var(--border-subtle)" }}>
+                <div className="card card-hover flex gap-4 h-full" style={{ borderColor: "var(--border-subtle)" }}>
                   <div className="shrink-0" style={{ color: "var(--accent)" }}>{item.icon}</div>
                   <div>
                     <h3 className="font-semibold mb-1 tracking-tight-sub" style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}>
@@ -631,17 +631,17 @@ export default function InvestPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-md mx-auto">
-            <span className="section-label">Social Proof</span>
+            <span className="section-label">{t.socialLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Trusted by 1,800+ investors
+              {t.socialTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-5 mb-12">
-            {TESTIMONIALS.map((t, i) => (
-              <FadeIn key={t.name} delay={i * 0.1}>
+            {TESTIMONIALS.map((item, i) => (
+              <FadeIn key={item.name} delay={i * 0.1}>
                 <div className="card flex flex-col h-full" style={{ borderColor: "var(--border-subtle)" }}>
                   <p className="text-sm leading-body mb-5 italic flex-1" style={{ color: "var(--muted-foreground)" }}>
-                    &ldquo;{t.text}&rdquo;
+                    &ldquo;{item.text}&rdquo;
                   </p>
                   <div
                     className="flex items-center justify-between pt-4"
@@ -649,15 +649,15 @@ export default function InvestPage() {
                   >
                     <div>
                       <p className="font-semibold tracking-tight-sub" style={{ fontSize: "0.875rem", color: "var(--foreground)" }}>
-                        {t.name}
+                        {item.name}
                       </p>
-                      <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>{t.city}</p>
+                      <p className="text-xs" style={{ color: "var(--muted-foreground)" }}>{item.city}</p>
                     </div>
                     <span
                       className="text-xs font-medium px-2.5 py-1 rounded-full"
                       style={{ background: "var(--accent-blue-glow)", color: "var(--accent-blue)" }}
                     >
-                      {t.tokens}
+                      {item.tokens}
                     </span>
                   </div>
                 </div>
@@ -690,9 +690,9 @@ export default function InvestPage() {
       <section className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-10 max-w-md mx-auto">
-            <span className="section-label">FAQ</span>
+            <span className="section-label">{t.faqLabel}</span>
             <h2 className="text-display-sm font-bold" style={{ color: "var(--foreground)" }}>
-              Questions from investors
+              {t.faqTitle}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -712,23 +712,23 @@ export default function InvestPage() {
                 border: "1px solid var(--border)",
               }}
             >
-              <span className="section-label">Start Today</span>
+              <span className="section-label">{t.ctaLabel}</span>
               <h2
                 className="font-extrabold text-balance mb-4 mx-auto max-w-lg"
                 style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.01em", lineHeight: "1.15", color: "var(--foreground)" }}
               >
-                Be more than a customer.{" "}
-                <span className="accent-text">Be an owner.</span>
+                {t.ctaTitle}{" "}
+                <span className="accent-text">{t.ctaAccent}</span>
               </h2>
               <p className="text-base mb-10 max-w-md mx-auto leading-body" style={{ color: "var(--muted-foreground)" }}>
-                The restaurant where you have your morning coffee? You could own a piece of it.
+                {t.ctaSub}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link href="/invest#opportunities" className="btn-primary text-base !py-3.5 !px-8">
-                  <span>Browse Businesses →</span>
+                  <span>{t.ctaBrowse}</span>
                 </Link>
                 <Link href="/invest#opportunities" className="btn-secondary text-base !py-3.5 !px-8">
-                  Start Investing from €100
+                  {t.ctaStart}
                 </Link>
               </div>
               <p className="text-xs mt-6" style={{ color: "var(--muted-foreground)" }}>

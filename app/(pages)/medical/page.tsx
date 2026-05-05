@@ -7,6 +7,7 @@ import {
 import FadeIn from "../../components/FadeIn";
 import FAQ from "../../components/FAQ";
 import { MEDICAL_SPVS, MEDICAL_FAQS } from "../../data/mock";
+import { getTranslations } from "../../i18n/server";
 
 export const metadata: Metadata = {
   title: "Medical Recruiting — Invest in Healthcare Staffing | Kryptondo",
@@ -26,13 +27,6 @@ function getRiskLevel(score: number) {
 
 const MEDICAL_ACCENT = "#4A7C59";
 const MEDICAL_GOLD = "#B8954F";
-
-const HOW_IT_WORKS = [
-  { step: "01", icon: <Stethoscope size={20} />, title: "Browse Healthcare SPVs", desc: "Explore SPVs focused on ICU, general hospital, elderly care, or specialist physician recruitment." },
-  { step: "02", icon: <Wallet size={20} />, title: "Invest from €40", desc: "Each token funds recruitment infrastructure, licensing, and training pipelines for medical staff placement." },
-  { step: "03", icon: <Users size={20} />, title: "SPV Places Medical Staff", desc: "The SPV places nurses and doctors with hospitals, ICUs, and care facilities. Fees are collected on completion." },
-  { step: "04", icon: <TrendingUp size={20} />, title: "Earn from Placements & Contracts", desc: "Receive dividends from one-time placement fees or ongoing staffing contract revenue — monthly." },
-];
 
 const MODELS = [
   {
@@ -83,7 +77,16 @@ const BENEFITS = [
   { icon: <Wallet size={20} />, title: "Non-Custodial Tokens", desc: "Tokens on Arbitrum/Base. Your investment is in your wallet — not on our platform.", accent: MEDICAL_GOLD },
 ];
 
-export default function MedicalPage() {
+export default async function MedicalPage() {
+  const t = await getTranslations("medical");
+
+  const HOW_IT_WORKS = [
+    { step: "01", icon: <Stethoscope size={20} />, title: "Browse Healthcare SPVs", desc: "Explore SPVs focused on ICU, general hospital, elderly care, or specialist physician recruitment." },
+    { step: "02", icon: <Wallet size={20} />, title: "Invest from €40", desc: "Each token funds recruitment infrastructure, licensing, and training pipelines for medical staff placement." },
+    { step: "03", icon: <Users size={20} />, title: "SPV Places Medical Staff", desc: "The SPV places nurses and doctors with hospitals, ICUs, and care facilities. Fees are collected on completion." },
+    { step: "04", icon: <TrendingUp size={20} />, title: "Earn from Placements & Contracts", desc: "Receive dividends from one-time placement fees or ongoing staffing contract revenue — monthly." },
+  ];
+
   return (
     <div>
       {/* ── Hero ── */}
@@ -94,27 +97,26 @@ export default function MedicalPage() {
           <div className="max-w-3xl">
             <FadeIn>
               <div className="badge mb-8 w-fit" style={{ background: "rgba(74,124,89,0.12)", color: MEDICAL_ACCENT, borderColor: "rgba(74,124,89,0.2)" }}>
-                Healthcare Staffing · From €40 · EU-Regulated SPVs
+                {t.badge}
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
               <h1 className="font-extrabold text-balance mb-6" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}>
-                Invest in Healthcare Staffing.{" "}
-                <span style={{ color: MEDICAL_ACCENT }}>Fund the Future of Care.</span>
+                {t.headline}{" "}
+                <span style={{ color: MEDICAL_ACCENT }}>{t.headlineAccent}</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
               <p className="text-lg md:text-xl mb-10 max-w-2xl leading-body" style={{ color: "var(--muted-foreground)" }}>
-                Back SPV-structured recruiting platforms connecting nurses and doctors with hospitals and care facilities.
-                Earn returns from one of the most in-demand sectors in the world.
+                {t.subtitle}
               </p>
             </FadeIn>
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="#opportunities" className="btn-primary text-base !py-3.5 !px-8" style={{ background: MEDICAL_ACCENT, borderColor: MEDICAL_ACCENT }}>
-                  <span>Browse Opportunities →</span>
+                  <span>{t.ctaPrimary}</span>
                 </a>
-                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">How It Works</a>
+                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">{t.ctaSecondary}</a>
               </div>
             </FadeIn>
           </div>
@@ -125,8 +127,8 @@ export default function MedicalPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">The Problem</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Why Healthcare Staffing Matters</h2>
+            <span className="section-label">{t.problemLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.problemTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
@@ -153,8 +155,8 @@ export default function MedicalPage() {
       <section id="how-it-works" className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
-            <span className="section-label">How It Works</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>From €40 to healthcare investor in minutes</h2>
+            <span className="section-label">{t.howLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.howTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-6">
             {HOW_IT_WORKS.map((s, i) => (
@@ -177,8 +179,8 @@ export default function MedicalPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Two Models</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Choose your investment strategy</h2>
+            <span className="section-label">{t.modelsLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.modelsTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-6">
             {MODELS.map((m, i) => (
@@ -243,8 +245,8 @@ export default function MedicalPage() {
       <section className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Market Opportunity</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>A sector that cannot stop growing</h2>
+            <span className="section-label">{t.marketLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.marketTitle}</h2>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
             {MARKET_STATS.map((s, i) => (
@@ -278,8 +280,8 @@ export default function MedicalPage() {
       <section id="opportunities" className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="mb-10">
-            <span className="section-label">Available Opportunities</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Healthcare SPVs raising now</h2>
+            <span className="section-label">{t.opportunitiesLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.opportunitiesTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {MEDICAL_SPVS.map((spv, i) => {
@@ -303,10 +305,10 @@ export default function MedicalPage() {
                       <p className="text-xs leading-body" style={{ color: "var(--muted-foreground)" }}>{spv.description}</p>
                       <div className="grid grid-cols-2 gap-2">
                         {[
-                          { val: `€${spv.tokenPrice}`, lbl: "Token price" },
-                          { val: spv.placementYield, lbl: "Placement yield" },
-                          { val: `€${(spv.avgPlacementFee / 1000).toFixed(0)}k`, lbl: "Avg fee" },
-                          { val: `${spv.placementsPerYear}/yr`, lbl: "Placements" },
+                          { val: `€${spv.tokenPrice}`, lbl: t.tokenPrice },
+                          { val: spv.placementYield, lbl: t.placementYield },
+                          { val: `€${(spv.avgPlacementFee / 1000).toFixed(0)}k`, lbl: t.avgFee },
+                          { val: `${spv.placementsPerYear}/yr`, lbl: t.placements },
                         ].map((s) => (
                           <div key={s.lbl} className="rounded-lg py-2.5 text-center" style={{ background: "var(--surface-2)" }}>
                             <p className="font-semibold text-xs" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>{s.val}</p>
@@ -328,7 +330,7 @@ export default function MedicalPage() {
                         </div>
                       </div>
                       <Link href={`/medical/${spv.id}`} className="btn-primary w-full text-center mt-auto" style={{ fontSize: "0.8125rem", padding: "0.6875rem 1rem", background: MEDICAL_ACCENT, borderColor: MEDICAL_ACCENT }}>
-                        <span>View SPV Details</span>
+                        <span>{t.viewSPV}</span>
                       </Link>
                     </div>
                   </div>
@@ -343,8 +345,8 @@ export default function MedicalPage() {
       <section className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Customer Base</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Who hires from these SPVs</h2>
+            <span className="section-label">{t.customersLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.customersTitle}</h2>
           </FadeIn>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
             {CUSTOMERS.map((c, i) => (
@@ -366,8 +368,8 @@ export default function MedicalPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Why Invest</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Built for long-term returns</h2>
+            <span className="section-label">{t.whyLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.whyTitle}</h2>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {BENEFITS.map((b, i) => (
@@ -389,8 +391,8 @@ export default function MedicalPage() {
       <section className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-10 max-w-lg mx-auto">
-            <span className="section-label">FAQ</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Common questions</h2>
+            <span className="section-label">{t.faqLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.faqTitle}</h2>
           </FadeIn>
           <FadeIn>
             <FAQ items={MEDICAL_FAQS} />
@@ -405,13 +407,13 @@ export default function MedicalPage() {
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(74,124,89,0.12)", color: MEDICAL_ACCENT }}>
               <Stethoscope size={32} />
             </div>
-            <h2 className="text-display-md font-bold mb-4" style={{ color: "var(--foreground)" }}>Start Investing in Healthcare</h2>
+            <h2 className="text-display-md font-bold mb-4" style={{ color: "var(--foreground)" }}>{t.ctaTitle}</h2>
             <p className="text-lg leading-body mb-8 max-w-xl mx-auto" style={{ color: "var(--muted-foreground)" }}>
-              Fund the platforms placing nurses and doctors across Europe. From €40 per token — backed by EU-regulated Malta SPVs.
+              {t.ctaSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="#opportunities" className="btn-primary text-base !py-3.5 !px-8" style={{ background: MEDICAL_ACCENT, borderColor: MEDICAL_ACCENT }}>
-                <span>Browse Healthcare SPVs →</span>
+                <span>{t.ctaPrimary}</span>
               </a>
               <Link href="/register" className="btn-secondary text-base !py-3.5 !px-8">Create Account</Link>
             </div>

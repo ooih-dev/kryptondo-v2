@@ -260,6 +260,10 @@
     box-shadow: var(--shadow-md);
     transform: translateY(-3px);
   }
+  .card-hover:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
 
   /* ── Layout ── */
   .section     { padding: 5rem 1.5rem; }
@@ -389,6 +393,11 @@
   .card        { padding: 2.5rem; }
 }
 
+@media (min-width: 1280px) {
+  .section     { padding: 8rem 6rem; }
+  .section-sm  { padding: 5rem 6rem; }
+}
+
 /* ─────────────────────────────────────────────
    Utilities
    ───────────────────────────────────────────── */
@@ -407,6 +416,9 @@
   .track-sub     { letter-spacing: -0.01em; }
   .track-wide    { letter-spacing: 0.08em; }
   .track-wider   { letter-spacing: 0.14em; }
+
+  /* Tailwind-style tracking alias used across card headings */
+  .tracking-tight-sub { letter-spacing: -0.01em; }
 
   /* Line heights */
   .leading-display { line-height: 1.1; }

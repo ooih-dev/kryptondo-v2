@@ -5,61 +5,115 @@ import FadeIn from "./components/FadeIn";
 import TrustBar from "./components/TrustBar";
 import AllOpportunitiesSection from "./components/AllOpportunitiesSection";
 import { TRUST_STATS_B2C } from "./data/mock";
+import { getTranslations } from "./i18n/server";
 
 export const metadata: Metadata = {
   title: "Kryptondo — Invest in Businesses You Love",
 };
 
-const HOW_IT_WORKS = [
-  {
-    step: "01",
-    title: "Browse & Invest",
-    desc: "Discover local businesses raising capital. Pick the ones you love. Start from €100.",
-    icon: (
-      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8" />
-        <path d="m21 21-4.35-4.35" />
-      </svg>
-    ),
-  },
-  {
-    step: "02",
-    title: "Receive Tokens",
-    desc: "Ownership is recorded as tokens on Arbitrum — held in your wallet, not ours.",
-    icon: (
-      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-      </svg>
-    ),
-  },
-  {
-    step: "03",
-    title: "Earn Dividends",
-    desc: "Automatic profit distribution to your wallet when businesses perform. No action needed.",
-    icon: (
-      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-      </svg>
-    ),
-  },
-  {
-    step: "04",
-    title: "Get Perks",
-    desc: "Token holders unlock exclusive discounts, early access, and VIP experiences.",
-    icon: (
-      <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
-        <path d="M20 12V22H4V12" /><path d="M22 7H2v5h20V7z" /><path d="M12 22V7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-      </svg>
-    ),
-  },
-];
+export default async function HomePage() {
+  const t = await getTranslations("home");
 
-export default function HomePage() {
+  const HOW_IT_WORKS = [
+    {
+      step: "01",
+      title: t.howStep1Title,
+      desc: t.howStep1Desc,
+      icon: (
+        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      ),
+    },
+    {
+      step: "02",
+      title: t.howStep2Title,
+      desc: t.howStep2Desc,
+      icon: (
+        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ),
+    },
+    {
+      step: "03",
+      title: t.howStep3Title,
+      desc: t.howStep3Desc,
+      icon: (
+        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <line x1="12" y1="1" x2="12" y2="23" /><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+        </svg>
+      ),
+    },
+    {
+      step: "04",
+      title: t.howStep4Title,
+      desc: t.howStep4Desc,
+      icon: (
+        <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth={1.5} viewBox="0 0 24 24">
+          <path d="M20 12V22H4V12" /><path d="M22 7H2v5h20V7z" /><path d="M12 22V7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+        </svg>
+      ),
+    },
+  ];
+
+  const PILLARS = [
+    {
+      icon: <Shield className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
+      label: t.pillarRisk,
+      title: t.pillarRiskTitle,
+      desc: t.pillarRiskDesc,
+      accent: "var(--accent)",
+    },
+    {
+      icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
+      label: t.pillarInterest,
+      title: t.pillarInterestTitle,
+      desc: t.pillarInterestDesc,
+      accent: "var(--gold)",
+    },
+    {
+      icon: <Eye className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
+      label: t.pillarTransparency,
+      title: t.pillarTransparencyTitle,
+      desc: t.pillarTransparencyDesc,
+      accent: "#7c8cf8",
+    },
+    {
+      icon: <Scale className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
+      label: t.pillarLaw,
+      title: t.pillarLawTitle,
+      desc: t.pillarLawDesc,
+      accent: "#4A7C59",
+    },
+  ];
+
+  const TRUST_ITEMS = [
+    {
+      icon: <Landmark className="w-6 h-6 md:w-8 md:h-8" />,
+      title: t.trustMaltaSPV,
+      desc: t.trustMaltaSPVDesc,
+      accent: "var(--accent)",
+    },
+    {
+      icon: <ShieldCheck className="w-6 h-6 md:w-8 md:h-8" />,
+      title: t.trustCertikAudit,
+      desc: t.trustCertikDesc,
+      accent: "var(--gold)",
+    },
+    {
+      icon: <Wallet className="w-6 h-6 md:w-8 md:h-8" />,
+      title: t.trustNonCustodialTitle,
+      desc: t.trustNonCustodialDesc,
+      accent: "var(--accent)",
+    },
+  ];
+
   return (
     <div>
-      {/* ── Hero ── */}
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center pt-20 pb-24 px-4 overflow-hidden bg-grid">
-        {/* Glow orbs */}
         <div
           className="glow-orb w-[600px] h-[500px] -top-20 -right-32"
           style={{ background: "radial-gradient(ellipse, var(--accent-blue-glow) 0%, transparent 65%)" }}
@@ -74,15 +128,15 @@ export default function HomePage() {
 
             <FadeIn delay={0}>
               <div className="badge mb-8 w-fit">
-                EU-Regulated · Malta SPV · CertiK Audited
+                {t.badge}
               </div>
             </FadeIn>
 
             <FadeIn delay={0.08}>
               <h1 className="text-display-xl font-extrabold text-balance mb-6" style={{ color: "var(--foreground)" }}>
-                Invest in businesses.{" "}
-                <span className="accent-text">Own a piece.</span>{" "}
-                Earn dividends.
+                {t.headline}{" "}
+                <span className="accent-text">{t.headlineAccent}</span>{" "}
+                {t.headlineSuffix}
               </h1>
             </FadeIn>
 
@@ -91,57 +145,49 @@ export default function HomePage() {
                 className="text-lg md:text-xl mb-10 max-w-xl leading-body"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                The 360° investment platform. Risk-driven, interest-aligned, radically transparent, and legally secured.
-                Real ownership. Real returns. Non-custodial — starting from <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>€100</strong>.
+                {t.subtitle}
               </p>
             </FadeIn>
 
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/invest" className="btn-primary text-base !py-3.5 !px-8">
-                  <span>I Want to Invest →</span>
+                  <span>{t.ctaPrimary}</span>
                 </Link>
                 <Link href="/for-business" className="btn-secondary text-base !py-3.5 !px-8">
-                  <span>I Want to Raise Capital →</span>
+                  <span>{t.ctaSecondary}</span>
                 </Link>
               </div>
             </FadeIn>
 
-            {/* Trust line */}
             <FadeIn delay={0.3}>
               <div className="flex items-center gap-6 mt-10 flex-wrap">
-                {[
-                  { text: "Malta SPV" },
-                  { text: "CertiK Audited" },
-                  { text: "Non-custodial" },
-                  { text: "EU Regulated" },
-                ].map((item, i) => (
-                  <div key={item.text} className="flex items-center gap-2">
+                {[t.trustMalta, t.trustCertik, t.trustNonCustodial, t.trustEU].map((text, i) => (
+                  <div key={text} className="flex items-center gap-2">
                     {i > 0 && <span style={{ color: "var(--border)", fontSize: "0.75rem" }}>·</span>}
-                    <span className="text-xs font-medium" style={{ color: "var(--muted-foreground)" }}>{item.text}</span>
+                    <span className="text-xs font-medium" style={{ color: "var(--muted-foreground)" }}>{text}</span>
                   </div>
                 ))}
               </div>
             </FadeIn>
           </div>
 
-          {/* Dual audience cards */}
           <div className="grid md:grid-cols-2 gap-5 mt-16 max-w-3xl">
             {[
               {
-                tag: "For Investors",
-                headline: "Invest in the Businesses You Love",
-                body: "Own real equity. Earn dividends automatically. Get exclusive loyalty perks — starting from €100.",
-                cta: "Explore Investments",
+                tag: t.forInvestors,
+                headline: t.forInvestorsHeadline,
+                body: t.forInvestorsBody,
+                cta: t.forInvestorsCTA,
                 href: "/invest",
                 accent: "var(--accent)",
                 glow: "var(--accent-glow)",
               },
               {
-                tag: "For Business Owners",
-                headline: "Raise Capital. Build Community. Keep Control.",
-                body: "Tokenize 10–20% of your business. Your customers invest, get dividends, and become your biggest advocates.",
-                cta: "Apply to List Your Business",
+                tag: t.forBusiness,
+                headline: t.forBusinessHeadline,
+                body: t.forBusinessBody,
+                cta: t.forBusinessCTA,
                 href: "/for-business",
                 accent: "var(--gold)",
                 glow: "var(--gold-glow)",
@@ -180,54 +226,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Trust bar ── */}
       <TrustBar stats={TRUST_STATS_B2C} />
 
-      {/* ── 360° Philosophy ── */}
+      {/* 360° Philosophy */}
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">360° Investment Platform</span>
+            <span className="section-label">{t.sectionPlatform}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Risk · Interest · Transparency · Law
+              {t.platformTitle}
             </h2>
             <p className="text-base leading-body mt-3" style={{ color: "var(--muted-foreground)" }}>
-              Four pillars. One platform. Every investment on Kryptondo is structured around all four.
+              {t.platformSub}
             </p>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              {
-                icon: <Shield className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
-                label: "Risk",
-                title: "AI-Powered Risk",
-                desc: "Every investment comes with a personalised risk score. Match opportunities to your risk appetite — not the other way around.",
-                accent: "var(--accent)",
-              },
-              {
-                icon: <TrendingUp className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
-                label: "Interest",
-                title: "Real Returns",
-                desc: "Dividends from real revenue — memberships, placements, rental income. Your money works in sectors you understand.",
-                accent: "var(--gold)",
-              },
-              {
-                icon: <Eye className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
-                label: "Transparency",
-                title: "On-Chain Clarity",
-                desc: "Ownership records on Arbitrum/Base. Public SPV structures. Real-time performance tracking. Nothing is hidden.",
-                accent: "#7c8cf8",
-              },
-              {
-                icon: <Scale className="w-5 h-5 md:w-6 md:h-6 lg:w-7 lg:h-7" />,
-                label: "Law",
-                title: "EU-Regulated",
-                desc: "Malta-licensed SPVs. MiCA compliant. CertiK audited. Regulated like traditional finance — flexible like crypto.",
-                accent: "#4A7C59",
-              },
-            ].map((pillar, i) => (
+            {PILLARS.map((pillar, i) => (
               <FadeIn key={pillar.label} delay={i * 0.09}>
-                <div className="card h-full" style={{ borderColor: `${pillar.accent}25` }}>
+                <div className="card card-hover h-full" style={{ borderColor: `${pillar.accent}25` }}>
                   <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center mb-4" style={{ background: `${pillar.accent}14`, color: pillar.accent }}>
                     {pillar.icon}
                   </div>
@@ -241,16 +257,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── All Opportunities (filterable, all verticals) ── */}
       <AllOpportunitiesSection />
 
-      {/* ── How It Works ── */}
+      {/* How It Works */}
       <section id="how-it-works" className="section relative overflow-hidden bg-dot" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto relative z-10">
           <FadeIn className="text-center mb-16 max-w-xl mx-auto">
-            <span className="section-label">How It Works</span>
+            <span className="section-label">{t.sectionHow}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              From browsing to earning dividends
+              {t.howTitle}
             </h2>
           </FadeIn>
 
@@ -290,48 +305,29 @@ export default function HomePage() {
 
           <FadeIn className="mt-14 flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/invest" className="btn-primary !py-3 !px-8">
-              <span>Start Investing</span>
+              <span>{t.startInvesting}</span>
             </Link>
             <Link href="/for-business" className="btn-secondary !py-3 !px-8">
-              List Your Business
+              {t.listYourBusiness}
             </Link>
           </FadeIn>
         </div>
       </section>
 
-      {/* ── Trust Pillars ── */}
+      {/* Trust Pillars */}
       <section className="section trust-section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
-            <span className="section-label">Built for Trust</span>
+            <span className="section-label">{t.sectionTrust}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Enterprise-grade security. EU regulation.
+              {t.trustTitle}
             </h2>
           </FadeIn>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {[
-              {
-                icon: <Landmark className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Malta SPV Structure",
-                desc: "Every offering uses a Malta-registered Special Purpose Vehicle. EU-regulated, fully compliant with MiCA framework.",
-                accent: "var(--accent)",
-              },
-              {
-                icon: <ShieldCheck className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "CertiK Audited",
-                desc: "All smart contracts audited by CertiK — the industry standard for blockchain security verification.",
-                accent: "var(--gold)",
-              },
-              {
-                icon: <Wallet className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Non-Custodial",
-                desc: "Your tokens are held in your own wallet. Kryptondo never takes custody of your assets.",
-                accent: "var(--accent)",
-              },
-            ].map((item, i) => (
+            {TRUST_ITEMS.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.1}>
-                <div className="card h-full" style={{ borderColor: "var(--border-subtle)" }}>
+                <div className="card card-hover h-full" style={{ borderColor: "var(--border-subtle)" }}>
                   <div className="mb-4 w-12 h-12 md:w-14 md:h-14 rounded-xl flex items-center justify-center" style={{ color: item.accent, background: `${item.accent}10` }}>{item.icon}</div>
                   <h3
                     className="font-semibold mb-2 tracking-tight-sub"
@@ -349,7 +345,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Press logos ── */}
+      {/* Press logos */}
       <section className="section-sm" style={{ borderTop: "1px solid var(--border)", borderBottom: "1px solid var(--border)" }}>
         <div className="container-lg mx-auto">
           <FadeIn>
@@ -357,7 +353,7 @@ export default function HomePage() {
               className="text-center mb-8"
               style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--muted-foreground)" }}
             >
-              As Seen In
+              {t.asSeenIn}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
               {["TechCrunch", "CoinDesk", "Handelsblatt", "Forbes", "Decrypt"].map((name) => (
@@ -379,23 +375,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Final CTA ── */}
+      {/* Final CTA */}
       <section className="section">
         <div className="container-md mx-auto text-center">
           <FadeIn>
             <h2 className="text-display-lg font-extrabold text-balance mb-6" style={{ color: "var(--foreground)" }}>
-              Ready to invest in the businesses{" "}
-              <span className="accent-text">you believe in?</span>
+              {t.ctaTitle}{" "}
+              <span className="accent-text">{t.ctaAccent}</span>
             </h2>
             <p className="text-lg mb-10 max-w-md mx-auto" style={{ color: "var(--muted-foreground)" }}>
-              Join 1,800+ investors backing real businesses across Europe.
+              {t.ctaSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/invest" className="btn-primary text-base !py-3.5 !px-8">
-                <span>Start Investing from €100</span>
+                <span>{t.ctaPrimaryBtn}</span>
               </Link>
               <Link href="/for-business" className="btn-secondary text-base !py-3.5 !px-8">
-                List Your Business
+                {t.ctaSecondaryBtn}
               </Link>
             </div>
           </FadeIn>

@@ -5,6 +5,7 @@ import { Car, TrendingUp, Shield, Wallet, CalendarDays, Zap, CheckCircle, Users 
 import FadeIn from "../../components/FadeIn";
 import { CARS, CAR_FAQS } from "../../data/mock";
 import FAQ from "../../components/FAQ";
+import { getTranslations } from "../../i18n/server";
 
 const RISK_LEVELS_DATA = [
   { score: 1, label: "Conservative", color: "#4A7C59", bg: "rgba(74, 124, 89, 0.12)" },
@@ -22,23 +23,25 @@ export const metadata: Metadata = {
   description: "Buy tokens to co-own premium cars. Drive them yourself or earn passive income from every rental. From €50 per token.",
 };
 
-const HOW_IT_WORKS = [
-  { step: "01", icon: <Car size={20} />, title: "Browse Available Cars", desc: "Explore our curated fleet of premium vehicles. Each car has full specs, yield projections, and risk ratings." },
-  { step: "02", icon: <Wallet size={20} />, title: "Buy Tokens from €50", desc: "Each token represents fractional ownership of the car. Fund the car purchase — one token at a time." },
-  { step: "03", icon: <Shield size={20} />, title: "Car Enters the Fleet", desc: "Once fully funded, Kryptondo Fleet purchases the car and adds it to the active rental fleet within 14 days." },
-  { step: "04", icon: <TrendingUp size={20} />, title: "Drive or Earn", desc: "Co-owners can book the car for personal use. Rental investors sit back and collect monthly dividends." },
-];
+export default async function CarsPage() {
+  const t = await getTranslations("cars");
 
-const BENEFITS = [
-  { icon: <Wallet size={20} />, title: "Fractional from €50", desc: "No need to buy the whole car. Start with a single token and build your fleet portfolio over time.", accent: "var(--accent)" },
-  { icon: <Shield size={20} />, title: "Zero Maintenance", desc: "Kryptondo Fleet handles all maintenance, insurance, and servicing. You just own and earn.", accent: "#4A7C59" },
-  { icon: <Zap size={20} />, title: "On-Chain Ownership", desc: "Your tokens on Arbitrum / Base are verifiable ownership records. Non-custodial, fully transparent.", accent: "#7c8cf8" },
-  { icon: <CalendarDays size={20} />, title: "Book Your Car", desc: "Co-owners get calendar-based booking access proportional to their token holding. Drive when you want.", accent: "var(--accent)" },
-  { icon: <TrendingUp size={20} />, title: "Monthly Dividends", desc: "Rental investors receive automatic monthly distributions from rental revenue — no action needed.", accent: "#B8954F" },
-  { icon: <Users size={20} />, title: "Voting Rights", desc: "Token holders vote on car decisions: sell, replace, upgrade. Your ownership means your voice.", accent: "#C4663A" },
-];
+  const HOW_IT_WORKS = [
+    { step: "01", icon: <Car size={20} />, title: "Browse Available Cars", desc: "Explore our curated fleet of premium vehicles. Each car has full specs, yield projections, and risk ratings." },
+    { step: "02", icon: <Wallet size={20} />, title: "Buy Tokens from €50", desc: "Each token represents fractional ownership of the car. Fund the car purchase — one token at a time." },
+    { step: "03", icon: <Shield size={20} />, title: "Car Enters the Fleet", desc: "Once fully funded, Kryptondo Fleet purchases the car and adds it to the active rental fleet within 14 days." },
+    { step: "04", icon: <TrendingUp size={20} />, title: "Drive or Earn", desc: "Co-owners can book the car for personal use. Rental investors sit back and collect monthly dividends." },
+  ];
 
-export default function CarsPage() {
+  const BENEFITS = [
+    { icon: <Wallet size={20} />, title: "Fractional from €50", desc: "No need to buy the whole car. Start with a single token and build your fleet portfolio over time.", accent: "var(--accent)" },
+    { icon: <Shield size={20} />, title: "Zero Maintenance", desc: "Kryptondo Fleet handles all maintenance, insurance, and servicing. You just own and earn.", accent: "#4A7C59" },
+    { icon: <Zap size={20} />, title: "On-Chain Ownership", desc: "Your tokens on Arbitrum / Base are verifiable ownership records. Non-custodial, fully transparent.", accent: "#7c8cf8" },
+    { icon: <CalendarDays size={20} />, title: "Book Your Car", desc: "Co-owners get calendar-based booking access proportional to their token holding. Drive when you want.", accent: "var(--accent)" },
+    { icon: <TrendingUp size={20} />, title: "Monthly Dividends", desc: "Rental investors receive automatic monthly distributions from rental revenue — no action needed.", accent: "#B8954F" },
+    { icon: <Users size={20} />, title: "Voting Rights", desc: "Token holders vote on car decisions: sell, replace, upgrade. Your ownership means your voice.", accent: "#C4663A" },
+  ];
+
   return (
     <div>
       {/* ── Hero ── */}
@@ -48,25 +51,24 @@ export default function CarsPage() {
         <div className="container-lg mx-auto relative z-10">
           <div className="max-w-3xl">
             <FadeIn>
-              <div className="badge mb-8 w-fit">Car Subscription · From €50 · Non-Custodial</div>
+              <div className="badge mb-8 w-fit">{t.badge}</div>
             </FadeIn>
             <FadeIn delay={0.08}>
               <h1 className="font-extrabold text-balance mb-6" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}>
-                Own a Share of{" "}
-                <span className="accent-text">Premium Cars.</span>
-                <br />Drive or Earn.
+                {t.headline}{" "}
+                <span className="accent-text">{t.headlineAccent}</span>
+                <br />{t.headlineSuffix}
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
               <p className="text-lg md:text-xl mb-10 max-w-2xl leading-body" style={{ color: "var(--muted-foreground)" }}>
-                Buy tokens to co-own vehicles. Use them yourself or earn from every rental.
-                Fully funded cars enter our fleet — your returns start immediately.
+                {t.subtitle}
               </p>
             </FadeIn>
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
-                <a href="#cars" className="btn-primary text-base !py-3.5 !px-8"><span>Browse Cars →</span></a>
-                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">How It Works</a>
+                <a href="#cars" className="btn-primary text-base !py-3.5 !px-8"><span>{t.ctaPrimary}</span></a>
+                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">{t.ctaSecondary}</a>
               </div>
             </FadeIn>
           </div>
@@ -77,9 +79,9 @@ export default function CarsPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Two Models</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Choose how you participate</h2>
-            <p className="text-sm mt-3 leading-body" style={{ color: "var(--muted-foreground)" }}>Same car, same tokens — different returns structure depending on whether you want to drive or just earn.</p>
+            <span className="section-label">{t.twoModelsLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.twoModelsTitle}</h2>
+            <p className="text-sm mt-3 leading-body" style={{ color: "var(--muted-foreground)" }}>{t.twoModelsSub}</p>
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-6">
             {/* Co-Ownership */}
@@ -90,8 +92,8 @@ export default function CarsPage() {
                     <Car size={20} />
                   </div>
                   <div>
-                    <h3 className="font-bold" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>Co-Ownership</h3>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(196,102,58,0.1)", color: "var(--accent)" }}>Drive + Earn</span>
+                    <h3 className="font-bold" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>{t.coOwnershipTitle}</h3>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(196,102,58,0.1)", color: "var(--accent)" }}>{t.coOwnershipBadge}</span>
                   </div>
                 </div>
                 <ul className="space-y-2.5 mb-6">
@@ -121,8 +123,8 @@ export default function CarsPage() {
                     <TrendingUp size={20} />
                   </div>
                   <div>
-                    <h3 className="font-bold" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>Rental Investment</h3>
-                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(184,149,79,0.1)", color: "#B8954F" }}>Pure Passive Income</span>
+                    <h3 className="font-bold" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>{t.rentalTitle}</h3>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(184,149,79,0.1)", color: "#B8954F" }}>{t.rentalBadge}</span>
                   </div>
                 </div>
                 <ul className="space-y-2.5 mb-6">
@@ -183,8 +185,8 @@ export default function CarsPage() {
       <section id="how-it-works" className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
-            <span className="section-label">How It Works</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>From €50 to fleet owner in minutes</h2>
+            <span className="section-label">{t.howLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.howTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-6">
             {HOW_IT_WORKS.map((s, i) => (
@@ -207,8 +209,8 @@ export default function CarsPage() {
       <section id="cars" className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="mb-10">
-            <span className="section-label">Available Cars</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Fund a car. Start earning.</h2>
+            <span className="section-label">{t.carsLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.carsTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {CARS.map((car, i) => {
@@ -233,10 +235,10 @@ export default function CarsPage() {
                       </div>
                       <div className="grid grid-cols-2 gap-2">
                         {[
-                          { val: `€${car.tokenPrice}`, lbl: "Token price" },
-                          { val: `${car.rentalYield}`, lbl: "Rental yield" },
-                          { val: `€${car.rentalRatePerDay}/day`, lbl: "Rental rate" },
-                          { val: `${car.occupancyPct}%`, lbl: "Occupancy" },
+                          { val: `€${car.tokenPrice}`, lbl: t.tokenPrice },
+                          { val: `${car.rentalYield}`, lbl: t.rentalYield },
+                          { val: `€${car.rentalRatePerDay}/day`, lbl: t.rentalRate },
+                          { val: `${car.occupancyPct}%`, lbl: t.occupancy },
                         ].map((s) => (
                           <div key={s.lbl} className="rounded-lg py-2.5 text-center" style={{ background: "var(--surface-2)" }}>
                             <p className="font-semibold text-xs" style={{ color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>{s.val}</p>
@@ -260,7 +262,7 @@ export default function CarsPage() {
                         </div>
                       </div>
                       <Link href={`/cars/${car.id}`} className="btn-primary w-full text-center mt-auto" style={{ fontSize: "0.8125rem", padding: "0.6875rem 1rem" }}>
-                        <span>View Details</span>
+                        <span>{t.viewDetails}</span>
                       </Link>
                     </div>
                   </div>
@@ -275,13 +277,13 @@ export default function CarsPage() {
       <section className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Why Kryptondo Cars</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Premium ownership. Zero complexity.</h2>
+            <span className="section-label">{t.whyLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.whyTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-5">
             {BENEFITS.map((b, i) => (
               <FadeIn key={b.title} delay={i * 0.07}>
-                <div className="card h-full" style={{ borderColor: `${b.accent}18` }}>
+                <div className="card card-hover h-full" style={{ borderColor: `${b.accent}18` }}>
                   <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: `${b.accent}12`, color: b.accent }}>
                     {b.icon}
                   </div>
@@ -298,8 +300,8 @@ export default function CarsPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-10 max-w-md mx-auto">
-            <span className="section-label">FAQ</span>
-            <h2 className="text-display-sm font-bold" style={{ color: "var(--foreground)" }}>Common questions</h2>
+            <span className="section-label">{t.faqLabel}</span>
+            <h2 className="text-display-sm font-bold" style={{ color: "var(--foreground)" }}>{t.faqTitle}</h2>
           </FadeIn>
           <FadeIn delay={0.1}>
             <FAQ items={CAR_FAQS} />
@@ -312,16 +314,16 @@ export default function CarsPage() {
         <div className="container-md mx-auto text-center">
           <FadeIn>
             <div className="rounded-3xl p-10 md:p-16" style={{ background: "var(--surface)", border: "1px solid var(--border)" }}>
-              <span className="section-label">Start Today</span>
+              <span className="section-label">{t.ctaLabel}</span>
               <h2 className="font-extrabold text-balance mb-4 mx-auto max-w-lg" style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.01em", lineHeight: "1.15", color: "var(--foreground)" }}>
-                Start investing in cars.{" "}
-                <span className="accent-text">From €50.</span>
+                {t.ctaTitle}{" "}
+                <span className="accent-text">{t.ctaAccent}</span>
               </h2>
               <p className="text-base mb-10 max-w-md mx-auto leading-body" style={{ color: "var(--muted-foreground)" }}>
-                No maintenance. No insurance hassle. Just ownership, income, and the occasional drive.
+                {t.ctaSub}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a href="#cars" className="btn-primary text-base !py-3.5 !px-8"><span>Browse Cars →</span></a>
+                <a href="#cars" className="btn-primary text-base !py-3.5 !px-8"><span>{t.ctaPrimary}</span></a>
                 <Link href="/register" className="btn-secondary text-base !py-3.5 !px-8">Create Account</Link>
               </div>
             </div>

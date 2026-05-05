@@ -9,48 +9,13 @@ import TrustBar from "../../components/TrustBar";
 import FAQ from "../../components/FAQ";
 import DividendFormula from "../../components/DividendFormula";
 import { TRUST_STATS_B2B, TEAM_MEMBERS, B2B_FAQS } from "../../data/mock";
+import { getTranslations } from "../../i18n/server";
 
 export const metadata: Metadata = {
   title: "For Business Owners — Raise Capital from Your Community",
   description:
     "Tokenize 10–20% of your business on Arbitrum. Raise capital from your customers, automate dividends, and build the most loyal community you've ever had. Malta-licensed SPV.",
 };
-
-const HOW_IT_WORKS = [
-  {
-    step: "01",
-    title: "Apply",
-    desc: "Submit your business profile. Our team reviews within 5 business days. No upfront cost.",
-    icon: <ClipboardList size={24} />,
-  },
-  {
-    step: "02",
-    title: "SPV Setup",
-    desc: "We establish a Malta-registered SPV that holds your equity stake. All legal compliance handled for you.",
-    icon: <Landmark size={24} />,
-  },
-  {
-    step: "03",
-    title: "Tokenize",
-    desc: "10–20% equity converted to digital tokens on Arbitrum/Base. Smart contracts audited by CertiK.",
-    icon: <Coins size={24} />,
-  },
-  {
-    step: "04",
-    title: "Raise & Engage",
-    desc: "Launch your campaign. Investors get tokens, dividends, and perks. You get capital and advocates.",
-    icon: <TrendingUp size={24} />,
-  },
-];
-
-const WHAT_YOU_GET = [
-  { icon: <Briefcase size={24} />, title: "Capital without losing control", desc: "You offer 10–20% maximum. Retain full operational control. Your business, your decisions." },
-  { icon: <Users size={24} />, title: "Investors who are customers", desc: "Token holders are naturally motivated to promote your business. Every investor becomes your advocate." },
-  { icon: <Zap size={24} />, title: "Automated dividend distribution", desc: "Smart contracts handle profit distribution automatically. No manual wire transfers, no delays." },
-  { icon: <Gift size={24} />, title: "Loyalty layer included", desc: "Reward token holders with exclusive perks, discounts, early access. Build your most engaged customer segment." },
-  { icon: <BarChart3 size={24} />, title: "On-chain cap table", desc: "100% of your equity tracking handled on Arbitrum. No spreadsheets, no legal confusion." },
-  { icon: <ShieldCheck size={24} />, title: "KYC/AML handled for you", desc: "Every investor goes through verified identity checks. Compliance is our problem, not yours." },
-];
 
 const BUSINESS_TYPES = [
   { name: "Hospitality", desc: "Restaurants, bars, cafés, hotels — customers who regularly return", icon: <Utensils size={36} /> },
@@ -59,7 +24,46 @@ const BUSINESS_TYPES = [
   { name: "Local Services", desc: "Fitness, wellness, beauty — strong community-based businesses", icon: <Scissors size={36} /> },
 ];
 
-export default function ForBusinessPage() {
+export default async function ForBusinessPage() {
+  const t = await getTranslations("forBusiness");
+  const common = await getTranslations("home");
+
+  const HOW_IT_WORKS = [
+    {
+      step: "01",
+      title: t.step1Title,
+      desc: t.step1Desc,
+      icon: <ClipboardList size={24} />,
+    },
+    {
+      step: "02",
+      title: t.step2Title,
+      desc: t.step2Desc,
+      icon: <Landmark size={24} />,
+    },
+    {
+      step: "03",
+      title: t.step3Title,
+      desc: t.step3Desc,
+      icon: <Coins size={24} />,
+    },
+    {
+      step: "04",
+      title: t.step4Title,
+      desc: t.step4Desc,
+      icon: <TrendingUp size={24} />,
+    },
+  ];
+
+  const WHAT_YOU_GET = [
+    { icon: <Briefcase size={24} />, title: t.benefit1, desc: t.benefit1Desc },
+    { icon: <Users size={24} />, title: t.benefit2, desc: t.benefit2Desc },
+    { icon: <Zap size={24} />, title: t.benefit3, desc: t.benefit3Desc },
+    { icon: <Gift size={24} />, title: t.benefit4, desc: t.benefit4Desc },
+    { icon: <BarChart3 size={24} />, title: t.benefit5, desc: t.benefit5Desc },
+    { icon: <ShieldCheck size={24} />, title: t.benefit6, desc: t.benefit6Desc },
+  ];
+
   return (
     <div>
       {/* ── Hero ── */}
@@ -72,7 +76,7 @@ export default function ForBusinessPage() {
           <div className="max-w-3xl">
             <FadeIn>
               <div className="badge mb-8 w-fit" style={{ background: "var(--gold-subtle)", color: "var(--gold)", borderColor: "var(--gold-glow)" }}>
-                For Business Owners
+                {t.badge}
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
@@ -80,9 +84,9 @@ export default function ForBusinessPage() {
                 className="font-extrabold text-balance mb-6"
                 style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}
               >
-                Raise Capital.{" "}
-                <span className="accent-text">Build Community.</span>{" "}
-                Keep Control.
+                {t.headline}{" "}
+                <span className="accent-text">{t.headlineAccent}</span>{" "}
+                {t.headlineSuffix}
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
@@ -90,17 +94,16 @@ export default function ForBusinessPage() {
                 className="text-lg md:text-xl mb-10 max-w-2xl leading-body"
                 style={{ color: "var(--muted-foreground)" }}
               >
-                Tokenize 10–20% of your business on Arbitrum. Your customers invest, receive dividends,
-                and become your most loyal advocates. We handle the legal. You handle the business.
+                {t.subtitle}
               </p>
             </FadeIn>
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="#apply" className="btn-gold text-base !py-3.5 !px-8">
-                  <span>Apply to List Your Business →</span>
+                  <span>{t.ctaPrimary}</span>
                 </a>
                 <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">
-                  How It Works
+                  {t.ctaSecondary}
                 </a>
               </div>
             </FadeIn>
@@ -115,12 +118,12 @@ export default function ForBusinessPage() {
       <section id="how-it-works" className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="mb-16 max-w-lg">
-            <span className="section-label-gold">The Process</span>
+            <span className="section-label-gold">{t.processLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              From application to funded in 4 steps
+              {t.processTitle}
             </h2>
             <p className="text-sm mt-3 leading-body" style={{ color: "var(--muted-foreground)" }}>
-              Timeline: 6–8 weeks from application to live campaign.
+              {t.processSub}
             </p>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-6">
@@ -152,18 +155,18 @@ export default function ForBusinessPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-14 max-w-xl mx-auto">
-            <span className="section-label">What You Get</span>
+            <span className="section-label">{t.whatYouGetLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              More than capital
+              {t.whatYouGetTitle}
             </h2>
             <p className="text-sm mt-3 leading-body" style={{ color: "var(--muted-foreground)" }}>
-              &ldquo;Your customers are already investing in your success. Now let them invest in your equity.&rdquo;
+              {t.whatYouGetSub}
             </p>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-4">
             {WHAT_YOU_GET.map((item, i) => (
               <FadeIn key={item.title} delay={i * 0.07}>
-                <div className="card h-full" style={{ borderColor: "var(--border-subtle)" }}>
+                <div className="card card-hover h-full" style={{ borderColor: "var(--border-subtle)" }}>
                   <div className="mb-3" style={{ color: "var(--accent)" }}>{item.icon}</div>
                   <h3 className="font-semibold mb-2 tracking-tight-sub" style={{ fontSize: "0.9375rem", color: "var(--foreground)" }}>
                     {item.title}
@@ -180,9 +183,9 @@ export default function ForBusinessPage() {
       <section id="regulatory" className="section trust-section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Regulatory & Legal</span>
+            <span className="section-label">{t.regulatoryLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              We handle the legal.<br />You handle the business.
+              {t.regulatoryTitle}<br />{t.regulatoryTitle2}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 gap-4">
@@ -219,9 +222,9 @@ export default function ForBusinessPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-xl mx-auto">
-            <span className="section-label">Who Is This For?</span>
+            <span className="section-label">{t.whoLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Businesses with communities
+              {t.whoTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-4">
@@ -244,16 +247,16 @@ export default function ForBusinessPage() {
       <section id="fees" className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-12 max-w-md mx-auto">
-            <span className="section-label">Fees & Economics</span>
+            <span className="section-label">{t.feesLabel}</span>
             <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>
-              Simple, aligned pricing
+              {t.feesTitle}
             </h2>
           </FadeIn>
           <div className="grid md:grid-cols-3 gap-4 mb-5">
             {[
-              { value: "€0", label: "Upfront Cost", desc: "No fees to apply or set up your campaign." },
-              { value: "5%", label: "Success Fee", desc: "We take 5% only when your raise completes." },
-              { value: "Included", label: "SPV Setup", desc: "Malta SPV registration included in success fee." },
+              { value: t.fee1Value, label: t.fee1Label, desc: t.fee1Desc },
+              { value: t.fee2Value, label: t.fee2Label, desc: t.fee2Desc },
+              { value: t.fee3Value, label: t.fee3Label, desc: t.fee3Desc },
             ].map((item, i) => (
               <FadeIn key={item.label} delay={i * 0.1}>
                 <div className="card text-center">
@@ -276,9 +279,9 @@ export default function ForBusinessPage() {
               className="rounded-xl p-4 text-center text-sm"
               style={{ background: "var(--gold-subtle)", border: "1px solid var(--gold-glow)" }}
             >
-              <strong style={{ color: "var(--foreground)" }}>All-or-nothing model:</strong>{" "}
+              <strong style={{ color: "var(--foreground)" }}>{t.allOrNothing}</strong>{" "}
               <span style={{ color: "var(--muted-foreground)" }}>
-                If you don&apos;t reach your minimum target, all investor funds are returned. No fees charged.
+                {t.allOrNothingDesc}
               </span>
             </div>
           </FadeIn>
@@ -346,7 +349,7 @@ export default function ForBusinessPage() {
               className="text-center mb-8"
               style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--muted-foreground)" }}
             >
-              As Seen In
+              {common.asSeenIn}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
               {["TechCrunch", "CoinDesk", "Handelsblatt", "Forbes", "Decrypt"].map((name) => (
@@ -366,9 +369,9 @@ export default function ForBusinessPage() {
       <section className="section">
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-10 max-w-md mx-auto">
-            <span className="section-label">FAQ</span>
+            <span className="section-label">{t.faqLabel}</span>
             <h2 className="text-display-sm font-bold" style={{ color: "var(--foreground)" }}>
-              Questions from business owners
+              {t.faqTitle}
             </h2>
           </FadeIn>
           <FadeIn delay={0.1}>
@@ -388,27 +391,27 @@ export default function ForBusinessPage() {
                 border: "1px solid var(--border)",
               }}
             >
-              <span className="section-label-gold text-center block">Ready to start?</span>
+              <span className="section-label-gold text-center block">{t.ctaReadyLabel}</span>
               <h2
                 className="font-extrabold text-balance mb-4 mx-auto max-w-lg"
                 style={{ fontSize: "clamp(1.75rem, 4vw, 3.25rem)", letterSpacing: "-0.01em", lineHeight: "1.15", color: "var(--foreground)" }}
               >
-                Turn your customers into{" "}
-                <span className="accent-text">shareholders</span>
+                {t.ctaReadyTitle}{" "}
+                <span className="accent-text">{t.ctaReadyAccent}</span>
               </h2>
               <p className="text-base mb-10 max-w-md mx-auto leading-body" style={{ color: "var(--muted-foreground)" }}>
-                Join 12 businesses that have raised €2.4M+ from their communities.
+                {t.ctaReadySub}
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a href="mailto:info@kryptondo.de?subject=Business+Listing+Application" className="btn-gold text-base !py-3.5 !px-8">
-                  <span>Apply to List Your Business →</span>
+                  <span>{t.ctaApply}</span>
                 </a>
                 <a href="mailto:info@kryptondo.de?subject=Schedule+a+Call" className="btn-secondary text-base !py-3.5 !px-8">
-                  Schedule a Call
+                  {t.ctaCall}
                 </a>
               </div>
               <p className="text-xs mt-6" style={{ color: "var(--muted-foreground)" }}>
-                No upfront fees · Response within 5 business days ·{" "}
+                {t.ctaNote}{" "}
                 <a href="mailto:info@kryptondo.de" style={{ color: "var(--accent)" }}>info@kryptondo.de</a>
               </p>
             </div>

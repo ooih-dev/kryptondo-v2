@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getTranslations } from "../../i18n/server";
 import {
   Dumbbell, Heart, Zap, Trophy, TrendingUp, Shield, Wallet,
   CalendarDays, CheckCircle, Star, Users,
@@ -85,7 +86,8 @@ const WHY_FITNESS = [
   { icon: <CalendarDays size={20} />, title: "Post-COVID Boom", desc: "Boutique fitness grew 62% since 2021. Demand for premium, community-driven fitness is structural — not cyclical.", accent: FITNESS_GOLD },
 ];
 
-export default function FitnessPage() {
+export default async function FitnessPage() {
+  const t = await getTranslations("fitness");
   return (
     <div>
       {/* ── Hero ── */}
@@ -96,27 +98,26 @@ export default function FitnessPage() {
           <div className="max-w-3xl">
             <FadeIn>
               <div className="badge mb-8 w-fit" style={{ background: "rgba(139,92,246,0.10)", color: FITNESS_ACCENT, borderColor: "rgba(139,92,246,0.2)" }}>
-                Fitness Studios · From €40 · Free Gym Access Included
+                {t.badge}
               </div>
             </FadeIn>
             <FadeIn delay={0.08}>
               <h1 className="font-extrabold text-balance mb-6" style={{ fontSize: "clamp(2.5rem, 5.5vw, 5rem)", letterSpacing: "-0.02em", lineHeight: "1.08", color: "var(--foreground)" }}>
-                Own a Share of Your Gym.{" "}
-                <span style={{ color: FITNESS_ACCENT }}>Work Out for Free.</span>
+                {t.headline}{" "}
+                <span style={{ color: FITNESS_ACCENT }}>{t.headlineAccent}</span>
               </h1>
             </FadeIn>
             <FadeIn delay={0.16}>
               <p className="text-lg md:text-xl mb-10 max-w-2xl leading-body" style={{ color: "var(--muted-foreground)" }}>
-                Invest in fitness studios you love. Earn from memberships. Unlock exclusive perks —
-                from free access to VIP classes — proportional to your stake.
+                {t.subtitle}
               </p>
             </FadeIn>
             <FadeIn delay={0.22}>
               <div className="flex flex-col sm:flex-row gap-3">
                 <a href="#studios" className="btn-primary text-base !py-3.5 !px-8" style={{ background: FITNESS_ACCENT, borderColor: FITNESS_ACCENT }}>
-                  <span>Browse Studios →</span>
+                  <span>{t.ctaPrimary}</span>
                 </a>
-                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">How It Works</a>
+                <a href="#how-it-works" className="btn-secondary text-base !py-3.5 !px-8">{t.ctaSecondary}</a>
               </div>
             </FadeIn>
           </div>
@@ -127,8 +128,8 @@ export default function FitnessPage() {
       <section id="how-it-works" className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-14 max-w-lg mx-auto">
-            <span className="section-label">How It Works</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>From €40 to gym owner in minutes</h2>
+            <span className="section-label">{t.howLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.howTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-4 gap-6">
             {HOW_IT_WORKS.map((s, i) => (
@@ -151,10 +152,10 @@ export default function FitnessPage() {
       <section className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Investor Perks</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>The more you invest, the more you get</h2>
+            <span className="section-label">{t.perksLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.perksTitle}</h2>
             <p className="text-base leading-body mt-3" style={{ color: "var(--muted-foreground)" }}>
-              Every studio investment unlocks real perks. Invest more, unlock more.
+              {t.perksSub}
             </p>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -189,8 +190,8 @@ export default function FitnessPage() {
       <section id="studios" className="section" style={{ background: "var(--surface)" }}>
         <div className="container-lg mx-auto">
           <FadeIn className="mb-10">
-            <span className="section-label">Available Studios</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Studios raising right now</h2>
+            <span className="section-label">{t.studiosLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.studiosTitle}</h2>
           </FadeIn>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {FITNESS_STUDIOS.map((studio, i) => {
@@ -215,9 +216,9 @@ export default function FitnessPage() {
                       <p className="text-xs leading-body" style={{ color: "var(--muted-foreground)" }}>{studio.description}</p>
                       <div className="grid grid-cols-2 gap-2">
                         {[
-                          { val: `€${studio.tokenPrice}`, lbl: "Token price" },
-                          { val: `${studio.estimatedYield}%`, lbl: "Est. yield" },
-                          { val: `${studio.members}`, lbl: "Members" },
+                          { val: `€${studio.tokenPrice}`, lbl: t.tokenPrice },
+                          { val: `${studio.estimatedYield}%`, lbl: t.estYield },
+                          { val: `${studio.members}`, lbl: t.members },
                           { val: `${studio.occupancy}%`, lbl: "Occupancy" },
                         ].map((s) => (
                           <div key={s.lbl} className="rounded-lg py-2.5 text-center" style={{ background: "var(--surface-2)" }}>
@@ -240,7 +241,7 @@ export default function FitnessPage() {
                         </div>
                       </div>
                       <Link href={`/fitness/${studio.id}`} className="btn-primary w-full text-center mt-auto" style={{ fontSize: "0.8125rem", padding: "0.6875rem 1rem", background: FITNESS_ACCENT, borderColor: FITNESS_ACCENT }}>
-                        <span>View Studio</span>
+                        <span>{t.viewStudio}</span>
                       </Link>
                     </div>
                   </div>
@@ -255,8 +256,8 @@ export default function FitnessPage() {
       <section className="section">
         <div className="container-lg mx-auto">
           <FadeIn className="text-center mb-12 max-w-lg mx-auto">
-            <span className="section-label">Why Fitness?</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>The investment you can feel</h2>
+            <span className="section-label">{t.whyLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.whyTitle}</h2>
           </FadeIn>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {WHY_FITNESS.map((item, i) => (
@@ -278,8 +279,8 @@ export default function FitnessPage() {
       <section className="section" style={{ background: "var(--surface)" }}>
         <div className="container-md mx-auto">
           <FadeIn className="text-center mb-10 max-w-lg mx-auto">
-            <span className="section-label">FAQ</span>
-            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>Common questions</h2>
+            <span className="section-label">{t.faqLabel}</span>
+            <h2 className="text-display-md font-bold" style={{ color: "var(--foreground)" }}>{t.faqTitle}</h2>
           </FadeIn>
           <FadeIn>
             <FAQ items={FITNESS_FAQS} />
@@ -294,14 +295,13 @@ export default function FitnessPage() {
             <div className="w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: "rgba(139,92,246,0.10)", color: FITNESS_ACCENT }}>
               <Dumbbell size={32} />
             </div>
-            <h2 className="text-display-md font-bold mb-4" style={{ color: "var(--foreground)" }}>Start Investing in Fitness</h2>
+            <h2 className="text-display-md font-bold mb-4" style={{ color: "var(--foreground)" }}>{t.ctaTitle}</h2>
             <p className="text-lg leading-body mb-8 max-w-xl mx-auto" style={{ color: "var(--muted-foreground)" }}>
-              Own a share of your gym. Earn dividends from memberships. Work out for free.
-              From €40 per token — backed by EU-regulated Malta SPVs.
+              {t.ctaSub}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a href="#studios" className="btn-primary text-base !py-3.5 !px-8" style={{ background: FITNESS_ACCENT, borderColor: FITNESS_ACCENT }}>
-                <span>Browse Studios →</span>
+                <span>{t.ctaPrimary}</span>
               </a>
               <Link href="/register" className="btn-secondary text-base !py-3.5 !px-8">Create Account</Link>
             </div>
