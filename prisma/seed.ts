@@ -26,9 +26,19 @@ async function main() {
       update: {},
       create: { name: "Fitness", slug: "fitness", description: "Fitness studios — memberships and perk tiers" },
     }),
+    prisma.category.upsert({
+      where: { slug: "ev-charging" },
+      update: {},
+      create: { name: "EV Charging", slug: "ev-charging", description: "EV charging stations — passive income from every charge" },
+    }),
+    prisma.category.upsert({
+      where: { slug: "solar" },
+      update: {},
+      create: { name: "Solar", slug: "solar", description: "Solar energy — rooftop installations and feed-in tariff yield" },
+    }),
   ]);
 
-  const [business, cars, medical, fitness] = categories;
+  const [business, cars, medical, fitness, evCharging, solar] = categories;
 
   // Seed investments from existing mock data
   const investments = [
@@ -52,6 +62,16 @@ async function main() {
     { name: "ZenFlow Yoga", categoryId: fitness.id, tokenPrice: 40, totalTokens: 600, soldTokens: 450, investors: 38, estimatedYield: 11, riskScore: 2, status: "live", daysLeft: 31, location: "Munich Schwabing", description: "Premium yoga and pilates studio, 280 members, 95% retention." },
     { name: "PeakPerformance Gym", categoryId: fitness.id, tokenPrice: 75, totalTokens: 1000, soldTokens: 300, investors: 24, estimatedYield: 15, riskScore: 3, status: "live", daysLeft: 48, location: "Hamburg HafenCity", description: "1,200 sqm premium gym with corporate wellness programme." },
     { name: "SprintCycle Studio", categoryId: fitness.id, tokenPrice: 60, totalTokens: 500, soldTokens: 480, investors: 52, estimatedYield: 14, riskScore: 3, status: "live", daysLeft: 6, location: "Frankfurt Westend", description: "Frankfurt's highest-rated indoor cycling studio, 88% occupancy." },
+    // EV Charging
+    { name: "ChargeHub Berlin", categoryId: evCharging.id, tokenPrice: 75, totalTokens: 2000, soldTokens: 1400, investors: 89, estimatedYield: 12, riskScore: 2, status: "live", daysLeft: 18, location: "Berlin A10 Highway", description: "20-charger highway hub on Berlin's busiest corridor, 85% utilization." },
+    { name: "VoltPoint Munich", categoryId: evCharging.id, tokenPrice: 75, totalTokens: 1200, soldTokens: 600, investors: 45, estimatedYield: 10, riskScore: 2, status: "live", daysLeft: 30, location: "Munich PEP Center", description: "12-charger shopping center station with consistent retail traffic." },
+    { name: "ElektroPark Hamburg", categoryId: evCharging.id, tokenPrice: 100, totalTokens: 2200, soldTokens: 1760, investors: 112, estimatedYield: 14, riskScore: 3, status: "live", daysLeft: 12, location: "Hamburg Port Logistics", description: "30-charger B2B logistics hub, 90% utilization from fleet contracts." },
+    { name: "GreenCharge Vienna", categoryId: evCharging.id, tokenPrice: 100, totalTokens: 1200, soldTokens: 480, investors: 34, estimatedYield: 11, riskScore: 2, status: "live", daysLeft: 40, location: "Vienna City Center", description: "8 ultra-fast 350kW chargers in prime city-center location." },
+    // Solar
+    { name: "SolarDach Berlin-Kreuzberg", categoryId: solar.id, tokenPrice: 25, totalTokens: 4000, soldTokens: 2800, investors: 156, estimatedYield: 9, riskScore: 2, status: "live", daysLeft: 22, location: "Berlin Kreuzberg", description: "450m² rooftop installation, 85kWp, contributed by local building owner." },
+    { name: "SunPower Frankfurt", categoryId: solar.id, tokenPrice: 30, totalTokens: 5000, soldTokens: 2000, investors: 98, estimatedYield: 10, riskScore: 2, status: "live", daysLeft: 35, location: "Frankfurt Ostend", description: "800m² commercial roof, 160kWp, high feed-in tariff yield." },
+    { name: "AlpenSolar Innsbruck", categoryId: solar.id, tokenPrice: 25, totalTokens: 3000, soldTokens: 2100, investors: 82, estimatedYield: 8, riskScore: 2, status: "live", daysLeft: 28, location: "Innsbruck, Austria", description: "300m² hotel rooftop, 60kWp, contributed by Hotel Goldener Adler." },
+    { name: "NordSonne Hamburg", categoryId: solar.id, tokenPrice: 35, totalTokens: 6000, soldTokens: 1800, investors: 74, estimatedYield: 11, riskScore: 3, status: "live", daysLeft: 45, location: "Hamburg Wilhelmsburg", description: "1200m² warehouse roof, 240kWp, largest installation in our portfolio." },
   ];
 
   for (const inv of investments) {
@@ -76,7 +96,7 @@ async function main() {
     },
   });
 
-  console.log("Seed complete: 4 categories, 16 investments, 1 admin user");
+  console.log("Seed complete: 6 categories, 24 investments, 1 admin user");
 }
 
 main()

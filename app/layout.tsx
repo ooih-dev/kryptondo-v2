@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
 import { GeistSans } from "geist/font/sans";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
@@ -44,8 +45,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = cookies();
+  const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body className={`${geist.className} ${playfair.variable} font-sans`}>
         <Header />
         <main>{children}</main>

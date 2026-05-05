@@ -1304,3 +1304,435 @@ export const CAR_FAQS = [
   { q: "What if the car needs major maintenance?", a: "A maintenance reserve is set aside from each car's monthly revenue. All scheduled and unscheduled maintenance is handled by Kryptondo Fleet — investors bear no direct cost." },
   { q: "How are driving days allocated (co-ownership)?", a: "Driving days are proportional to your token holding. 1% ownership in a fleet car = approximately your share of the car's non-rented days per year, booked via the Kryptondo app." },
 ];
+
+// ─── EV Charging Station Types ──────────────────────────────────────────────
+
+export interface EVChargingStation {
+  id: string;
+  name: string;
+  location: string;
+  locationType: string;
+  description: string;
+  chargerCount: number;
+  chargerType: string;
+  powerOutputKW: number;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  daysLeft: number;
+  monthlyRevenuePerCharger: number;
+  utilization: number;
+  estimatedYield: number;
+  riskScore: number;
+  riskBreakdown: RiskBreakdown[];
+  features: string[];
+  chain: string;
+  contractAddress: string;
+  spvName: string;
+  team: { name: string; role: string; bio: string; initials: string; color: string }[];
+  faqs: { q: string; a: string }[];
+}
+
+// ─── EV Charging Station Data ───────────────────────────────────────────────
+
+export const EV_CHARGING_STATIONS: EVChargingStation[] = [
+  {
+    id: "ev1",
+    name: "ChargeHub Berlin",
+    location: "Berlin A10 Highway",
+    locationType: "Highway Rest Stop",
+    description: "20 DC fast chargers at a high-traffic rest stop on Berlin's A10 ring motorway. 85% average utilization — one of the highest in Germany.",
+    chargerCount: 20,
+    chargerType: "DC Fast Charger",
+    powerOutputKW: 150,
+    tokenPrice: 75,
+    totalTokens: 2000,
+    soldTokens: 1400,
+    investors: 62,
+    daysLeft: 18,
+    monthlyRevenuePerCharger: 650,
+    utilization: 85,
+    estimatedYield: 12,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Location Quality", score: 1, label: "A10 rest stop — top-traffic corridor" },
+      { criterion: "Utilization Rate", score: 1, label: "85% — exceptional for EV charging" },
+      { criterion: "Technology Risk", score: 2, label: "150kW CCS2 — current standard" },
+      { criterion: "Regulatory Support", score: 1, label: "German federal charging subsidies active" },
+      { criterion: "Revenue Consistency", score: 2, label: "Stable traffic corridor" },
+      { criterion: "Maintenance Risk", score: 2, label: "Service contract with ABB" },
+    ],
+    features: ["150kW DC fast charging (CCS2)", "24/7 operation", "Covered canopy", "Real-time availability app", "Payment via app, card, or RFID", "ABB Terra 184 chargers"],
+    chain: "Arbitrum",
+    contractAddress: "0xEV01...chargehub",
+    spvName: "ChargeHub Infrastructure SPV (Malta) Ltd.",
+    team: [
+      { name: "Klaus Richter", role: "CEO", bio: "Former E.ON infrastructure director. 15 years building energy networks across Germany. Led deployment of 200+ charging stations.", initials: "KR", color: "#0EA5E9" },
+      { name: "Ingrid Svensson", role: "COO", bio: "Supply chain and construction specialist from Vattenfall. Manages all site development and charger procurement.", initials: "IS", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "How is revenue calculated per charger?", a: "Revenue = sessions per day × average kWh per session × price per kWh. At 85% utilization, each charger averages 14 sessions/day at €0.45/kWh, generating approximately €650/month." },
+      { q: "What happens during maintenance downtime?", a: "ABB service contracts guarantee 98% uptime. Revenue projections already account for 2% scheduled maintenance. Emergency repairs are covered within 24 hours." },
+      { q: "What if EV adoption slows?", a: "EU regulation mandates 3.5M public chargers by 2030. Even conservative scenarios project 2× current EV registrations by 2028. Highway locations are the least sensitive to adoption speed." },
+      { q: "Is the site owned or leased?", a: "20-year ground lease with the highway rest stop operator, indexed to inflation. Lease costs are fixed and factored into revenue projections." },
+    ],
+  },
+  {
+    id: "ev2",
+    name: "VoltPoint Munich",
+    location: "Munich Pasing",
+    locationType: "Shopping Center",
+    description: "12 chargers at Munich's busiest shopping center. Shoppers charge while they browse — high dwell time drives high utilization.",
+    chargerCount: 12,
+    chargerType: "DC Fast Charger",
+    powerOutputKW: 100,
+    tokenPrice: 75,
+    totalTokens: 1200,
+    soldTokens: 720,
+    investors: 38,
+    daysLeft: 28,
+    monthlyRevenuePerCharger: 480,
+    utilization: 72,
+    estimatedYield: 10,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Location Quality", score: 1, label: "Top-5 Munich shopping center" },
+      { criterion: "Utilization Rate", score: 2, label: "72% — strong for retail location" },
+      { criterion: "Technology Risk", score: 2, label: "100kW — suitable for 1-2hr shopping sessions" },
+      { criterion: "Regulatory Support", score: 1, label: "Bavaria state EV incentives" },
+      { criterion: "Revenue Consistency", score: 2, label: "Retail foot traffic stable year-round" },
+      { criterion: "Maintenance Risk", score: 2, label: "Managed by center facilities team" },
+    ],
+    features: ["100kW DC fast charging", "Underground parking integration", "Automated billing via app", "Contactless card payment", "Real-time slot reservation", "LED-lit charging bays"],
+    chain: "Base",
+    contractAddress: "0xEV02...voltpoint",
+    spvName: "VoltPoint Energy SPV (Malta) Ltd.",
+    team: [
+      { name: "Martin Gruber", role: "CEO", bio: "Ex-Siemens energy division. Built 3 charging networks for retail partners across Bavaria.", initials: "MG", color: "#0EA5E9" },
+      { name: "Eva Schneider", role: "Head of Partnerships", bio: "10 years in commercial real estate. Manages all shopping center and landlord relationships.", initials: "ES", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "How does the shopping center partnership work?", a: "Revenue-sharing agreement: 80% to SPV investors, 20% to the shopping center. The center benefits from increased foot traffic from EV drivers." },
+      { q: "What are peak utilization times?", a: "Saturdays and weekday evenings (17:00–21:00) see 90%+ utilization. Average across the week is 72%." },
+      { q: "Are there expansion plans?", a: "Yes — the shopping center has pre-approved 8 additional bays for Phase 2, contingent on Phase 1 reaching 75% utilization for 6 months." },
+      { q: "What if the shopping center closes or changes ownership?", a: "The charging license is a 15-year independent agreement registered on the property title. It survives ownership changes." },
+    ],
+  },
+  {
+    id: "ev3",
+    name: "ElektroPark Hamburg",
+    location: "Hamburg Logistics Hub",
+    locationType: "Logistics Hub",
+    description: "30 chargers serving electric delivery fleets at Hamburg's largest logistics park. B2B contracts guarantee 90% minimum utilization.",
+    chargerCount: 30,
+    chargerType: "DC Fast Charger",
+    powerOutputKW: 180,
+    tokenPrice: 100,
+    totalTokens: 2200,
+    soldTokens: 880,
+    investors: 44,
+    daysLeft: 35,
+    monthlyRevenuePerCharger: 720,
+    utilization: 90,
+    estimatedYield: 14,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Location Quality", score: 1, label: "Hamburg's #1 logistics park" },
+      { criterion: "Utilization Rate", score: 1, label: "90% — B2B contracts guarantee minimum" },
+      { criterion: "Technology Risk", score: 2, label: "180kW — commercial fleet standard" },
+      { criterion: "Regulatory Support", score: 1, label: "Federal + Hamburg fleet electrification subsidies" },
+      { criterion: "Revenue Consistency", score: 1, label: "Corporate contracts with guaranteed minimums" },
+      { criterion: "Maintenance Risk", score: 2, label: "24/7 on-site technician" },
+    ],
+    features: ["180kW DC charging (CCS2 + CHAdeMO)", "Fleet management dashboard", "24/7 on-site technician", "B2B billing integration", "Load balancing system", "Expandable to 50 chargers"],
+    chain: "Arbitrum",
+    contractAddress: "0xEV03...elektropark",
+    spvName: "ElektroPark Infra SPV (Malta) Ltd.",
+    team: [
+      { name: "Jens Petersen", role: "CEO", bio: "Built Hamburg's first commercial EV fleet charging network. Former logistics director at Hermes Germany.", initials: "JP", color: "#0EA5E9" },
+      { name: "Annika Wulf", role: "CTO", bio: "Electrical engineer, specialist in grid-scale energy management and load balancing for commercial EV fleets.", initials: "AW", color: "#C4663A" },
+      { name: "Tomasz Kowalski", role: "Head of Fleet Sales", bio: "B2B energy sales veteran. Signed contracts with DHL, Amazon Logistics, and 3 regional courier services.", initials: "TK", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "How do the B2B contracts work?", a: "Fleet operators sign 3-year minimum-use agreements: they guarantee a minimum number of charging sessions per month, or pay a base fee. This protects investors from utilization risk." },
+      { q: "What fleets use ElektroPark?", a: "DHL electric vans, Amazon Logistics, Hermes, and 3 regional courier services. Combined fleet of 200+ electric vehicles based at the logistics park." },
+      { q: "Is there grid capacity for expansion?", a: "Yes — the site has a 2MW grid connection with current load at 1.2MW. Expansion to 50 chargers is technically feasible without grid upgrade." },
+      { q: "What if a fleet operator switches to a competitor?", a: "3-year lock-in with 12-month early termination penalty. Even without the largest client, remaining contracts cover 65% of charger capacity." },
+    ],
+  },
+  {
+    id: "ev4",
+    name: "GreenCharge Vienna",
+    location: "Vienna Innere Stadt",
+    locationType: "City Center",
+    description: "8 ultra-fast 350kW chargers in Vienna's first district. Premium pricing for rapid top-ups in the heart of the city.",
+    chargerCount: 8,
+    chargerType: "Ultra-Fast Charger",
+    powerOutputKW: 350,
+    tokenPrice: 100,
+    totalTokens: 1200,
+    soldTokens: 360,
+    investors: 22,
+    daysLeft: 42,
+    monthlyRevenuePerCharger: 800,
+    utilization: 68,
+    estimatedYield: 11,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Location Quality", score: 1, label: "Vienna 1st district — premium location" },
+      { criterion: "Utilization Rate", score: 3, label: "68% — growing as EV adoption increases" },
+      { criterion: "Technology Risk", score: 2, label: "350kW — future-proof for next-gen EVs" },
+      { criterion: "Regulatory Support", score: 2, label: "Austrian federal and Vienna city subsidies" },
+      { criterion: "Revenue Consistency", score: 3, label: "City center utilization still maturing" },
+      { criterion: "Maintenance Risk", score: 2, label: "Tritium service agreement" },
+    ],
+    features: ["350kW ultra-fast charging (CCS2)", "10-minute to 80% charge", "Premium city-center location", "Contactless payment", "Dynamic pricing (peak/off-peak)", "Tritium PKM 350 chargers"],
+    chain: "Base",
+    contractAddress: "0xEV04...greencharge",
+    spvName: "GreenCharge Austria SPV (Malta) Ltd.",
+    team: [
+      { name: "Lukas Huber", role: "CEO", bio: "Austrian energy entrepreneur. Previously built and sold a 50-station charging network in Tyrol.", initials: "LH", color: "#0EA5E9" },
+      { name: "Sophie Bauer", role: "Head of Operations", bio: "Urban infrastructure specialist from Wien Energie. Manages all city permits and grid connections.", initials: "SB", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "Why 350kW chargers in a city center?", a: "City center users need fast top-ups — 10 minutes for 80% charge. Premium speed commands premium pricing (€0.55/kWh vs €0.45/kWh at highway stations). As more 800V EVs arrive, these chargers are perfectly positioned." },
+      { q: "What is the dynamic pricing model?", a: "Peak hours (8am–8pm weekdays): €0.55/kWh. Off-peak: €0.40/kWh. This optimizes revenue during high-demand periods and attracts users during quieter times." },
+      { q: "Is 68% utilization enough to be profitable?", a: "Yes — premium pricing at €0.55/kWh means each charger generates €800/month even at 68%. As Vienna's EV fleet grows (currently 15% annual growth), utilization is projected to reach 80% by 2028." },
+      { q: "What about competition from Tesla Superchargers?", a: "Tesla Superchargers serve Tesla vehicles only (opening slowly to others). Our CCS2 chargers serve all European EVs. Vienna's 1st district has zero other ultra-fast public chargers." },
+    ],
+  },
+];
+
+export const EV_CHARGING_FAQS = [
+  { q: "How is revenue calculated?", a: "Revenue = charging sessions × kWh consumed × price per kWh. Each charger tracks usage via smart meters. Monthly revenue is distributed proportionally to all token holders after operating costs (electricity, maintenance, site lease)." },
+  { q: "What are typical operating costs?", a: "Electricity (55-65% of revenue), site lease (10-15%), maintenance (5-8%), insurance (2-3%), and management fee (5%). Net margins typically range 15-25% depending on utilization." },
+  { q: "Who maintains the chargers?", a: "Each station has a manufacturer service contract (ABB, Tritium, etc.) guaranteeing 98%+ uptime. Kryptondo's infrastructure team monitors all stations 24/7 via remote management." },
+  { q: "What if EV adoption slows down?", a: "EU regulation mandates 3.5M public chargers by 2030 (currently ~600k). Government subsidies protect early infrastructure investments. Highway and logistics locations are least sensitive to adoption speed variations." },
+  { q: "How often are dividends paid?", a: "Monthly, based on the previous month's net charging revenue. Smart contracts distribute automatically to all token holders on the 1st of each month." },
+  { q: "What is the asset lifespan?", a: "Commercial EV chargers have a 15-20 year operational life. Technology upgrades (e.g., power output increases) can extend commercial viability further. The site leases match or exceed equipment life." },
+];
+
+// ─── Solar Project Types ────────────────────────────────────────────────────
+
+export interface SolarProject {
+  id: string;
+  name: string;
+  location: string;
+  description: string;
+  roofSizeM2: number;
+  capacityKWp: number;
+  annualProductionKWh: number;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  daysLeft: number;
+  investorYield: number;
+  contributorYield: number;
+  feedInTariffCentsKWh: number;
+  riskScore: number;
+  riskBreakdown: RiskBreakdown[];
+  isContributed: boolean;
+  contributorName: string | null;
+  roofType: string;
+  orientation: string;
+  features: string[];
+  chain: string;
+  contractAddress: string;
+  spvName: string;
+  team: { name: string; role: string; bio: string; initials: string; color: string }[];
+  faqs: { q: string; a: string }[];
+}
+
+// ─── Solar Project Data ─────────────────────────────────────────────────────
+
+export const SOLAR_PROJECTS: SolarProject[] = [
+  {
+    id: "sol1",
+    name: "SolarDach Berlin-Kreuzberg",
+    location: "Berlin Kreuzberg",
+    description: "450m² warehouse rooftop in Kreuzberg — contributed by the building owner. 85kWp system projected to produce 78,000 kWh/year.",
+    roofSizeM2: 450,
+    capacityKWp: 85,
+    annualProductionKWh: 78000,
+    tokenPrice: 50,
+    totalTokens: 1900,
+    soldTokens: 1330,
+    investors: 58,
+    daysLeft: 16,
+    investorYield: 9,
+    contributorYield: 14,
+    feedInTariffCentsKWh: 8.2,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Solar Resource", score: 2, label: "Berlin avg 1,050 kWh/kWp — moderate" },
+      { criterion: "Roof Condition", score: 1, label: "Professional assessment passed — 30yr life" },
+      { criterion: "Grid Connection", score: 1, label: "Direct feed-in approved by Stromnetz Berlin" },
+      { criterion: "Regulatory Stability", score: 1, label: "German EEG guarantees 20yr feed-in tariff" },
+      { criterion: "Technology Risk", score: 2, label: "Tier-1 panels — 25yr performance warranty" },
+      { criterion: "Counterparty Risk", score: 2, label: "Building owner committed for 20yr lease" },
+    ],
+    isContributed: true,
+    contributorName: "Hans Mueller",
+    roofType: "Flat",
+    orientation: "South-facing (10° tilt)",
+    features: ["JA Solar 540W panels", "Huawei SUN2000 inverters", "Remote monitoring system", "Anti-theft mounting rails", "Lightning protection", "20-year EEG feed-in guarantee"],
+    chain: "Arbitrum",
+    contractAddress: "0xSOL01...solardach",
+    spvName: "SolarDach Berlin SPV (Malta) Ltd.",
+    team: [
+      { name: "Andreas Berger", role: "CEO", bio: "Solar industry veteran, 12 years at SMA Solar. Has developed 50+ commercial rooftop installations totaling 8MW.", initials: "AB", color: "#F59E0B" },
+      { name: "Nina Krause", role: "Head of Engineering", bio: "Structural engineer specialising in rooftop solar. Certified PV installer with 200+ roof assessments completed.", initials: "NK", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "Who is the rooftop contributor?", a: "Hans Mueller, owner of a commercial warehouse in Kreuzberg. He contributes his roof in exchange for a contributor bonus (higher yield) and reduced electricity costs for his building." },
+      { q: "What does the contributor earn?", a: "Contributors earn 30-50% more than pure financial investors. Hans receives the standard investor yield plus a contribution bonus for providing the roof space, plus direct savings on his warehouse electricity." },
+      { q: "How long is the EEG feed-in tariff guaranteed?", a: "20 years from installation date, guaranteed by German federal law (Erneuerbare-Energien-Gesetz). The current rate for new installations is 8.2 cents/kWh." },
+      { q: "What if the building is sold?", a: "The solar lease is registered on the property title and runs for 20 years. It survives any change of building ownership." },
+    ],
+  },
+  {
+    id: "sol2",
+    name: "SunPower Frankfurt",
+    location: "Frankfurt Osthafen",
+    description: "800m² logistics center roof in Frankfurt's industrial east. 160kWp system — one of the largest commercial rooftop installations on Kryptondo.",
+    roofSizeM2: 800,
+    capacityKWp: 160,
+    annualProductionKWh: 152000,
+    tokenPrice: 75,
+    totalTokens: 2400,
+    soldTokens: 960,
+    investors: 42,
+    daysLeft: 30,
+    investorYield: 10,
+    contributorYield: 0,
+    feedInTariffCentsKWh: 8.2,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Solar Resource", score: 2, label: "Frankfurt avg 1,080 kWh/kWp — moderate-good" },
+      { criterion: "Roof Condition", score: 1, label: "New roof (2022) — excellent condition" },
+      { criterion: "Grid Connection", score: 1, label: "3-phase 400A connection — no upgrade needed" },
+      { criterion: "Regulatory Stability", score: 1, label: "EEG 20yr guarantee + corporate PPA option" },
+      { criterion: "Technology Risk", score: 2, label: "Canadian Solar BiHiKu — bankable tier-1" },
+      { criterion: "Counterparty Risk", score: 2, label: "Logistics company on 15yr lease" },
+    ],
+    isContributed: false,
+    contributorName: null,
+    roofType: "Flat",
+    orientation: "East-West split (optimal for all-day generation)",
+    features: ["Canadian Solar 580W bifacial panels", "SMA Sunny Tripower inverters", "Battery-ready design", "Energy management system", "Bird deterrent netting", "Hail-resistant panels (IEC 61215)"],
+    chain: "Base",
+    contractAddress: "0xSOL02...sunpower",
+    spvName: "SunPower Frankfurt SPV (Malta) Ltd.",
+    team: [
+      { name: "Dr. Marco Fischer", role: "CEO", bio: "PhD in photovoltaic engineering from TU Darmstadt. Previously led Hanwha Q Cells' commercial division for DACH.", initials: "MF", color: "#F59E0B" },
+      { name: "Julia Hartmann", role: "Head of Finance", bio: "Solar project finance specialist. Has structured €50M+ in renewable energy investments across Germany.", initials: "JH", color: "#B8954F" },
+      { name: "Kemal Yilmaz", role: "Installation Director", bio: "Master electrician with 300+ solar installations. Manages all procurement, installation, and commissioning.", initials: "KY", color: "#C4663A" },
+    ],
+    faqs: [
+      { q: "Why is this one of the highest-yield solar projects?", a: "Scale: 160kWp spreads fixed costs across more panels. Frankfurt's excellent grid infrastructure avoids curtailment. East-West orientation generates more consistent all-day power than pure south-facing." },
+      { q: "Is a corporate PPA possible?", a: "Yes — the logistics company tenant has expressed interest in a Power Purchase Agreement at €0.12/kWh for on-site consumption, which is 46% higher than the feed-in tariff. This would significantly boost investor returns." },
+      { q: "What about battery storage?", a: "The system is battery-ready. If electricity prices spike or arbitrage opportunities emerge, battery storage can be added to shift production to peak pricing periods." },
+      { q: "What happens after the 20-year EEG period?", a: "After 20 years, the panels still produce at ~85% original capacity. Revenue switches to market-rate electricity sales or PPA renewals. Panels have 25-30 year commercial lifespans." },
+    ],
+  },
+  {
+    id: "sol3",
+    name: "AlpenSolar Innsbruck",
+    location: "Innsbruck, Austria",
+    description: "300m² hotel rooftop in the Tyrolean Alps. Contributed by Hotel Goldener Adler. Mountain altitude means exceptional solar irradiance and cooler panels = higher efficiency.",
+    roofSizeM2: 300,
+    capacityKWp: 60,
+    annualProductionKWh: 66000,
+    tokenPrice: 50,
+    totalTokens: 1400,
+    soldTokens: 840,
+    investors: 36,
+    daysLeft: 24,
+    investorYield: 8,
+    contributorYield: 12,
+    feedInTariffCentsKWh: 7.67,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Solar Resource", score: 1, label: "Alpine altitude — 1,200 kWh/kWp, above average" },
+      { criterion: "Roof Condition", score: 2, label: "Pitched roof, professionally assessed" },
+      { criterion: "Grid Connection", score: 2, label: "Austrian grid connection approved" },
+      { criterion: "Regulatory Stability", score: 1, label: "Austrian OeMAG guarantees 13yr feed-in" },
+      { criterion: "Technology Risk", score: 2, label: "LONGi Hi-MO 6 — top-tier panels" },
+      { criterion: "Counterparty Risk", score: 1, label: "Hotel in operation since 1890 — family owned" },
+    ],
+    isContributed: true,
+    contributorName: "Hotel Goldener Adler",
+    roofType: "Pitched (35°)",
+    orientation: "South-facing",
+    features: ["LONGi Hi-MO 6 panels", "Fronius Symo GEN24 inverters", "Snow load rated (4.5kN/m²)", "Alpine wind-rated mounting", "On-site energy display for hotel guests", "Emergency backup power capability"],
+    chain: "Arbitrum",
+    contractAddress: "0xSOL03...alpensolar",
+    spvName: "AlpenSolar Tyrol SPV (Malta) Ltd.",
+    team: [
+      { name: "Florian Mayer", role: "CEO", bio: "Tyrolean solar pioneer, built the first commercial PV installation in Innsbruck in 2014. Operates 2MW+ of alpine solar.", initials: "FM", color: "#F59E0B" },
+      { name: "Maria Hofer", role: "Contributor Relations", bio: "Hospitality industry veteran. Manages rooftop contributor onboarding and building owner relationships across Austria.", initials: "MH", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "Why does altitude improve solar performance?", a: "Higher altitude = thinner atmosphere = more direct sunlight. Cooler temperatures also improve panel efficiency (panels lose ~0.3% efficiency per °C above 25°C). Innsbruck panels run 10-15°C cooler than lowland installations." },
+      { q: "What does Hotel Goldener Adler get?", a: "The hotel gets free electricity from the system (reducing their €18,000/year energy bill), plus a contributor bonus on investment returns. The hotel also promotes the solar installation to eco-conscious guests." },
+      { q: "How does Austrian feed-in compare to German?", a: "Austrian OeMAG guarantees are 13 years (vs 20 in Germany) at 7.67 cents/kWh. After 13 years, production is sold at market rates. Alpine production compensates for the shorter guarantee." },
+      { q: "What about snow on the panels?", a: "35° pitch ensures natural snow shedding. Panels are rated for 4.5kN/m² snow load. Alpine installations typically lose <5% annual production to snow cover." },
+    ],
+  },
+  {
+    id: "sol4",
+    name: "NordSonne Hamburg",
+    location: "Hamburg Wilhelmsburg",
+    description: "1,200m² industrial rooftop — the largest solar project on Kryptondo. 240kWp system powering Hamburg's energy transition.",
+    roofSizeM2: 1200,
+    capacityKWp: 240,
+    annualProductionKWh: 216000,
+    tokenPrice: 75,
+    totalTokens: 3733,
+    soldTokens: 1120,
+    investors: 48,
+    daysLeft: 42,
+    investorYield: 11,
+    contributorYield: 0,
+    feedInTariffCentsKWh: 8.2,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Solar Resource", score: 3, label: "Hamburg avg 980 kWh/kWp — below national avg" },
+      { criterion: "Roof Condition", score: 1, label: "Industrial steel roof, 2020 build" },
+      { criterion: "Grid Connection", score: 1, label: "Industrial 630A connection — ample capacity" },
+      { criterion: "Regulatory Stability", score: 1, label: "EEG 20yr guarantee" },
+      { criterion: "Technology Risk", score: 2, label: "Trina Vertex S+ panels — bankable" },
+      { criterion: "Counterparty Risk", score: 3, label: "Industrial tenant, 8yr remaining lease" },
+    ],
+    isContributed: false,
+    contributorName: null,
+    roofType: "Flat (steel deck)",
+    orientation: "South-facing (ballasted 15° tilt)",
+    features: ["Trina Vertex S+ 600W panels", "Huawei SUN2000-100KTL inverters", "400-unit panel array", "Industrial load management", "Aerial thermal monitoring", "Fire detection system"],
+    chain: "Base",
+    contractAddress: "0xSOL04...nordsonne",
+    spvName: "NordSonne Hamburg SPV (Malta) Ltd.",
+    team: [
+      { name: "Henrik Lindqvist", role: "CEO", bio: "Swedish-German solar entrepreneur. Previously built 15MW of commercial solar in Scandinavia before focusing on Northern Germany.", initials: "HL", color: "#F59E0B" },
+      { name: "Claudia Brandt", role: "Head of Operations", bio: "Renewable energy engineer from Hamburg Energie. 8 years operating utility-scale and commercial solar installations.", initials: "CB", color: "#C4663A" },
+      { name: "Patrick Schulz", role: "CFO", bio: "Infrastructure finance background from Berenberg Bank. Structured €120M+ in renewable energy project finance.", initials: "PS", color: "#B8954F" },
+    ],
+    faqs: [
+      { q: "Hamburg gets less sun — is this still profitable?", a: "Yes. Lower irradiance is compensated by lower land costs and strong local demand. Hamburg's industrial electricity prices are among Germany's highest, making on-site consumption (PPA) extremely attractive." },
+      { q: "What if the industrial tenant leaves?", a: "The solar lease is independent of the tenant lease. If the tenant changes, the new tenant inherits the electricity supply arrangement. The roof lease is with the building owner, not the tenant." },
+      { q: "Why is this the largest project on Kryptondo?", a: "1,200m² industrial roofs are rare — most commercial rooftops are 200-500m². Scale reduces per-kWp installation costs by 20-30%, improving investor returns despite lower Hamburg irradiance." },
+      { q: "Is there potential for a battery addition?", a: "The system design includes pre-wiring for a 100kWh battery. This would be funded as a Phase 2 investment if peak-shaving proves economically viable." },
+    ],
+  },
+];
+
+export const SOLAR_FAQS = [
+  { q: "How does the rooftop contribution model work?", a: "Building owners offer their rooftop for solar installation at no cost to them. In return, they earn a higher yield than pure financial investors (typically 30-50% more), get reduced electricity costs, and receive a free professional roof assessment. The installation is fully funded by the investor pool." },
+  { q: "What is a feed-in tariff?", a: "A government-guaranteed price for solar electricity fed into the public grid. In Germany, the EEG guarantees a fixed rate (currently 8.2 cents/kWh) for 20 years from installation. This provides stable, predictable revenue for investors." },
+  { q: "How often are dividends paid?", a: "Monthly, based on the previous month's energy production and revenue. Smart contracts distribute automatically to all token holders. Revenue = kWh produced × feed-in tariff rate (or PPA rate for on-site consumption)." },
+  { q: "What if the panels underperform?", a: "All panels carry 25-year manufacturer performance warranties guaranteeing at least 85% output at year 25. Actual degradation is typically 0.3-0.5% per year. Insurance covers extreme weather damage, theft, and fire." },
+  { q: "Can I contribute my rooftop?", a: "Yes! Submit your rooftop details via the assessment form. Our engineers will evaluate your roof's suitability (size, orientation, structural condition). If approved, your rooftop is listed as a solar project and investors fund the installation." },
+  { q: "What is the environmental impact?", a: "Each kWp of solar capacity avoids approximately 500kg of CO2 per year. A typical 100kWp installation powers the equivalent of 30 European households and saves 50 tonnes of CO2 annually." },
+];

@@ -1,6 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { useLocalePath } from "../i18n/useLocale";
+import { useTranslations } from "../i18n/useTranslations";
 
 export default function Footer() {
+  const lp = useLocalePath();
+  const t = useTranslations("footer");
+
   return (
     <footer style={{ background: "#2D2A26", marginTop: "0" }}>
       <div className="container-lg mx-auto px-4 py-14">
@@ -36,7 +43,7 @@ export default function Footer() {
               360° Investment Platform
             </p>
             <p className="text-xs leading-relaxed mb-5" style={{ color: "#8A7D70", lineHeight: "1.7" }}>
-              Risk · Interest · Transparency · Law. Tokenizing equity across businesses, cars, healthcare, and fitness.
+              {t.tagline}
             </p>
             <div className="flex gap-4">
               {["Twitter", "LinkedIn", "Telegram"].map((s) => (
@@ -52,25 +59,24 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Invest */}
+          {/* Product */}
           <div>
             <p
               className="mb-4"
               style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
-              Invest
+              {t.product}
             </p>
             <ul className="space-y-2.5">
               {[
-                ["Browse Opportunities", "/invest"],
-                ["How It Works", "/invest#how-it-works"],
-                ["Tokens Explained", "/invest#tokens"],
-                ["Secondary Market", "/invest#secondary"],
-                ["Loyalty & Perks", "/invest#loyalty"],
+                [t.browseInvestments, "/invest"],
+                [t.howItWorks, "/invest#how-it-works"],
+                ["EV Charging", "/ev-charging"],
+                ["Solar", "/solar"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link
-                    href={href}
+                    href={lp(href)}
                     className="text-sm transition-colors duration-150"
                     style={{ color: "#8A7D70" }}
                   >
@@ -81,25 +87,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* For Business */}
+          {/* Company */}
           <div>
             <p
               className="mb-4"
               style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
-              For Business
+              {t.company}
             </p>
             <ul className="space-y-2.5">
               {[
-                ["How to List", "/for-business"],
-                ["SPV Structure", "/for-business#regulatory"],
-                ["Fees & Economics", "/for-business#fees"],
-                ["Case Studies", "/for-business#cases"],
-                ["Apply Now", "/for-business#apply"],
+                [t.aboutUs, "/about"],
+                [t.forBusiness, "/for-business"],
+                [t.careers, "#"],
+                [t.blog, "#"],
+                [t.press, "#"],
               ].map(([label, href]) => (
-                <li key={href}>
+                <li key={label}>
                   <Link
-                    href={href}
+                    href={lp(href)}
                     className="text-sm transition-colors duration-150"
                     style={{ color: "#8A7D70" }}
                   >
@@ -116,19 +122,17 @@ export default function Footer() {
               className="mb-4"
               style={{ fontSize: "0.6875rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "#EDE8E0" }}
             >
-              Legal
+              {t.legal}
             </p>
             <ul className="space-y-2.5">
               {[
-                ["Privacy Policy", "/legal/privacy"],
-                ["Terms of Service", "/legal/terms"],
-                ["Risk Disclosure", "/legal/risk"],
-                ["Cookie Policy", "/legal/cookies"],
-                ["About Us", "/about"],
+                [t.privacy, "/legal/privacy"],
+                [t.terms, "/legal/terms"],
+                [t.imprint, "/legal/imprint"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link
-                    href={href}
+                    href={lp(href)}
                     className="text-sm transition-colors duration-150"
                     style={{ color: "#8A7D70" }}
                   >
@@ -147,10 +151,10 @@ export default function Footer() {
         >
           <div className="space-y-1">
             <p className="text-xs" style={{ color: "#8A7D70" }}>
-              © 2026 Kryptondo GmbH. All rights reserved.
+              © 2026 Kryptondo GmbH. {t.rights}
             </p>
             <p className="text-xs" style={{ color: "#8A7D70" }}>
-              Regulated under Malta Financial Services Authority · SPV Reg. No. MT-SPV-2025-0042 ·{" "}
+              Malta Financial Services Authority · SPV Reg. No. MT-SPV-2025-0042 ·{" "}
               <a
                 href="mailto:info@kryptondo.de"
                 className="transition-colors duration-150"
@@ -161,7 +165,7 @@ export default function Footer() {
             </p>
           </div>
           <p className="text-xs text-right max-w-sm leading-relaxed" style={{ color: "#8A7D70", opacity: 0.7 }}>
-            Investing involves risk. Token values may fluctuate. Past performance does not guarantee future results.
+            {t.disclaimer}
           </p>
         </div>
       </div>

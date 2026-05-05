@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLocale, useLocalePath, useSwitchLocalePath } from "../i18n/useLocale";
+import { useTranslations } from "../i18n/useTranslations";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -11,6 +13,11 @@ export default function Header() {
   const [dark, setDark] = useState(false);
   const [hasProfile, setHasProfile] = useState(false);
   const pathname = usePathname();
+  const locale = useLocale();
+  const lp = useLocalePath();
+  const switchLocale = useSwitchLocalePath();
+  const t = useTranslations("header");
+  const tc = useTranslations("common");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,15 +44,23 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { href: "/invest", label: "Invest" },
-    { href: "/cars", label: "Cars" },
-    { href: "/medical", label: "Medical" },
-    { href: "/fitness", label: "Fitness" },
-    { href: "/for-business", label: "For Business" },
-    { href: "/#how-it-works", label: "How It Works" },
-    { href: "/about", label: "About" },
-    ...(hasProfile ? [{ href: "/dashboard", label: "Dashboard" }] : []),
-  ];
+    { href: "/invest", label: t.invest },
+    { href: "/cars", label: t.cars },
+    { href: "/medical", label: t.medical },
+    { href: "/fitness", label: t.fitness },
+    { href: "/ev-charging", label: t.evCharging },
+    { href: "/solar", label: t.solar },
+    { href: "/for-business", label: t.forBusiness },
+    { href: "/#how-it-works", label: t.howItWorks },
+    { href: "/about", label: t.about },
+    ...(hasProfile ? [{ href: "/dashboard", label: t.dashboard }] : []),
+  ].map((link) => ({ ...link, href: lp(link.href) }));
+
+  const cleanPathname = locale === "de" ? pathname.replace(/^\/de/, "") || "/" : pathname;
+  const isActive = (href: string) => {
+    const cleanHref = locale === "de" ? href.replace(/^\/de/, "") || "/" : href;
+    return cleanPathname === cleanHref;
+  };
 
   return (
     <header
@@ -63,7 +78,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
+          <Link href={lp("/")} className="flex items-center gap-2.5 group">
             <div
               className="w-8 h-8 rounded-lg flex items-center justify-center font-bold transition-all duration-200 group-hover:scale-105"
               style={{
@@ -97,13 +112,13 @@ export default function Header() {
                 href={link.href}
                 className="relative px-4 py-2 text-sm font-medium transition-colors duration-200 group"
                 style={{
-                  color: pathname === link.href ? "var(--accent)" : "var(--muted-foreground)",
+                  color: isActive(link.href) ? "var(--accent)" : "var(--muted-foreground)",
                 }}
               >
                 <span className="relative z-10 group-hover:text-[var(--foreground)] transition-colors duration-200">
                   {link.label}
                 </span>
-                {pathname === link.href && (
+                {isActive(link.href) && (
                   <motion.div
                     layoutId="nav-indicator"
                     className="absolute inset-0 rounded-lg"
@@ -117,6 +132,20 @@ export default function Header() {
 
           {/* Right actions */}
           <div className="hidden md:flex items-center gap-2">
+            {/* Language switcher */}
+            <Link
+              href={switchLocale(locale === "de" ? "en" : "de")}
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold transition-all duration-200 hover:scale-105 uppercase"
+              style={{
+                border: "1px solid var(--border)",
+                background: "var(--surface)",
+                color: "var(--muted-foreground)",
+                letterSpacing: "0.05em",
+              }}
+            >
+              {locale === "de" ? "EN" : "DE"}
+            </Link>
+
             {/* Theme toggle */}
             <button
               onClick={() => setDark(!dark)}
@@ -140,11 +169,11 @@ export default function Header() {
               )}
             </button>
 
-            <Link href="/register" className="btn-secondary text-sm !py-2 !px-4">
-              Log In
+            <Link href={lp("/register")} className="btn-secondary text-sm !py-2 !px-4">
+              {tc.logIn}
             </Link>
-            <Link href="/register" className="btn-primary text-sm !py-2 !px-4">
-              <span>Get Started</span>
+            <Link href={lp("/register")} className="btn-primary text-sm !py-2 !px-4">
+              <span>{tc.getStarted}</span>
             </Link>
           </div>
 
@@ -188,12 +217,22 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex gap-2 pt-3 pb-1">
-                <Link href="/register" onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center !py-2.5 text-sm">
-                  Log In
+              <div className="flex gap-2 pt-2 pb-1">
+                <Link
+                  href={switchLocale(locale === "de" ? "en" : "de")}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-4 py-3 rounded-lg text-sm font-bold transition-colors"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {locale === "de" ? "🇬🇧 English" : "🇩🇪 Deutsch"}
                 </Link>
-                <Link href="/register" onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center !py-2.5 text-sm">
-                  <span>Get Started</span>
+              </div>
+              <div className="flex gap-2 pt-1 pb-1">
+                <Link href={lp("/register")} onClick={() => setMobileOpen(false)} className="btn-secondary flex-1 text-center !py-2.5 text-sm">
+                  {tc.logIn}
+                </Link>
+                <Link href={lp("/register")} onClick={() => setMobileOpen(false)} className="btn-primary flex-1 text-center !py-2.5 text-sm">
+                  <span>{tc.getStarted}</span>
                 </Link>
               </div>
             </div>

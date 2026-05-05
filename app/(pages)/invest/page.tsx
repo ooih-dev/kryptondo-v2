@@ -6,6 +6,7 @@ import {
   Building2, Banknote, Star,
   FileText, Key, CalendarDays,
   Tag, Vote, ShieldCheck, Car, Stethoscope, Dumbbell,
+  PlugZap, Sun,
 } from "lucide-react";
 import FadeIn from "../../components/FadeIn";
 import TrustBar from "../../components/TrustBar";
@@ -235,6 +236,62 @@ export default function InvestPage() {
               </div>
               <Link href="/fitness" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#8B5CF6", borderColor: "#8B5CF6" }}>
                 <span>Browse Studios →</span>
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── EV Charging Feature ── */}
+      <section className="section">
+        <div className="container-lg mx-auto">
+          <FadeIn>
+            <div
+              className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center"
+              style={{ background: "linear-gradient(135deg, rgba(14,165,233,0.07) 0%, rgba(184,149,79,0.04) 100%)", border: "1px solid rgba(14,165,233,0.18)" }}
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(14,165,233,0.10)", color: "#0EA5E9" }}>
+                <PlugZap size={28} />
+              </div>
+              <div className="flex-1">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#0EA5E9" }}>New Vertical</span>
+                <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
+                  EV Charging Stations — Earn from Every Charge
+                </h3>
+                <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
+                  Fund high-traffic EV charging infrastructure across Europe. Pure passive income from per-kWh fees. No loyalty perks — just strong, steady returns. From €75 per token.
+                </p>
+              </div>
+              <Link href="/ev-charging" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#0EA5E9", borderColor: "#0EA5E9" }}>
+                <span>Browse Stations →</span>
+              </Link>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* ── Solar Energy Feature ── */}
+      <section className="section" style={{ background: "var(--surface)" }}>
+        <div className="container-lg mx-auto">
+          <FadeIn>
+            <div
+              className="rounded-2xl p-6 md:p-8 flex flex-col md:flex-row gap-6 items-center"
+              style={{ background: "linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(74,124,89,0.05) 100%)", border: "1px solid rgba(245,158,11,0.18)" }}
+            >
+              <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(245,158,11,0.10)", color: "#F59E0B" }}>
+                <Sun size={28} />
+              </div>
+              <div className="flex-1">
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: "#F59E0B" }}>New Vertical</span>
+                <h3 className="font-bold mt-1 mb-1" style={{ fontSize: "1.125rem", color: "var(--foreground)", fontFamily: "var(--font-serif), Georgia, serif" }}>
+                  Solar Energy — Invest or Contribute Your Rooftop
+                </h3>
+                <p className="text-sm leading-body" style={{ color: "var(--muted-foreground)" }}>
+                  Fund rooftop solar installations and earn from feed-in tariffs. Rooftop owners can contribute their roof for 30-50% higher returns. From €25 per token.
+                </p>
+              </div>
+              <Link href="/solar" className="btn-primary shrink-0 whitespace-nowrap" style={{ padding: "0.75rem 1.5rem", background: "#F59E0B", borderColor: "#F59E0B" }}>
+                <span>Browse Projects →</span>
               </Link>
             </div>
           </FadeIn>
