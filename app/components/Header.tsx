@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Car, Stethoscope, Dumbbell, Zap, Sun, ChevronDown } from "lucide-react";
+import { Car, Stethoscope, Dumbbell, Zap, Sun, Music, ChevronDown } from "lucide-react";
 import { useLocale, useLocalePath, useSwitchLocalePath } from "../i18n/useLocale";
 import { useTranslations } from "../i18n/useTranslations";
 
@@ -14,6 +14,7 @@ const INDUSTRIES = [
   { key: "fitness", href: "/fitness", icon: Dumbbell, color: "#8B5CF6" },
   { key: "evCharging", href: "/ev-charging", icon: Zap, color: "#0EA5E9" },
   { key: "solar", href: "/solar", icon: Sun, color: "#F59E0B" },
+  { key: "party", href: "/party", icon: Music, color: "#E879F9" },
 ] as const;
 
 const INDUSTRY_LABELS: Record<string, { en: string; de: string; descEn: string; descDe: string }> = {
@@ -22,6 +23,7 @@ const INDUSTRY_LABELS: Record<string, { en: string; de: string; descEn: string; 
   fitness: { en: "Fitness Studios", de: "Fitnessstudios", descEn: "Own your gym. Earn dividends.", descDe: "Besitze dein Gym. Erhalte Dividenden." },
   evCharging: { en: "EV Charging", de: "E-Ladestationen", descEn: "Earn from every kWh charged.", descDe: "Verdiene an jeder geladenen kWh." },
   solar: { en: "Solar Energy", de: "Solarenergie", descEn: "Fund solar. Earn from feed-in tariffs.", descDe: "Solar finanzieren. Einspeisevergütung verdienen." },
+  party: { en: "Party & Clubs", de: "Party & Clubs", descEn: "Fund events. Earn from every ticket.", descDe: "Events finanzieren. An jedem Ticket verdienen." },
 };
 
 export default function Header() {

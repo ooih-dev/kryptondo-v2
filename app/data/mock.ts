@@ -1728,6 +1728,213 @@ export const SOLAR_PROJECTS: SolarProject[] = [
   },
 ];
 
+// ─── Party & Club ─────────────────────────────────────────────────────────────
+
+export interface PartyClub {
+  id: string;
+  name: string;
+  type: string; // "Techno Club" | "Rooftop Lounge" | "Event Collective" | "Beach Club"
+  location: string;
+  description: string;
+  tokenPrice: number;
+  totalTokens: number;
+  soldTokens: number;
+  investors: number;
+  daysLeft: number;
+  estimatedYield: number;  // % annual
+  ticketRevenueMonthly: number;  // € monthly avg
+  capacityPax: number;
+  eventsPerMonth: number;
+  riskScore: number;
+  riskBreakdown: RiskBreakdown[];
+  features: string[];
+  upcomingEvents: { name: string; date: string; tickets: number; soldOut: boolean }[];
+  team: { name: string; role: string; bio: string; initials: string; color: string }[];
+  faqs: { q: string; a: string }[];
+}
+
+export const PARTY_CLUBS: PartyClub[] = [
+  {
+    id: "party1",
+    name: "Neon Vault",
+    type: "Techno Club",
+    location: "Berlin Friedrichshain",
+    description: "Berlin's underground techno institution. Three rooms, 1,200-pax capacity, and a curated lineup of international artists. Invest and become a co-promoter.",
+    tokenPrice: 50,
+    totalTokens: 2000,
+    soldTokens: 1380,
+    investors: 67,
+    daysLeft: 19,
+    estimatedYield: 18,
+    ticketRevenueMonthly: 148000,
+    capacityPax: 1200,
+    eventsPerMonth: 12,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Venue Footfall", score: 2, label: "Avg 85% capacity fill, strong Berlin demand" },
+      { criterion: "Revenue Consistency", score: 3, label: "Event-dependent, seasonal variation" },
+      { criterion: "Licensing & Compliance", score: 2, label: "Full BVG entertainment license, noise compliance" },
+      { criterion: "Market Competition", score: 3, label: "Competitive Berlin club scene — differentiated by curation" },
+      { criterion: "Operator Experience", score: 2, label: "8 years operating, 4 booking agents" },
+      { criterion: "Lease Security", score: 3, label: "5-year lease, 2 years remaining before renewal" },
+    ],
+    features: ["3 rooms (600 / 400 / 200 pax)", "d&b audiotechnik line arrays", "Funktion-One main room system", "Full LED & laser rig", "Artist hospitality suite", "Outdoor smoking terrace", "Self-service bar x4", "VIP mezzanine balcony"],
+    upcomingEvents: [
+      { name: "Vault Marathon — 24h Opening Party", date: "May 31, 2026", tickets: 1200, soldOut: true },
+      { name: "Nina Kraviz b2b DJ Stingray", date: "Jun 7, 2026", tickets: 900, soldOut: false },
+      { name: "Vault x Tresor Kollektiv", date: "Jun 14, 2026", tickets: 1100, soldOut: false },
+      { name: "Resident Night — All Local", date: "Jun 21, 2026", tickets: 800, soldOut: false },
+    ],
+    team: [
+      { name: "Florian Krueger", role: "Founder & Booker", bio: "Former Berghain resident booker. 12 years in Berlin techno. Founded Neon Vault in 2018 after Berghain residency ended. Books 95% of international acts personally.", initials: "FK", color: "#E879F9" },
+      { name: "Sara Mück", role: "Operations Director", bio: "Event operations veteran from Lollapalooza Berlin. Manages venue staffing (80+ freelancers per event), bar ops, and safety coordination.", initials: "SM", color: "#B8954F" },
+      { name: "Tobias Lang", role: "Finance & SPV Manager", bio: "CPA, 6 years in entertainment finance. Structures revenue-sharing agreements and manages the Malta SPV accounting for investor distributions.", initials: "TL", color: "#4A7C59" },
+    ],
+    faqs: [
+      { q: "How are dividends calculated?", a: "Token holders receive a proportional share of net ticket revenue after operating costs (staff, artist fees, bar costs, licensing). Smart contracts distribute monthly based on audited revenue reports." },
+      { q: "Do I get free entry as a token holder?", a: "Yes — Bronze holders (€100+) get 2 free entries/month. Silver holders (€500+) get unlimited entry. Gold+ holders get VIP access including artist area and complimentary drinks." },
+      { q: "What if a major event is cancelled?", a: "Force majeure events are covered by our event cancellation insurance. If revenue dips below projections for 2+ consecutive months, the SPV board (including investor representatives) reviews the lineup and cost structure." },
+      { q: "Can I co-brand an event?", a: "Platinum holders (€5,000+) can apply to co-brand one event per quarter — your name/brand on the poster, social media, and at the entrance. The booking team curates the music; you get the credit." },
+    ],
+  },
+  {
+    id: "party2",
+    name: "Skyline Terrace",
+    type: "Rooftop Lounge",
+    location: "Munich Maxvorstadt",
+    description: "Munich's highest rooftop bar — 22nd floor, panoramic Alps views, 450-pax capacity. Premium cocktail events and corporate parties with €85 avg spend per guest.",
+    tokenPrice: 75,
+    totalTokens: 1400,
+    soldTokens: 756,
+    investors: 44,
+    daysLeft: 35,
+    estimatedYield: 14,
+    ticketRevenueMonthly: 94000,
+    capacityPax: 450,
+    eventsPerMonth: 8,
+    riskScore: 2,
+    riskBreakdown: [
+      { criterion: "Revenue Per Guest", score: 1, label: "€85 avg spend — premium positioning" },
+      { criterion: "Seasonal Exposure", score: 3, label: "Weather-dependent, closed Jan-Feb" },
+      { criterion: "Licensing & Compliance", score: 1, label: "Full entertainment license, fire safety certified" },
+      { criterion: "Corporate Bookings", score: 1, label: "40% corporate events — predictable forward bookings" },
+      { criterion: "Location", score: 1, label: "22nd floor, prime Munich location" },
+      { criterion: "Operator Experience", score: 2, label: "5 years operating, 4.8/5 Google rating" },
+    ],
+    features: ["Panoramic 360° Alps view", "Open-air terrace (heated season)", "Private event rooms x2", "Signature cocktail menu", "4 full-service bars", "DJ booth & live music stage", "Catering kitchen on-site", "Elevator access (ADA compliant)"],
+    upcomingEvents: [
+      { name: "Rooftop Sunset Series — Opening Night", date: "May 30, 2026", tickets: 420, soldOut: true },
+      { name: "Jazz & Cocktails Evening", date: "Jun 5, 2026", tickets: 300, soldOut: false },
+      { name: "Corporate Private Hire — BMW Group", date: "Jun 12, 2026", tickets: 450, soldOut: true },
+      { name: "Midsummer Celebration", date: "Jun 21, 2026", tickets: 450, soldOut: false },
+    ],
+    team: [
+      { name: "Katarina Schulz", role: "Venue Director", bio: "Hospitality MBA from EHL Lausanne. Previously GM of a 5-star Munich hotel. Transformed Skyline Terrace from a corporate hire venue into Munich's top social events destination.", initials: "KS", color: "#E879F9" },
+      { name: "Luca Fermi", role: "Events & Bookings Manager", bio: "10 years in premium event production across Munich, Vienna, and Milan. Manages all corporate bookings, artist curation, and catering partnerships.", initials: "LF", color: "#F59E0B" },
+    ],
+    faqs: [
+      { q: "What happens in winter?", a: "The venue closes the outdoor terrace from December to February. Indoor events continue year-round in our heated event rooms. Winter revenue is approximately 35% of peak season — factored into yield projections." },
+      { q: "How do corporate bookings work for investors?", a: "Corporate clients pay 20-40% above public event rates. As a token holder, you benefit proportionally from all revenue streams. Corporate bookings are fully confirmed before listing — reducing revenue uncertainty." },
+      { q: "Can I host a private event?", a: "Silver+ holders (€500) can book private events at a 20% discount to public rates. Gold+ holders (€2,000) get one complimentary 50-person private event per year." },
+      { q: "Is the rooftop weather-insured?", a: "Yes — we carry weather cancellation insurance for events above 200 guests. If rain forces cancellation, insurance covers 70% of lost ticket revenue. Investor returns are calculated on net insured revenue." },
+    ],
+  },
+  {
+    id: "party3",
+    name: "Pulse Events",
+    type: "Event Collective",
+    location: "Hamburg Hafencity",
+    description: "Hamburg's largest independent event collective — 4 venues, 30+ events monthly across techno, house, R&B, and live music. €2.1M annual ticket revenue.",
+    tokenPrice: 100,
+    totalTokens: 2500,
+    soldTokens: 1050,
+    investors: 83,
+    daysLeft: 28,
+    estimatedYield: 21,
+    ticketRevenueMonthly: 175000,
+    capacityPax: 3200,
+    eventsPerMonth: 32,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Revenue Diversification", score: 1, label: "4 venues, 6 genres — strong diversification" },
+      { criterion: "Revenue Consistency", score: 2, label: "High event frequency offsets single-event risk" },
+      { criterion: "Operational Complexity", score: 4, label: "Managing 4 venues simultaneously adds risk" },
+      { criterion: "Market Position", score: 2, label: "Dominant Hamburg multi-venue operator" },
+      { criterion: "Artist Relationships", score: 2, label: "Long-term booking relationships with 50+ agents" },
+      { criterion: "Lease Portfolio", score: 3, label: "Mixed lease maturities across 4 venues" },
+    ],
+    features: ["4 venues across Hamburg", "30+ events per month", "Dedicated ticketing platform", "Artist management arm", "Bar & catering collective", "Marketing team of 8", "Sound & lighting owned (not rented)", "Event insurance for all shows"],
+    upcomingEvents: [
+      { name: "Hafencity Festival — 2-Day Edition", date: "Jun 1-2, 2026", tickets: 5000, soldOut: false },
+      { name: "Pulse x Red Bull Music Night", date: "Jun 8, 2026", tickets: 800, soldOut: true },
+      { name: "Warehouse Rave vol.17", date: "Jun 14, 2026", tickets: 1200, soldOut: false },
+      { name: "Rooftop R&B Series Opening", date: "Jun 20, 2026", tickets: 400, soldOut: false },
+    ],
+    team: [
+      { name: "Denis Hartmann", role: "CEO & Co-Founder", bio: "Built Pulse from a single warehouse party to Hamburg's dominant event company. 15 years in live events across Germany, Netherlands, and Scandinavia.", initials: "DH", color: "#E879F9" },
+      { name: "Miriam Hoffmann", role: "Head of Finance", bio: "Former CFO of a Hamburg media company. Oversees SPV structure, investor reporting, and dividend calculations across all 4 venues.", initials: "MH", color: "#B8954F" },
+      { name: "Alex Chen", role: "Head of Bookings", bio: "Previously at Resident Advisor and Beatport. Manages artist relations, contracts, and curates programming across genres for all Pulse venues.", initials: "AC", color: "#0EA5E9" },
+    ],
+    faqs: [
+      { q: "How does investing in a multi-venue collective differ from single venues?", a: "Pulse Events distributes risk across 4 venues and 30+ events/month. A poor night at one venue is offset by strong performance elsewhere. This is closer to a fund than a single business investment." },
+      { q: "What if one venue closes?", a: "Each venue has its own sub-SPV. The parent SPV holds equity in all four. If one venue closes, investors still hold equity in the remaining three. The IID discloses this structure fully." },
+      { q: "How frequently are dividends paid?", a: "Monthly, 15 days after month-end. Revenues are aggregated across all venues and events. Smart contracts distribute proportional shares automatically." },
+      { q: "Can investors influence programming?", a: "Gold+ holders vote quarterly on one 'community picks' event per venue — where the investor community selects the artist or genre. This event is marketed as 'Powered by Investors'." },
+    ],
+  },
+  {
+    id: "party4",
+    name: "Costa Nova Beach Club",
+    type: "Beach Club",
+    location: "Ibiza, Spain",
+    description: "Boutique Ibiza beach club — 280 daybeds, full restaurant, two bars, and weekly sunset DJ sessions. €320 avg spend per guest. Open May–October.",
+    tokenPrice: 150,
+    totalTokens: 1200,
+    soldTokens: 420,
+    investors: 38,
+    daysLeft: 42,
+    estimatedYield: 24,
+    ticketRevenueMonthly: 210000,
+    capacityPax: 280,
+    eventsPerMonth: 6,
+    riskScore: 3,
+    riskBreakdown: [
+      { criterion: "Revenue Per Guest", score: 1, label: "€320 avg spend — premium Ibiza positioning" },
+      { criterion: "Seasonal Exposure", score: 4, label: "Open only May–Oct — concentrated risk" },
+      { criterion: "Licensing & Compliance", score: 2, label: "Spanish entertainment license, EU GDPR compliant" },
+      { criterion: "Tourism Demand", score: 1, label: "Ibiza tourism growing 9% YoY, resilient to downturns" },
+      { criterion: "Operator Experience", score: 2, label: "5 years operating, featured in Condé Nast Traveller" },
+      { criterion: "FX & Cross-Border", score: 3, label: "EUR-denominated revenue, minimal FX exposure" },
+    ],
+    features: ["280 beachfront daybeds & loungers", "Private beach access (200m frontage)", "Full restaurant (60 seats)", "Cocktail & champagne bars x2", "Sunset DJ terrace", "Speedboat pickup service", "VIP cabanas x12", "Concierge & bottle service"],
+    upcomingEvents: [
+      { name: "Season Opening Gala 2026", date: "May 28, 2026", tickets: 280, soldOut: true },
+      { name: "Sunset Series — Fisher b2b", date: "Jun 6, 2026", tickets: 280, soldOut: true },
+      { name: "White Party — Annual Tradition", date: "Jun 27, 2026", tickets: 280, soldOut: false },
+      { name: "Midsummer Moonlight Session", date: "Jul 5, 2026", tickets: 250, soldOut: false },
+    ],
+    team: [
+      { name: "Rafael Navarro", role: "Founder & Owner", bio: "Third-generation Ibiza hospitality family. Built Costa Nova from a beach bar to a multi-million euro venue in 5 years. Featured in Vogue Spain and Condé Nast Traveller.", initials: "RN", color: "#E879F9" },
+      { name: "Sophie Delacroix", role: "Events & Guest Experience", bio: "Former events director at a Monaco superyacht club. Manages all Costa Nova programming, VIP guest relations, and artist curation.", initials: "SD", color: "#F59E0B" },
+    ],
+    faqs: [
+      { q: "How does the seasonal model affect returns?", a: "Costa Nova operates May–October (6 months). Revenue is earned during peak season and distributed monthly throughout the year. The remaining 6 months are used for maintenance, staff training, and pre-season bookings." },
+      { q: "What do perks look like for an Ibiza venue?", a: "Bronze holders get priority reservation access. Silver+ get complimentary daybed reservation (2 per month during season). Gold+ get VIP cabana access and speedboat pickup from marina. Platinum get co-branded event rights." },
+      { q: "What currency are returns paid in?", a: "All revenue is in EUR. Dividends are distributed in EUR via smart contracts to your wallet. No currency conversion risk." },
+      { q: "What happens to the venue off-season?", a: "The property is leased year-round. During winter, it hosts private events and corporate retreats (10–15 events/winter). This off-season revenue covers base operating costs, protecting investor returns." },
+    ],
+  },
+];
+
+export const PARTY_FAQS = [
+  { q: "What does 'party maker and promoter' mean?", a: "As a token holder, you co-own a share of the venue's SPV. This gives you proportional revenue from ticket sales, bar revenue, and event bookings — plus exclusive perks like free entry, VIP access, and co-branding rights at higher tiers. You're not just an investor; you're part of the team that makes these events happen." },
+  { q: "How are dividends calculated?", a: "Monthly. Net ticket and bar revenue is aggregated after operating costs (artists, staff, licensing, bar COGS). Smart contracts distribute proportional shares to all token holders within 15 days of month-end." },
+  { q: "Are nightclub and event investments high risk?", a: "Event venues carry more volatility than e.g. solar assets. Revenue varies with lineup, season, and local competition. We offset this with operator track records (minimum 3 years), strong licensing positions, and event cancellation insurance on all listed venues." },
+  { q: "Do I get entry to the venue?", a: "Yes — entry perks are built into every investment tier. Bronze holders (€100+) get discounted tickets. Silver+ get free monthly entry. Gold+ get VIP access. Platinum holders get backstage / artist area access." },
+  { q: "Can I invest in multiple venues?", a: "Absolutely. Each venue is a separate SPV. Investing in Neon Vault and Pulse Events gives you positions in two separate companies, each with their own revenue stream and risk profile." },
+  { q: "What if the club loses its license?", a: "License risk is disclosed in each venue's IID. Our legal team vets every venue's licensing position before listing. If a license is revoked, the SPV board (including investor reps) votes on the path forward — sale, relocation, or wind-down." },
+];
+
 export const SOLAR_FAQS = [
   { q: "How does the rooftop contribution model work?", a: "Building owners offer their rooftop for solar installation at no cost to them. In return, they earn a higher yield than pure financial investors (typically 30-50% more), get reduced electricity costs, and receive a free professional roof assessment. The installation is fully funded by the investor pool." },
   { q: "What is a feed-in tariff?", a: "A government-guaranteed price for solar electricity fed into the public grid. In Germany, the EEG guarantees a fixed rate (currently 8.2 cents/kWh) for 20 years from installation. This provides stable, predictable revenue for investors." },
