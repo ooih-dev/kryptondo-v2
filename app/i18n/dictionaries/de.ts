@@ -345,6 +345,7 @@ const de: Dictionary = {
     careers: "Karriere",
     blog: "Blog",
     press: "Presse",
+    anekdoten: "Witze & Anekdoten",
     privacy: "Datenschutz",
     terms: "Nutzungsbedingungen",
     imprint: "Impressum",
@@ -707,6 +708,15 @@ const de: Dictionary = {
     back: "Zurück",
     next: "Weiter",
     seeProfile: "Mein Profil ansehen",
+  },
+  anekdoten: {
+    pageTitle: "Witze & Anekdoten",
+    pageSubtitle: "Ein bisschen Humor für ernsthafte Investoren. Weil wenn du nicht über den Markt lachen kannst, lacht der Markt über dich.",
+    badge: "Unterhaltung · Finanzhumor · Krypto-Comedy",
+    catCrypto: "Krypto-Humor",
+    catInvestor: "Investor-Alltag",
+    catStartup: "Startup-Realität",
+    backToHome: "← Zurück zur Startseite",
   },
 };
 

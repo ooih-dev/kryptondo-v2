@@ -343,6 +343,7 @@ const en = {
     careers: "Careers",
     blog: "Blog",
     press: "Press",
+    anekdoten: "Jokes & Anecdotes",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
     imprint: "Imprint",
@@ -705,6 +706,15 @@ const en = {
     back: "Back",
     next: "Next",
     seeProfile: "See My Profile",
+  },
+  anekdoten: {
+    pageTitle: "Jokes & Anecdotes",
+    pageSubtitle: "A little humor for serious investors. Because if you can't laugh at the market, the market will laugh at you.",
+    badge: "Entertainment · Finance Humor · Crypto Comedy",
+    catCrypto: "Crypto Humor",
+    catInvestor: "Investor Life",
+    catStartup: "Startup Reality",
+    backToHome: "← Back to Home",
   },
 };
 

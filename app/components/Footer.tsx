@@ -102,6 +102,7 @@ export default function Footer() {
                 [t.careers, "#"],
                 [t.blog, "#"],
                 [t.press, "#"],
+                [t.anekdoten, "/anekdoten"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <Link
